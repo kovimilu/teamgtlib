@@ -6,6 +6,7 @@ public class Main {
         System.out.println("alma3");
         Test gyumi = new Test();
         System.out.println(gyumi.toString());
+        System.out.println("hello");
 
         // write your code here
     }
