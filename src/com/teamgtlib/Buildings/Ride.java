@@ -22,6 +22,19 @@ public class Ride extends Building {
         //TODO
     }
 
+    public Ride(int x, int y, Enum type) {
+        this.x = x;
+        this.y = y;
+        this.type = type;
+        //TODO
+    }
+
+    @Override
+    public void draw()
+    {
+
+    }
+
     public void use(Visitor Obj) {
 
     }
