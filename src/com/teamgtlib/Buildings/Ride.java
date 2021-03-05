@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * @author Kovacs Milan
- * @version 0.1
+ * @version 0.2
  * @since 2021.03.05
  */
 public class Ride extends Building {

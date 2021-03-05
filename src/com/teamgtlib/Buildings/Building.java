@@ -14,7 +14,12 @@ abstract public class Building implements Drawable {
     int price;
     int moodValue;
 
-    public Building(int x, int y) {}
+    protected Building() {}
 
-    public Building() {}
+    public Building(int x, int y) {
+        this.x = x;
+        this.y = y;
+        //TODO
+    }
+
 }
