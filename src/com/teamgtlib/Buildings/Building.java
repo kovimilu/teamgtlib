@@ -9,6 +9,7 @@ import com.teamgtlib.Drawable;
  */
 abstract public class Building implements Drawable {
     int Area;
+    int side_a, side_b;
     int x;
     int y;
     int price;
