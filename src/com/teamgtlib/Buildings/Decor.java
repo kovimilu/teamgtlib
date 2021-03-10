@@ -40,9 +40,4 @@ public class Decor extends Building {
     public DecorType getType() {
         return type;
     }
-
-    @Override
-    public void draw() {
-        // TODO
-    }
 }
