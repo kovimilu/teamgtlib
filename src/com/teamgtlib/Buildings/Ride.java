@@ -53,8 +53,24 @@ public class Ride extends Building {
             }
         }
     }
-
+    // TODO
     public void use(Visitor user) {
+
+    }
+
+    public void next() {
+
+    }
+
+    public void startRide() {
+
+    }
+
+    public void stopRide() {
+
+    }
+
+    public void timer() {
 
     }
 }
