@@ -3,7 +3,7 @@ package com.teamgtlib.Buildings;
 public class DecorConstants {
     private DecorConstants() {}
 
-    // TODO: Fill in with actual values.
+    // TODO: fill with values
     public static final int BENCH_PRICE     = 0;
     public static final int BENCH_MOODVALUE = 0;
     public static final int BENCH_WIDTH     = 0;

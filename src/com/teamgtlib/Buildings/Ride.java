@@ -6,14 +6,13 @@ import java.util.ArrayList;
 public class Ride extends Building {
     private BuildingState state = BuildingState.UNBUILT;
     private int durability;
-    private final int MAXCAP;
+    private int MAXCAP;
     private int currentCap;
     private final RideType type;
     private ArrayList<Visitor> queue;
 
     public Ride(int x, int y, RideType type) {
-        this.x      = x;
-        this.y      = y;
+        super(x, y);
         this.type   = type;
 
         switch (type) {
@@ -51,14 +50,6 @@ public class Ride extends Building {
                 moodValue   = RideConstants.WATERSLIDE_MOODVALUE;
                 width       = RideConstants.WATERSLIDE_WIDTH;
                 height      = RideConstants.WATERSLIDE_HEIGHT;
-            }
-            default -> {
-                // TODO throw exception
-                MAXCAP      = 0;
-                price       = 0;
-                moodValue   = 0;
-                width       = 0;
-                height      = 0;
             }
         }
     }

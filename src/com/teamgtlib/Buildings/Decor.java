@@ -4,8 +4,7 @@ public class Decor extends Building {
     private final DecorType type;
 
     public Decor(int x, int y, DecorType type) {
-        this.x      = x;
-        this.y      = y;
+        super(x, y);
         this.type   = type;
 
         switch (type) {
@@ -26,13 +25,6 @@ public class Decor extends Building {
                 moodValue   = DecorConstants.BUSH_MOODVALUE;
                 width       = DecorConstants.BUSH_WIDTH;
                 height      = DecorConstants.BUSH_HEIGHT;
-            }
-            default -> {
-                // TODO throw exception
-                price       = 0;
-                moodValue   = 0;
-                width       = 0;
-                height      = 0;
             }
         }
     }

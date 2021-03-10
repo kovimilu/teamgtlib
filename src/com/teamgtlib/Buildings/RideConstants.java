@@ -3,7 +3,7 @@ package com.teamgtlib.Buildings;
 public class RideConstants {
     private RideConstants() {}
 
-    // TODO Fill out the rest of the Rides' values with data.
+    // TODO: fill with values
     public static final int CAROUSEL_MAXCAP         = 50;
     public static final int CAROUSEL_PRICE          = 70000;
     public static final int CAROUSEL_MOODVALUE      = 30;
