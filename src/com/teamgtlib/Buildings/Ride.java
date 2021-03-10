@@ -47,11 +47,6 @@ public class Ride extends Building {
         }
     }
 
-    @Override
-    public void draw() {
-
-    }
-
     public void use(Visitor user) {
 
     }

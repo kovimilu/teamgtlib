@@ -9,4 +9,9 @@ abstract class Building implements Drawable {
     int height;
     int price;
     int moodValue;
+
+    @Override
+    public void draw() {
+
+    }
 }
