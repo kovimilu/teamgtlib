@@ -7,7 +7,7 @@ public class Ride extends Building {
     private BuildingState state = BuildingState.UNBUILT;
     private int durability;
     private int MAXCAP;
-    private int currentCap;
+    private ArrayList<Visitor> currentPassengers;
     private final RideType type;
     private ArrayList<Visitor> queue;
 
@@ -52,10 +52,6 @@ public class Ride extends Building {
                 height      = RideConstants.WATERSLIDE_HEIGHT;
             }
         }
-    }
-    // TODO
-    public void use(Visitor user) {
-
     }
 
     public void next() {
