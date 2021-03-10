@@ -18,11 +18,11 @@ public class Ride extends Building {
 
         switch (type) { // TODO the rest of the cases
             case CAROUSEL -> {
-                MAXCAP = 50;
-                price = 70000;
-                moodValue = 30;
-                width = 3;
-                height = 3;
+                MAXCAP = RideConstants.CAROUSEL_MAXCAP;
+                price = RideConstants.CAROUSEL_PRICE;
+                moodValue = RideConstants.CAROUSEL_MOODVALUE;
+                width = RideConstants.CAROUSEL_WIDTH;
+                height = RideConstants.CAROUSEL_HEIGHT;
             }
             case DODGEM -> {
                 MAXCAP = 0;
