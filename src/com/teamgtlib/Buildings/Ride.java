@@ -12,37 +12,53 @@ public class Ride extends Building {
     private ArrayList<Visitor> queue;
 
     public Ride(int x, int y, RideType type) {
-        this.x = x;
-        this.y = y;
-        this.type = type;
+        this.x      = x;
+        this.y      = y;
+        this.type   = type;
 
-        switch (type) { // TODO the rest of the cases
+        switch (type) {
             case CAROUSEL -> {
-                MAXCAP = RideConstants.CAROUSEL_MAXCAP;
-                price = RideConstants.CAROUSEL_PRICE;
-                moodValue = RideConstants.CAROUSEL_MOODVALUE;
-                width = RideConstants.CAROUSEL_WIDTH;
-                height = RideConstants.CAROUSEL_HEIGHT;
+                MAXCAP      = RideConstants.CAROUSEL_MAXCAP;
+                price       = RideConstants.CAROUSEL_PRICE;
+                moodValue   = RideConstants.CAROUSEL_MOODVALUE;
+                width       = RideConstants.CAROUSEL_WIDTH;
+                height      = RideConstants.CAROUSEL_HEIGHT;
             }
             case DODGEM -> {
-                MAXCAP = 0;
+                MAXCAP      = RideConstants.DODGEM_MAXCAP;
+                price       = RideConstants.DODGEM_PRICE;
+                moodValue   = RideConstants.DODGEM_MOODVALUE;
+                width       = RideConstants.DODGEM_WIDTH;
+                height      = RideConstants.DODGEM_HEIGHT;
             }
             case FERRISWHEEL -> {
-                MAXCAP = 0;
+                MAXCAP      = RideConstants.FERRISWHEEL_MAXCAP;
+                price       = RideConstants.FERRISWHEEL_PRICE;
+                moodValue   = RideConstants.FERRISWHEEL_MOODVALUE;
+                width       = RideConstants.FERRISWHEEL_WIDTH;
+                height      = RideConstants.FERRISWHEEL_HEIGHT;
             }
             case ROLLERCOASTER -> {
-                MAXCAP = 0;
+                MAXCAP      = RideConstants.ROLLERCOASTER_MAXCAP;
+                price       = RideConstants.ROLLERCOASTER_PRICE;
+                moodValue   = RideConstants.ROLLERCOASTER_MOODVALUE;
+                width       = RideConstants.ROLLERCOASTER_WIDTH;
+                height      = RideConstants.ROLLERCOASTER_HEIGHT;
             }
             case WATERSLIDE -> {
-                MAXCAP = 0;
+                MAXCAP      = RideConstants.WATERSLIDE_MAXCAP;
+                price       = RideConstants.WATERSLIDE_PRICE;
+                moodValue   = RideConstants.WATERSLIDE_MOODVALUE;
+                width       = RideConstants.WATERSLIDE_WIDTH;
+                height      = RideConstants.WATERSLIDE_HEIGHT;
             }
             default -> {
                 // TODO throw exception
-                MAXCAP = 0;
-                price = 0;
-                moodValue = 0;
-                width = 0;
-                height = 0;
+                MAXCAP      = 0;
+                price       = 0;
+                moodValue   = 0;
+                width       = 0;
+                height      = 0;
             }
         }
     }
