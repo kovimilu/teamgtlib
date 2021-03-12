@@ -1,5 +1,7 @@
 package com.teamgtlib;
 
+import java.io.IOException;
+
 public interface Drawable {
-    void draw();
+    void draw() throws IOException;
 }

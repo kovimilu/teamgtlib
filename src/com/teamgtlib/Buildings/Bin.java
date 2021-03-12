@@ -8,14 +8,18 @@ public class Bin extends Building {
 
     public Bin(int x, int y) {
         super(x, y);
-        if(currentBin > MAXBINS); //TODO
-        else currentBin++;
-        this.moodValue = -25;
+        if(currentBin > MAXBINS); //TODO throw exeption
+        else
+        {
+            currentBin++;
+            this.moodValue = -25;
+            //Park.container_building.add(//Self)
+        }
     }
 
     @Override
     public void close(Building obj) {
-        Park.container_bulding.remove(obj);
+        Park.container_building.remove(obj);
         if(currentBin > MAXBINS) currentBin--;
     }
 }

@@ -1,10 +1,13 @@
 package com.teamgtlib;
 
 import com.teamgtlib.Buildings.Building;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Park implements Drawable {
-    public static ArrayList<Building> container_bulding;
+    public static Image image;
+    public static ArrayList<Building> container_building;
 
     public Park(){
 
