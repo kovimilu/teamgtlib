@@ -1,6 +1,6 @@
 package com.teamgtlib.Buildings;
 
-enum DecorType {
+public enum DecorType {
     BENCH,
     BUSH,
     TREE

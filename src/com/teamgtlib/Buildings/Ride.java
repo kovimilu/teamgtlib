@@ -69,4 +69,6 @@ public class Ride extends Building {
     public void timer() {
 
     }
+
+
 }

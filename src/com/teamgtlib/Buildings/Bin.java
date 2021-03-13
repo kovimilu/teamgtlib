@@ -13,13 +13,13 @@ public class Bin extends Building {
         {
             currentBin++;
             this.moodValue = -25;
-            //Park.container_building.add(//Self)
+            //Park.buildings.add(//Self)
         }
     }
 
     @Override
     public void close(Building obj) {
-        Park.container_building.remove(obj);
+        Park.buildings.remove(obj);
         if(currentBin > MAXBINS) currentBin--;
     }
 }

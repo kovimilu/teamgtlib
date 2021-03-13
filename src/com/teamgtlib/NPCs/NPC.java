@@ -1,5 +1,5 @@
 package com.teamgtlib.NPCs;
 
-abstract class NPC {
+public abstract class NPC {
 
 }

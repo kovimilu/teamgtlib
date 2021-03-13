@@ -1,6 +1,6 @@
 package com.teamgtlib.Buildings;
 
-enum RideType {
+public enum RideType {
     CAROUSEL,
     DODGEM,
     FERRISWHEEL,

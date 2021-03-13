@@ -3,7 +3,6 @@ package com.teamgtlib.Buildings;
 import com.teamgtlib.Drawable;
 import com.teamgtlib.Park;
 
-import javax.imageio.ImageIO;
 import java.io.IOException;
 
 public abstract class Building implements Drawable {
@@ -20,7 +19,7 @@ public abstract class Building implements Drawable {
     }
 
     public void close(Building obj) {
-        Park.container_building.remove(obj);
+        Park.buildings.remove(obj);
     }
 
     /**
@@ -34,4 +33,10 @@ public abstract class Building implements Drawable {
         System.out.println(className);
         //TODO Park.image = ImageIO.read(getClass().getResource(className));
     }
+
+    public int getPrice(){
+        return this.price;
+    }
+
+
 }
