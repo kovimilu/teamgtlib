@@ -9,9 +9,9 @@ public class Main {
         System.out.println("No Errors");
         System.out.println("Current grade: " + (5.0f)/ 1);
 
-        /*
+
         Bin b = new Bin(0,0);
         b.draw();
-        */
+
     }
 }
