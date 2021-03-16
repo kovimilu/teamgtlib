@@ -1,7 +1,6 @@
 package com.teamgtlib.Buildings;
 
 import com.teamgtlib.Drawable;
-import com.teamgtlib.Main;
 import com.teamgtlib.Park;
 
 import javax.imageio.ImageIO;
@@ -31,8 +30,9 @@ public abstract class Building implements Drawable {
     @Override
     public void draw() throws IOException {
         String[] classNameSplit = getClass().toString().split("\\.", 0);
-        Park.image = ImageIO.read(new FileInputStream(
-                "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
+        //Park.image = ImageIO.read(new FileInputStream(
+          //      "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
+        System.out.println(classNameSplit[classNameSplit.length - 1]);
     }
 
     public int getPrice(){

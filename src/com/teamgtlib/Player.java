@@ -1,6 +1,7 @@
 package com.teamgtlib;
 
 import com.teamgtlib.Buildings.*;
+import com.teamgtlib.*;
 
 public class Player {
     private int budget;
@@ -22,6 +23,15 @@ public class Player {
     public void replaceWorker(){
         //TODO később
     }
+
+    static public void build(int x, int y , Object type)
+    {
+        Building building;
+        building = new Ride(0,0, RideType.CAROUSEL);
+        Park.buildings.add(building);
+    }
+
+
 
     public Building buildRide(int x, int y, RideType type) throws Exception {
         //TODO exception

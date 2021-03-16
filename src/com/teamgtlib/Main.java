@@ -13,5 +13,13 @@ public class Main {
         Bin b = new Bin(0,0);
         b.draw();
 
+        Player p = new Player();
+        Park P = new Park();
+
+        p.build(0, 0, DecorType.BENCH);
+
+        P.buildings.get(0).draw();
+
+
     }
 }
