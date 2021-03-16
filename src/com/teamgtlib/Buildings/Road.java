@@ -25,8 +25,4 @@ public class Road extends Building {
         //TODO
     }
 
-    public int getPrice(){
-        return this.price;
-    }
-
 }
