@@ -1,17 +1,12 @@
 package com.teamgtlib;
 
-import com.teamgtlib.Buildings.*;
-import java.io.IOException;
-
+import com.teamgtlib.gui.GameFrame;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         System.out.println("No Errors");
-        System.out.println("Current grade: " + (5.0f)/ 1);
+        System.out.println("Current grade: " + (5.0f) / 1);
 
-
-        Bin b = new Bin(0,0);
-        b.draw();
-
+        java.awt.EventQueue.invokeLater(() -> new GameFrame().setVisible(true));
     }
 }
