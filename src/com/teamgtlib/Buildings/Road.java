@@ -5,7 +5,7 @@ import com.teamgtlib.Drawable;
 import java.awt.*;
 import java.io.IOException;
 
-public class Road implements Drawable {
+public class Road extends Building {
     private int x;
     private int y;
     private static final int price = 1000;
@@ -13,8 +13,7 @@ public class Road implements Drawable {
     private Image image;
 
     public Road(int x, int y){
-        this.x = x;
-        this.y = y;
+      super(x,y);
     }
 
     private void cleaned(){

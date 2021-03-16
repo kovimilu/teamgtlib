@@ -24,11 +24,17 @@ public class Player {
         //TODO később
     }
 
-    static public void build(int x, int y , Object type)
+    public void build(int x, int y , String type, DecorType dtype, RideType rtype)
     {
-        Building building;
-        building = new Ride(0,0, RideType.CAROUSEL);
+        Building building = null;
+        if (type == "Bin") building = new Bin(0, 0);
+        if (type == "Shop")building = new Shop(0,0);
+        if (type == "Road")building = new Road(0,0);
+
+
+
         Park.buildings.add(building);
+        this.budget -= building.getPrice();
     }
 
 
