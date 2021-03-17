@@ -12,6 +12,9 @@ public class Main {
         Park p = new Park();
         p.draw();
 
-        java.awt.EventQueue.invokeLater(() -> new GameFrame().setVisible(true));
+        { // Does the same.
+            java.awt.EventQueue.invokeLater(() -> new GameFrame().setVisible(true));
+            //new GameFrame();
+        }
     }
 }
