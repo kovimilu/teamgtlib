@@ -32,7 +32,6 @@ public abstract class Building implements Drawable {
         String[] classNameSplit = getClass().toString().split("\\.", 0);
         Park.image = ImageIO.read(new FileInputStream(
                 "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
-        System.out.println(classNameSplit[classNameSplit.length - 1]);
     }
 
     public int getPrice(){

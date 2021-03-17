@@ -2,7 +2,11 @@ package com.teamgtlib;
 
 import com.teamgtlib.Buildings.*;
 import com.teamgtlib.NPCs.NPC;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Park implements Drawable {
@@ -30,7 +34,9 @@ public class Park implements Drawable {
     }
 
     @Override
-    public void draw() {
-        //TODO
+    public void draw() throws IOException {
+        String[] classNameSplit = getClass().toString().split("\\.", 0);
+        Park.image = ImageIO.read(new FileInputStream(
+                "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
     }
 }
