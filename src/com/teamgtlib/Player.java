@@ -24,47 +24,18 @@ public class Player {
         //TODO később
     }
 
-    public void build(int x, int y , String type, DecorType dtype, RideType rtype)
-    {
-        Building building = null;
-        if (type == "Bin") building = new Bin(0, 0);
-        if (type == "Shop")building = new Shop(0,0);
-        if (type == "Road")building = new Road(0,0);
+    public void updateBudget(int budget) {
 
-
-
-        Park.buildings.add(building);
-        this.budget -= building.getPrice();
+        this.budget += budget;
     }
 
+    public void updateVisitorCount(int visitorCount) {
 
-
-    public Building buildRide(int x, int y, RideType type) throws Exception {
-        //TODO exception
-        Ride ride =  new Ride(x, y,type);
-        budget -= ride.getPrice();
-        return ride;
+        this.visitorCount += visitorCount;
     }
 
-    public Decor buildDecor(int x, int y, DecorType type){
-        //TODO exception
-        Decor decor = new Decor(x, y, type);
-        budget -= decor.getPrice();
-        return decor;
-    }
-
-    public Shop buildShop(int x, int y){
-        //TODO exception
-        Shop shop = new Shop(x, y);
-        budget -= shop.getPrice();
-        return shop;
-    }
-
-    public Road buildRoad(int x, int y){
-        //TODO exception
-        Road road = new Road(x, y);
-        budget -= road.getPrice();
-        return road;
+    public void updateWorkerCount(int workerCount) {
+        this.workerCount += workerCount;
     }
 
     public int getBudget() {

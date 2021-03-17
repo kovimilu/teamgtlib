@@ -10,7 +10,6 @@ public class Road extends Building {
     private int y;
     private static final int price = 1000;
     private int[] garbageLocations;
-    private Image image;
 
     public Road(int x, int y){
       super(x,y);
