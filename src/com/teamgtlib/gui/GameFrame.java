@@ -1,12 +1,7 @@
 package com.teamgtlib.gui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
 
 
 public class GameFrame extends JFrame {
@@ -18,7 +13,7 @@ public class GameFrame extends JFrame {
         ImageIcon logoImage = new ImageIcon("res/_logo.png");
         this.setIconImage(logoImage.getImage());
 
-        BackGroundPanel bg = new BackGroundPanel();
+        PlayAreaPanel bg = new PlayAreaPanel();
         this.getContentPane().add(bg);
         //this.getContentPane().setBackground(new Color(0x0BFA10));
 

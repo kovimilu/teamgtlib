@@ -5,10 +5,12 @@ import com.teamgtlib.Park;
 import javax.swing.*;
 import java.awt.*;
 
-public class BackGroundPanel extends JPanel {
-    public BackGroundPanel(){
+public class PlayAreaPanel extends JPanel {
+    public PlayAreaPanel(){
         setPreferredSize(new Dimension(1280,720));
     }
+
+
 
     @Override
     public void paintComponent(Graphics g)

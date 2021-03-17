@@ -8,11 +8,12 @@ import java.io.IOException;
 public class Road extends Building {
     private int x;
     private int y;
-    private static final int price = 1000;
+    public static int COST_PRICE = 1000;
     private int[] garbageLocations;
 
     public Road(int x, int y){
       super(x,y);
+      this.price = this.COST_PRICE;
     }
 
     private void cleaned(){

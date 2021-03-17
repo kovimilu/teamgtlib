@@ -1,7 +1,16 @@
 package com.teamgtlib.Buildings;
 
 public class RideConstants {
-    private RideConstants() {}
+
+    // Had to make an Array that contains the Prices to make the GUI generation easier.
+    public static final int RCA[][] = new int[5][5];
+    public RideConstants() {
+        RCA[0][1] = CAROUSEL_PRICE;
+        RCA[1][1] = DODGEM_PRICE;
+        RCA[2][1] = WATERSLIDE_PRICE;
+        RCA[3][1] = FERRISWHEEL_PRICE;
+        RCA[4][1] = ROLLERCOASTER_PRICE;
+    }
 
     public static final int CAROUSEL_MAXCAP         = 30;
     public static final int CAROUSEL_PRICE          = 55000;
@@ -15,6 +24,12 @@ public class RideConstants {
     public static final int DODGEM_WIDTH            = 4;
     public static final int DODGEM_HEIGHT           = 3;
 
+    public static final int WATERSLIDE_MAXCAP       = 15;
+    public static final int WATERSLIDE_PRICE        = 145000;
+    public static final int WATERSLIDE_MOODVALUE    = 25;
+    public static final int WATERSLIDE_WIDTH        = 5;
+    public static final int WATERSLIDE_HEIGHT       = 2;
+
     public static final int FERRISWHEEL_MAXCAP      = 50;
     public static final int FERRISWHEEL_PRICE       = 70000;
     public static final int FERRISWHEEL_MOODVALUE   = 30;
@@ -26,10 +41,4 @@ public class RideConstants {
     public static final int ROLLERCOASTER_MOODVALUE = 50;
     public static final int ROLLERCOASTER_WIDTH     = 5;
     public static final int ROLLERCOASTER_HEIGHT    = 4;
-
-    public static final int WATERSLIDE_MAXCAP       = 15;
-    public static final int WATERSLIDE_PRICE        = 145000;
-    public static final int WATERSLIDE_MOODVALUE    = 25;
-    public static final int WATERSLIDE_WIDTH        = 5;
-    public static final int WATERSLIDE_HEIGHT       = 2;
 }
