@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class UIPanel extends JPanel {
+
+
     public UIPanel() {
         final int squareButtonsSize = 85;
         setPreferredSize(new Dimension((squareButtonsSize + 5) * 3, 695));
@@ -144,17 +146,23 @@ public class UIPanel extends JPanel {
         //button.setIcon(new ImageIcon(Park.image));
         //button.addActionListener(isclicked);
         //button.addMouseListener(test);
+
+
+        buttons[4].addActionListener(rollerCoasterAL);
+        //buttons[4].addMouseListener(isRealesed);
     }
-    /*
-    private final ActionListener isclicked = new ActionListener() {
+
+    private final ActionListener rollerCoasterAL = new ActionListener() {
+        //Boolean singlePress = false;
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("asd");
+            //singlePress = !singlePress;
+            GameFrame.GameFrameIsPressedOnce = true;
         }
     };
-    */
+
     /*
-    private final MouseListener test = new MouseAdapter() {
+    private final MouseListener isRealesed = new MouseAdapter() {
         @Override
         public void mouseReleased(MouseEvent e) {
             //super.mouseReleased(e);

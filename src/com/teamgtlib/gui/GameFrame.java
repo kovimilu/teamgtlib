@@ -5,6 +5,9 @@ import java.awt.*;
 
 
 public class GameFrame extends JFrame {
+
+    static public boolean GameFrameIsPressedOnce = false;
+
     public GameFrame() {
         setTitle("Beadandó");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -13,9 +16,12 @@ public class GameFrame extends JFrame {
         ImageIcon logoImage = new ImageIcon("res/_logo.png");
         this.setIconImage(logoImage.getImage());
 
+
         PlayAreaPanel bg = new PlayAreaPanel();
         this.getContentPane().add(bg);
         //this.getContentPane().setBackground(new Color(0x0BFA10));
+        //DragPanel dragPanel = new DragPanel();
+        //this.getContentPane().add(dragPanel);
 
 
         StatusPanel statusPanel = new StatusPanel();

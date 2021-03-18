@@ -9,8 +9,9 @@ public class Main {
         System.out.println("No Errors");
         System.out.println("Current grade: " + (5.0f) / 1);
 
-        Park p = new Park();
-        p.draw();
+        Park park = new Park();
+        park.draw();
+
 
         { // Does the same.
             java.awt.EventQueue.invokeLater(() -> new GameFrame().setVisible(true));

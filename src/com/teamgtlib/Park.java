@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Park implements Drawable {
     public static Image image;
     public static ArrayList<Building> buildings;
-    public static Player player;
+    public static Player player = null;
     public static ArrayList<NPC> npcs;
     public static ArrayList<Road> roads;
 
