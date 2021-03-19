@@ -45,12 +45,13 @@ public class PlayAreaPanel extends JPanel {
     private void doAllThingForNow()
     {
         int placeholder = 10;
-        park.player.updateBudget(placeholder);
+        park.player.updateBudget(-placeholder);
+        System.out.println(park.player.getBudget());
     }
 
     private void refreshLabelText()
     {
-        GameFrame.GameFrameStatusPanelString = "$" + Park.player.getBudget();
+        GameFrame.GameFrameStatusPanelString = "$" + park.player.getBudget();
     }
 
     @Override
