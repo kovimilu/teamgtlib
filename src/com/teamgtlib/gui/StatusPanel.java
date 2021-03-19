@@ -4,11 +4,16 @@ import com.teamgtlib.Park;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class StatusPanel extends JPanel {
+public class StatusPanel extends JPanel implements ActionListener{
+
+    JLabel label = new JLabel(GameFrame.GameFrameStatusPanelString, SwingConstants.RIGHT);
+
     public StatusPanel(){
         setPreferredSize(new Dimension(1280,25));
-        JLabel label = new JLabel("$" + Park.player.getBudget(), SwingConstants.RIGHT);
+
         label.setForeground(Color.green);
         label.setPreferredSize(new Dimension(1200,20));
         this.add(label);
@@ -20,5 +25,11 @@ public class StatusPanel extends JPanel {
     {
         super.paintComponent(g);
         g.drawImage(Park.image, 0, 0, 1280, 720, null);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        label.repaint();
     }
 }

@@ -148,16 +148,29 @@ public class UIPanel extends JPanel {
         //button.addMouseListener(test);
 
 
-        buttons[4].addActionListener(rollerCoasterAL);
+        buttons[4].addActionListener(buttonArrayActionListener);
+        buttons[5].addActionListener(buttonArrayActionListener);
         //buttons[4].addMouseListener(isRealesed);
     }
 
-    private final ActionListener rollerCoasterAL = new ActionListener() {
-        //Boolean singlePress = false;
+    private final ActionListener buttonArrayActionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            //singlePress = !singlePress;
-            GameFrame.GameFrameIsPressedOnce = true;
+            /**
+             * 'Button Item Returner'
+             *
+             * Returns the "Item" on the pressed button.
+             * <i>This might have to be a method some day.</i>
+             * //Does some RegEx//
+             * ### IF THE CALLS ARE NOT IN THE RIGHT ORDER THIS MAY CAUSE MAJOR RUNTIME ERRORS! ###
+             */
+            if(!GameFrame.GameFrameButtonIsPressedOnce) {
+                String[] buttonTypeSplit = e.toString().split("\\<br\\>", 0);
+                GameFrame.GameFrameCurrentButtonItemImageName = buttonTypeSplit[1];
+                //System.out.println(buttonTypeSplit[1]);
+            }
+            GameFrame.GameFrameButtonIsPressedOnce = true;
+            /** endof 'Button Item Returner' **/
         }
     };
 

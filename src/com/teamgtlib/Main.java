@@ -9,13 +9,14 @@ public class Main {
         System.out.println("No Errors");
         System.out.println("Current grade: " + (5.0f) / 1);
 
-        Park park = new Park();
-        park.draw();
 
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new GameFrame().setVisible(true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
-        { // Does the same.
-            java.awt.EventQueue.invokeLater(() -> new GameFrame().setVisible(true));
-            //new GameFrame();
-        }
     }
 }
