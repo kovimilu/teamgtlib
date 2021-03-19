@@ -66,31 +66,31 @@ public class UIPanel extends JPanel {
             j++;
         }
 
-        {
-            JButton buttonRoad = new JButton();
-            buttonRoad.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-            buttonRoad.setMargin(new Insets(0, 0, 0, 0));
-            buttonRoad.setText("<html>" + "Build:" + "<br>"
-                    + "Road" + "<br>"
-                    + "costs:" + "<br>" + "$"+ Road.COST_PRICE + "</html>");
-            add(buttonRoad);
 
-            JButton buttonBin = new JButton();
-            buttonBin.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-            buttonBin.setMargin(new Insets(0, 0, 0, 0));
-            buttonBin.setText("<html>" + "Build:" + "<br>"
-                    + "Bin" + "<br>"
-                    + "costs:" + "<br>" + "$"+ Bin.COST_PRICE + "</html>");
-            add(buttonBin);
+        JButton buttonRoad = new JButton();
+        buttonRoad.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonRoad.setMargin(new Insets(0, 0, 0, 0));
+        buttonRoad.setText("<html>" + "Build:" + "<br>"
+                + "Road" + "<br>"
+                + "costs:" + "<br>" + "$"+ Road.COST_PRICE + "</html>");
+        add(buttonRoad);
 
-            JButton buttonShop = new JButton();
-            buttonShop.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-            buttonShop.setMargin(new Insets(0, 0, 0, 0));
-            buttonShop.setText("<html>" + "Build:" + "<br>"
-                    + "Road" + "<br>"
-                    + "costs:" + "<br>" + "$"+ Shop.COST_PRICE + "</html>");
-            add(buttonShop);
-        }
+        JButton buttonBin = new JButton();
+        buttonBin.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonBin.setMargin(new Insets(0, 0, 0, 0));
+        buttonBin.setText("<html>" + "Build:" + "<br>"
+                + "Bin" + "<br>"
+                + "costs:" + "<br>" + "$"+ Bin.COST_PRICE + "</html>");
+        add(buttonBin);
+
+        JButton buttonShop = new JButton();
+        buttonShop.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonShop.setMargin(new Insets(0, 0, 0, 0));
+        buttonShop.setText("<html>" + "Build:" + "<br>"
+                + "Road" + "<br>"
+                + "costs:" + "<br>" + "$"+ Shop.COST_PRICE + "</html>");
+        add(buttonShop);
+
 
         {
             String str = "Cleaner";
@@ -148,8 +148,9 @@ public class UIPanel extends JPanel {
         //button.addMouseListener(test);
 
 
-        buttons[4].addActionListener(buttonArrayActionListener);
-        buttons[5].addActionListener(buttonArrayActionListener);
+        buttons[4].addActionListener(buttonArrayActionListener); //RollerC
+        buttons[5].addActionListener(buttonArrayActionListener); //Bench
+        buttonBin.addActionListener(buttonArrayActionListener); //Bin
         //buttons[4].addMouseListener(isRealesed);
     }
 

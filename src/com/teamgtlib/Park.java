@@ -20,13 +20,15 @@ public class Park implements Drawable {
         player = new Player();
     }
 
+    //TODO This has to be done ASAP
     public void build(int x, int y , String type, DecorType dtype, RideType rtype)
     {
         Building building = null;
-        if (type == "Bin") building = new Bin(0, 0);
-        if (type == "Shop")building = new Shop(0,0);
-        if (type == "Road")building = new Road(0,0);
+        if (type == "Bin") building = new Bin(x,y);
+        if (type == "Shop")building = new Shop(x,y);
+        if (type == "Road")building = new Road(x,y);
 
+        //if (dtype == DecorType.BENCH)building = new Road(x,y);
 
 
         buildings.add(building);

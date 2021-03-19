@@ -1,5 +1,7 @@
 package com.teamgtlib.gui;
 
+import com.teamgtlib.Buildings.DecorType;
+import com.teamgtlib.Buildings.RideType;
 import com.teamgtlib.Park;
 
 import javax.swing.*;
@@ -42,11 +44,11 @@ public class PlayAreaPanel extends JPanel {
         dragAndDropImage = new ImageIcon(str);
     }
 
-    private void doAllThingForNow()
+    private void doAllThingForNow(int x, int y)
     {
-        int placeholder = 10;
-        park.player.updateBudget(-placeholder);
+        //park.build(x, y, GameFrame.GameFrameCurrentButtonItemImageName, DecorType.BENCH, RideType.ROLLERCOASTER); //TODO Uncommenzting this line will crash the game xd
         System.out.println(park.player.getBudget());
+        //TODO This should call Park.buidl()  "that already deasl with price DO NOT FORGET to consider that"
     }
 
     private void refreshLabelText()
@@ -64,7 +66,7 @@ public class PlayAreaPanel extends JPanel {
         if(GameFrame.GameFrameButtonIsPressedOnce) {
             imageSelector();
             dragAndDropImage.paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
-            doAllThingForNow();
+            doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY());
             GameFrame.GameFrameButtonIsPressedOnce = false;
         }
     }
