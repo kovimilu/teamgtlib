@@ -27,6 +27,7 @@ public abstract class Building implements Drawable {
     /**
      * Determens the type of the Class then reads in the corresponding image.
      */
+    //TODO FIX:
     @Override
     public void draw() throws IOException {
         String[] classNameSplit = getClass().toString().split("\\.", 0);

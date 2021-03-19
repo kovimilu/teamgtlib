@@ -8,26 +8,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class UIPanel extends JPanel {
-
-
     public UIPanel() {
         final int squareButtonsSize = 85;
         setPreferredSize(new Dimension((squareButtonsSize + 5) * 3, 695));
         final JButton[] buttons = new JButton[8];
-
-        /*
-        for (int i = 0; i< 9; ++i)
-        {
-            JButton button = new JButton();
-            button.setPreferredSize(new Dimension(squareButtonsSize,squareButtonsSize));
-
-            buttons[i] = button;
-            buttons[i].setText("<html>" + "Build:" + "<br>"
-                    + "RideType" + "<br>"
-                    + "costs: $303234" + "</html>");
-            add(buttons[i]);
-        }
-        */
 
         //Rides
         RideType[] ridetypes = RideType.values();
@@ -91,67 +75,63 @@ public class UIPanel extends JPanel {
                 + "costs:" + "<br>" + "$"+ Shop.COST_PRICE + "</html>");
         add(buttonShop);
 
+        //##
+        String str = "Cleaner";
+        JButton buttonHC = new JButton();
+        buttonHC.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonHC.setMargin(new Insets(0, 0, 0, 0));
+        buttonHC.setText("<html>" + "Hire:" + "<br>"
+                + str + "<br>"
+                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+        add(buttonHC);
 
-        {
-            String str = "Cleaner";
-            JButton buttonHC = new JButton();
-            buttonHC.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-            buttonHC.setMargin(new Insets(0, 0, 0, 0));
-            buttonHC.setText("<html>" + "Hire:" + "<br>"
-                    + str + "<br>"
-                    + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
-            add(buttonHC);
+        JButton buttonRC = new JButton();
+        buttonRC.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonRC.setMargin(new Insets(0, 0, 0, 0));
+        buttonRC.setText("<html>" + "Relocate:" + "<br>"
+                + str + "<br>"
+                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+        add(buttonRC);
 
-            JButton buttonRC = new JButton();
-            buttonRC.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-            buttonRC.setMargin(new Insets(0, 0, 0, 0));
-            buttonRC.setText("<html>" + "Relocate:" + "<br>"
-                    + str + "<br>"
-                    + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
-            add(buttonRC);
+        JButton buttonFC = new JButton();
+        buttonFC.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonFC.setMargin(new Insets(0, 0, 0, 0));
+        buttonFC.setText("<html>" + "Fire:" + "<br>"
+                + str + "<br>"
+                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+        add(buttonFC);
+        //##
 
-            JButton buttonFC = new JButton();
-            buttonFC.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-            buttonFC.setMargin(new Insets(0, 0, 0, 0));
-            buttonFC.setText("<html>" + "Fire:" + "<br>"
-                    + str + "<br>"
-                    + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
-            add(buttonFC);
-        }
 
-        {
-            String str = "Worker";
-            JButton buttonHW = new JButton();
-            buttonHW.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-            buttonHW.setMargin(new Insets(0, 0, 0, 0));
-            buttonHW.setText("<html>" + "Hire:" + "<br>"
-                    + str + "<br>"
-                    + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
-            add(buttonHW);
+        String str1 = "Worker";
+        JButton buttonHW = new JButton();
+        buttonHW.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonHW.setMargin(new Insets(0, 0, 0, 0));
+        buttonHW.setText("<html>" + "Hire:" + "<br>"
+                + str1 + "<br>"
+                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+        add(buttonHW);
 
-            JButton buttonFW = new JButton();
-            buttonFW.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-            buttonFW.setMargin(new Insets(0, 0, 0, 0));
-            buttonFW.setText("<html>" + "Fire:" + "<br>"
-                    + str + "<br>"
-                    + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
-            add(buttonFW);
-        }
+        JButton buttonFW = new JButton();
+        buttonFW.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonFW.setMargin(new Insets(0, 0, 0, 0));
+        buttonFW.setText("<html>" + "Fire:" + "<br>"
+                + str1 + "<br>"
+                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+        add(buttonFW);
+
 
         JButton buttonDemolish = new JButton();
         buttonDemolish.setPreferredSize(new Dimension(squareButtonsSize * 3,squareButtonsSize));
         buttonDemolish.setText("Select Building To Demolish");
         add(buttonDemolish);
 
-        //button.setIcon(new ImageIcon(Park.image));
-        //button.addActionListener(isclicked);
-        //button.addMouseListener(test);
-
 
         buttons[4].addActionListener(buttonArrayActionListener); //RollerC
         buttons[5].addActionListener(buttonArrayActionListener); //Bench
         buttonBin.addActionListener(buttonArrayActionListener); //Bin
         //buttons[4].addMouseListener(isRealesed);
+        //button.setIcon(new ImageIcon(Park.image));
     }
 
     private final ActionListener buttonArrayActionListener = new ActionListener() {
@@ -175,7 +155,7 @@ public class UIPanel extends JPanel {
         }
     };
 
-    /*
+    // Currently unused
     private final MouseListener isRealesed = new MouseAdapter() {
         @Override
         public void mouseReleased(MouseEvent e) {
@@ -183,7 +163,7 @@ public class UIPanel extends JPanel {
             System.out.println("asd");
         }
     };
-    */
+
 
     @Override
     public void paintComponent(Graphics g)

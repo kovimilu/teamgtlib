@@ -26,10 +26,6 @@ public class GameFrame extends JFrame {
 
         PlayAreaPanel bg = new PlayAreaPanel();
         this.getContentPane().add(bg);
-        //this.getContentPane().setBackground(new Color(0x0BFA10));
-        //DragPanel dragPanel = new DragPanel();
-        //this.getContentPane().add(dragPanel);
-
 
         UIPanel gamepanel = new UIPanel();
         this.getContentPane().add(gamepanel, BorderLayout.WEST);

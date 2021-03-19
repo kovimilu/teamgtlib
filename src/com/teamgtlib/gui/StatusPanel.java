@@ -13,11 +13,9 @@ public class StatusPanel extends JPanel implements ActionListener{
 
     public StatusPanel(){
         setPreferredSize(new Dimension(1280,25));
-
         label.setForeground(Color.green);
         label.setPreferredSize(new Dimension(1200,20));
         this.add(label);
-
     }
 
     @Override
@@ -27,6 +25,7 @@ public class StatusPanel extends JPanel implements ActionListener{
         g.drawImage(Park.image, 0, 0, 1280, 720, null);
     }
 
+    //TODO Currently does nothing
     @Override
     public void actionPerformed(ActionEvent e)
     {

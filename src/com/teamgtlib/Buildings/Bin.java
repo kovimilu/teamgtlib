@@ -10,7 +10,7 @@ public class Bin extends Building {
     public Bin(int x, int y) {
         super(x, y);
         this.price = this.COST_PRICE;
-        if(currentBin > MAXBINS); //TODO throw exeption
+        if(currentBin > MAXBINS); //TODO throw exception
         else
         {
             currentBin++;

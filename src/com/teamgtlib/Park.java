@@ -35,6 +35,7 @@ public class Park implements Drawable {
         player.updateBudget( -building.getPrice());
     }
 
+    //TODO FIX:
     @Override
     public void draw() throws IOException {
         String[] classNameSplit = getClass().toString().split("\\.", 0);
