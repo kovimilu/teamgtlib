@@ -41,9 +41,6 @@ public class Park implements Drawable {
         if (type == "Bin") building = new Bin(x,y);
 
         this.buildings.add(building); //TODO Building is null WHY?
-        if (building == null) {
-            System.out.println("geci");
-        }
         player.updateBudget( -building.getPrice());
     }
 
