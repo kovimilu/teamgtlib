@@ -32,4 +32,10 @@ public class Decor extends Building {
     public DecorType getType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        return "Decor" +
+                " " + type;
+    }
 }

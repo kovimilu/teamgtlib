@@ -14,25 +14,21 @@ public class Park implements Drawable {
     public static ArrayList<Building> buildings;
     public static Player player = null;
     public static ArrayList<NPC> npcs;
-    public static ArrayList<Road> roads;
 
     public Park(){
+
         player = new Player();
+        buildings = new ArrayList<>();
     }
 
     //TODO This has to be done ASAP
-    public void build(int x, int y , String type, DecorType dtype, RideType rtype)
+    public void build(int x, int y , Buildable type)
     {
-        Building building = null;
-        if (type == "Bin") building = new Bin(x,y);
-        if (type == "Shop")building = new Shop(x,y);
-        if (type == "Road")building = new Road(x,y);
-
-        //if (dtype == DecorType.BENCH)building = new Road(x,y);
-
-
+        Building building = type.createObj(x,y);
+        player.updateBudget(- building.getPrice());
         buildings.add(building);
-        player.updateBudget( -building.getPrice());
+        System.out.println(building.toString());
+
     }
 
     public void buildTest(int x, int y , String type)

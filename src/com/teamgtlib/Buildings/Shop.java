@@ -12,4 +12,9 @@ public class Shop extends Building {
     public void sellFood(Visitor obj){
         //TODO Requires Visitors Class
     }
+
+    @Override
+    public String toString() {
+        return "Shop";
+    }
 }

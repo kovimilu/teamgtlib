@@ -25,4 +25,9 @@ public class Road extends Building {
         //TODO
     }
 
+    @Override
+    public String toString() {
+        return "Road";
+    }
+
 }
