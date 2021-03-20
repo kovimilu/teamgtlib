@@ -35,9 +35,27 @@ public abstract class Building implements Drawable {
                 "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
     }
 
-    public int getPrice(){
-        return this.price;
+    public int getX() {
+        return x;
     }
 
+    public int getY() {
+        return y;
+    }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getMoodValue() {
+        return moodValue;
+    }
 }
