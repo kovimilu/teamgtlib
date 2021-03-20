@@ -1,5 +1,7 @@
 package com.teamgtlib.gui;
 
+import com.teamgtlib.Buildings.Buildable;
+import com.teamgtlib.Buildings.DecorType;
 import com.teamgtlib.Park;
 
 import javax.swing.*;
@@ -45,6 +47,7 @@ public class PlayAreaPanel extends JPanel {
     {
         park.player.updateBudget(-5600);
         //park.buildTest(x, y, GameFrame.GameFrameCurrentButtonItemImageName); //TODO Uncommenzting this line will crash the game xd
+        park.build(x, y, DecorType.BENCH);
     }
 
     private void refreshLabelText()
@@ -66,7 +69,7 @@ public class PlayAreaPanel extends JPanel {
         if(GameFrame.GameFrameButtonIsPressedOnce) {
             imageSelector();
             dragAndDropImage.paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
-doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY());
+            doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY()); //TODO
             refreshLabelText();
             //System.out.println((int) prevPt.getX() + " " + (int) prevPt.getY());
             GameFrame.GameFrameButtonIsPressedOnce = false;

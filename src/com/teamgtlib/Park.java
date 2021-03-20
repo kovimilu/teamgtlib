@@ -27,17 +27,7 @@ public class Park implements Drawable {
         Building building = type.createObj(x,y);
         player.updateBudget(- building.getPrice());
         buildings.add(building);
-        System.out.println(building.toString());
-
-    }
-
-    public void buildTest(int x, int y , String type)
-    {
-        Building building = new Bin(x,y);
-        if (type == "Bin") building = new Bin(x,y);
-
-        this.buildings.add(building); //TODO Building is null WHY?
-        player.updateBudget( -building.getPrice());
+        //System.out.println(building.toString());
     }
 
     //TODO FIX:

@@ -12,6 +12,8 @@ public class GameFrame extends JFrame {
     static public String GameFrameStatusPanelString = "";
     static public StatusPanel GameFrameStatusPanel = null;
 
+    static public PlayAreaPanel bg;
+
     public GameFrame() throws IOException {
         setTitle("Beadandó");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -24,7 +26,7 @@ public class GameFrame extends JFrame {
         this.getContentPane().add(statusPanel, BorderLayout.NORTH);
         GameFrameStatusPanel = statusPanel;
 
-        PlayAreaPanel bg = new PlayAreaPanel();
+        bg = new PlayAreaPanel();
         this.getContentPane().add(bg);
 
         UIPanel gamepanel = new UIPanel();
