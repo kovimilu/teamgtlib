@@ -35,6 +35,18 @@ public class Park implements Drawable {
         player.updateBudget( -building.getPrice());
     }
 
+    public void buildTest(int x, int y , String type)
+    {
+        Building building = new Bin(x,y);
+        if (type == "Bin") building = new Bin(x,y);
+
+        this.buildings.add(building); //TODO Building is null WHY?
+        if (building == null) {
+            System.out.println("geci");
+        }
+        player.updateBudget( -building.getPrice());
+    }
+
     //TODO FIX:
     @Override
     public void draw() throws IOException {

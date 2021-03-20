@@ -1,7 +1,5 @@
 package com.teamgtlib.gui;
 
-import com.teamgtlib.Buildings.DecorType;
-import com.teamgtlib.Buildings.RideType;
 import com.teamgtlib.Park;
 
 import javax.swing.*;
@@ -9,7 +7,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.util.Locale;
 
 public class PlayAreaPanel extends JPanel {
 
@@ -27,6 +24,7 @@ public class PlayAreaPanel extends JPanel {
         this.addMouseListener(clickListener);
 
         park.draw();//TODO FIX: For now, this method loads the background image.
+
     }
 
     /**
@@ -45,14 +43,17 @@ public class PlayAreaPanel extends JPanel {
 
     private void doAllThingForNow(int x, int y)
     {
-        //park.build(x, y, GameFrame.GameFrameCurrentButtonItemImageName, DecorType.BENCH, RideType.ROLLERCOASTER); //TODO Uncommenzting this line will crash the game xd
-        System.out.println(park.player.getBudget());
-        //TODO This should call Park.buidl()  "that already deasl with price DO NOT FORGET to consider that"
+        park.player.updateBudget(-5600);
+        //park.buildTest(x, y, GameFrame.GameFrameCurrentButtonItemImageName); //TODO Uncommenzting this line will crash the game xd
     }
 
     private void refreshLabelText()
     {
         GameFrame.GameFrameStatusPanelString = "$" + park.player.getBudget();
+        System.out.println(GameFrame.GameFrameStatusPanelString);
+        GameFrame.GameFrameStatusPanel.label.setText(GameFrame.GameFrameStatusPanelString);
+        GameFrame.GameFrameStatusPanel.label.repaint();
+
     }
 
     @Override
@@ -65,7 +66,9 @@ public class PlayAreaPanel extends JPanel {
         if(GameFrame.GameFrameButtonIsPressedOnce) {
             imageSelector();
             dragAndDropImage.paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
-            doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY());
+doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY());
+            refreshLabelText();
+            //System.out.println((int) prevPt.getX() + " " + (int) prevPt.getY());
             GameFrame.GameFrameButtonIsPressedOnce = false;
         }
     }
@@ -74,7 +77,6 @@ public class PlayAreaPanel extends JPanel {
         public void mousePressed(MouseEvent e) {
             prevPt = e.getPoint();
             if(GameFrame.GameFrameButtonIsPressedOnce) {
-                refreshLabelText();
                 repaint((int)prevPt.getX(), (int)prevPt.getY(), WIDTH, HEIGHT);
             }
         }
