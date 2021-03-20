@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class PlayAreaPanel extends JPanel {
 
-    ImageIcon dragAndDropImage = new ImageIcon("res/Ride.png");
     final int WIDTH = 100;
     final int HEIGHT = 100;
     Boolean backGroundDrawn = true;
@@ -33,13 +32,21 @@ public class PlayAreaPanel extends JPanel {
      * Pressing before placing the img doesnt work yet.
      * //Also does some string formatting.//
      */
-    private void imageSelector()
+    ImageIcon imageSelector()
     {
         String filename = GameFrame.GameFrameCurrentButtonItemImageName.toLowerCase();
         filename = filename.substring(0, 1).toUpperCase() + filename.substring(1);
         String str = "res/" + filename + ".png";
         //System.out.println(str);
-        dragAndDropImage = new ImageIcon(str);
+        return new ImageIcon(str);
+    }
+
+    ImageIcon imageSelector(String filename)
+    {
+        filename = filename.substring(0, 1).toUpperCase() + filename.substring(1);
+        String str = "res/" + filename + ".png";
+        //System.out.println(str);
+        return new ImageIcon(str);
     }
 
     private void doAllThingForNow(int x, int y)
@@ -66,13 +73,32 @@ public class PlayAreaPanel extends JPanel {
             g.drawImage(Park.image, 0, 0, 1280, 720, null);
         }
         if(GameFrame.GameFrameButtonIsPressedOnce) {
-            imageSelector();
-            dragAndDropImage.paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
+            imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
             doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY()); //TODO
             refreshLabelText();
             //System.out.println((int) prevPt.getX() + " " + (int) prevPt.getY());
             GameFrame.GameFrameButtonIsPressedOnce = false;
         }
+    }
+
+    // TODO decide if this and customPaint will be used
+    public void paintComponent(Graphics g, ImageIcon paintThis)
+    {
+        super.paintComponent(g);
+        if(backGroundDrawn) {
+            g.drawImage(Park.image, 0, 0, 1280, 720, null);
+        }
+        if(GameFrame.GameFrameButtonIsPressedOnce) {
+            paintThis.paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
+            doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY()); //TODO
+            refreshLabelText();
+            //System.out.println((int) prevPt.getX() + " " + (int) prevPt.getY());
+            GameFrame.GameFrameButtonIsPressedOnce = false;
+        }
+    }
+
+    public void customPaint(Graphics g, ImageIcon paintThis) {
+        paintComponent(g, paintThis);
     }
 
     private class ClickListener extends MouseAdapter {
