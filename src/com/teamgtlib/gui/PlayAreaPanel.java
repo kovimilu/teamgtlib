@@ -1,6 +1,5 @@
 package com.teamgtlib.gui;
 
-import com.teamgtlib.Buildings.Buildable;
 import com.teamgtlib.Buildings.DecorType;
 import com.teamgtlib.Park;
 
@@ -48,12 +47,12 @@ public class PlayAreaPanel extends JPanel {
         park.player.updateBudget(-5600);
         //park.buildTest(x, y, GameFrame.GameFrameCurrentButtonItemImageName); //TODO Uncommenzting this line will crash the game xd
         park.build(x, y, DecorType.BENCH);
+        System.out.println(park.buildingsToString()); // for debugging
     }
 
     private void refreshLabelText()
     {
         GameFrame.GameFrameStatusPanelString = "$" + park.player.getBudget();
-        System.out.println(GameFrame.GameFrameStatusPanelString);
         GameFrame.GameFrameStatusPanel.label.setText(GameFrame.GameFrameStatusPanelString);
         GameFrame.GameFrameStatusPanel.label.repaint();
 

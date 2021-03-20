@@ -161,9 +161,9 @@ public class UIPanel extends JPanel {
         @Override
         public void mouseReleased(MouseEvent e) {
             //super.mouseReleased(e);
-            GameFrame.bg.revalidate();
+            /*GameFrame.bg.revalidate();
             GameFrame.bg.repaint();
-            System.out.println("asd");
+            System.out.println("asd");*/
         }
     };
 

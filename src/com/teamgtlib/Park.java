@@ -37,4 +37,8 @@ public class Park implements Drawable {
         Park.image = ImageIO.read(new FileInputStream(
                 "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
     }
+
+    public String buildingsToString() { // for debugging
+        return buildings.toString();
+    }
 }
