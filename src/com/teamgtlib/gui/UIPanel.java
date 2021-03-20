@@ -130,7 +130,7 @@ public class UIPanel extends JPanel {
         buttons[4].addActionListener(buttonArrayActionListener); //RollerC
         buttons[5].addActionListener(buttonArrayActionListener); //Bench
         buttonBin.addActionListener(buttonArrayActionListener); //Bin
-        buttonDemolish.addMouseListener(isRealesed);
+        buttonDemolish.addMouseListener(isReleased);
         //buttons[4].addMouseListener(isRealesed);
         //button.setIcon(new ImageIcon(Park.image));
     }
@@ -156,14 +156,20 @@ public class UIPanel extends JPanel {
         }
     };
 
-    // Currently unused
-    private final MouseListener isRealesed = new MouseAdapter() {
+    // bound to the Demolish button
+    private final MouseListener isReleased = new MouseAdapter() {
         @Override
         public void mouseReleased(MouseEvent e) {
-            //super.mouseReleased(e);
-            /*GameFrame.bg.revalidate();
-            GameFrame.bg.repaint();
-            System.out.println("asd");*/
+            // super.mouseReleased(e);
+            // GameFrame.bg.revalidate();
+
+            // TODO do below and leave out the desired building
+            // bg.repaint();
+            /*for (Building building : Park.buildings){
+                String[] classNameSplit = building.getClass().toString().split("\\.", 0);
+                // bg.paintComponent();
+                // imageSelector(classNameSplit[classNameSplit.length - 1])
+            }*/
         }
     };
 
