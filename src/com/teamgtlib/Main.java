@@ -20,17 +20,5 @@ public class Main {
                 e.printStackTrace();
             }
         });
-
-        /*Park p = new Park();
-        p.build(15,15, DecorType.BUSH);
-        p.build(15,15, DecorType.BENCH);
-        p.build(15,15, DecorType.TREE);
-        p.build(15,15, RideType.CAROUSEL);
-        p.build(15,15, RideType.FERRISWHEEL);
-        p.build(15,15, BuildingType.SHOP);
-        p.build(15,15, BuildingType.ROAD);*/
-
-
-
     }
 }
