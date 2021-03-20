@@ -12,6 +12,12 @@ public enum BuildingType implements Buildable {
         public Building createObj(int x, int y) {
             return new Road(x, y);
         }
+    },
+    BIN{
+        @Override
+        public Building createObj(int x, int y) {
+            return new Bin(x, y);
+        }
     };
 
 
