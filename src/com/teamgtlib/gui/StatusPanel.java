@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class StatusPanel extends JPanel{
 
-    JLabel label = new JLabel(String.valueOf(GameFrame.bg.park.player.getBudget()), SwingConstants.RIGHT);
+    JLabel label = new JLabel( "$"+ String.valueOf(GameFrame.bg.park.player.getBudget()), SwingConstants.RIGHT);
 
     public StatusPanel(){
-        setPreferredSize(new Dimension(1280,25));
+        setPreferredSize(new Dimension(1280,20));
         label.setForeground(Color.green);
-        label.setPreferredSize(new Dimension(1200,20));
+        label.setPreferredSize(new Dimension(1200,15));
         this.add(label);
     }
 

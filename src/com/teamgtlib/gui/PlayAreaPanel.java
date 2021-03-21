@@ -88,7 +88,7 @@ public class PlayAreaPanel extends JPanel {
     {
         super.paintComponent(g);
         if(backGroundDrawn) {
-            g.drawImage(Park.image, 0, 0, 1280, 720, null);
+            g.drawImage(Park.image, 0, 0, 1000, 700, null);
         }
         if(GameFrame.GameFrameButtonIsPressedOnce) {
             imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());

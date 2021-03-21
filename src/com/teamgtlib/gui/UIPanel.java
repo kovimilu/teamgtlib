@@ -10,7 +10,7 @@ import java.awt.event.*;
 public class UIPanel extends JPanel {
     public UIPanel() {
         final int squareButtonsSize = 85;
-        setPreferredSize(new Dimension((squareButtonsSize + 5) * 3 + 10, 695));
+        setPreferredSize(new Dimension((squareButtonsSize + 5) * 3 + 10, 700));
         final JButton[] buttons = new JButton[11];
 
         //Rides
