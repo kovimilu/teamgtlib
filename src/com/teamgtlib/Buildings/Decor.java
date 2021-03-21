@@ -38,4 +38,20 @@ public class Decor extends Building {
         return "Decor" +
                 " " + type;
     }
+
+    @Override
+    public String getClassImagePath() {
+        switch (type) {
+            case BENCH -> {
+                return "res/Bench.png";
+            }
+            case TREE -> {
+                return "res/Tree.png";
+            }
+            case BUSH -> {
+                return "res/Bush.png";
+            }
+        }
+        return null;
+    }
 }

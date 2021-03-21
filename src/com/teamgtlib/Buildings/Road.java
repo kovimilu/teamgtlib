@@ -1,7 +1,5 @@
 package com.teamgtlib.Buildings;
 
-import java.io.IOException;
-
 public class Road extends Building {
     private int x;
     private int y;
@@ -10,7 +8,7 @@ public class Road extends Building {
 
     public Road(int x, int y){
       super(x,y);
-      this.price = this.COST_PRICE;
+      price = COST_PRICE;
     }
 
     private void cleaned(){
@@ -18,7 +16,7 @@ public class Road extends Building {
     }
 
     @Override
-    public void loadClassImage() throws IOException {
+    public void loadClassImage() {
         //TODO
     }
 
@@ -27,4 +25,8 @@ public class Road extends Building {
         return "Road";
     }
 
+    @Override
+    public String getClassImagePath() {
+        return "res/Road.png";
+    }
 }

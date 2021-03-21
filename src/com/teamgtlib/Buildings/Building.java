@@ -32,6 +32,11 @@ public abstract class Building implements Drawable {
                 "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
     }
 
+    public abstract String getClassImagePath();
+
+    /*String[] classNameSplit = getClass().toString().split("\\.", 0);
+        return "res/" + classNameSplit[classNameSplit.length - 1] + ".png";*/
+
     public int getX() {
         return x;
     }

@@ -9,7 +9,7 @@ public class Bin extends Building {
 
     public Bin(int x, int y) {
         super(x, y);
-        this.price = this.COST_PRICE;
+        price = COST_PRICE;
         if(currentBin > MAXBINS); //TODO throw exception
         else
         {
@@ -29,5 +29,10 @@ public class Bin extends Building {
     public void close(Building obj) {
         Park.buildings.remove(obj);
         if(currentBin > MAXBINS) currentBin--;
+    }
+
+    @Override
+    public String getClassImagePath() {
+        return "res/Bin.png";
     }
 }

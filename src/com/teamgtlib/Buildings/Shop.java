@@ -6,7 +6,7 @@ public class Shop extends Building {
     public static int COST_PRICE = 15000;
     public Shop(int x, int y) {
         super(x, y);
-        this.price = this.COST_PRICE;
+        price = COST_PRICE;
     }
 
     public void sellFood(Visitor obj){
@@ -16,5 +16,10 @@ public class Shop extends Building {
     @Override
     public String toString() {
         return "Shop";
+    }
+
+    @Override
+    public String getClassImagePath() {
+        return "res/Shop.png";
     }
 }

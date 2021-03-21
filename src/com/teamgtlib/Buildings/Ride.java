@@ -88,4 +88,26 @@ public class Ride extends Building {
         return "Ride" +
                 " " + type;
     }
+
+    @Override
+    public String getClassImagePath() {
+        switch (type) {
+            case CAROUSEL -> {
+                return "res/Carousel.png";
+            }
+            case DODGEM -> {
+                return "res/Dodgem.png";
+            }
+            case FERRISWHEEL -> {
+                return "res/Ferriswheel.png";
+            }
+            case ROLLERCOASTER -> {
+                return "res/Rollercoaster.png";
+            }
+            case WATERSLIDE -> {
+                return "res/Waterslide.png";
+            }
+        }
+        return null;
+    }
 }
