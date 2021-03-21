@@ -96,7 +96,7 @@ public class PlayAreaPanel extends JPanel {
                 /*System.out.println("MyDebug " + imageSelector().toString() + " " + newPoint.getX() + " " + newPoint.getY());
                 imageSelector().paintIcon(this, g, (int) newPoint.getX(), (int) newPoint.getY());*/
 
-                doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY()); //TODO
+                doAllThingForNow((int) newPoint.getX(), (int) newPoint.getY()); // TODO maybe done? (did: prevPt -> newPoint)
 
                 for (Building building : Park.buildings) {
                     System.out.println("MyDebug " + building.getClassImagePath() + " " + building.getX() + " " + building.getY());
