@@ -22,7 +22,7 @@ public class PlayAreaPanel extends JPanel {
 
     public PlayAreaPanel() throws IOException {
         setPreferredSize(new Dimension(1280 - 280 //Subtracting the UIPanel's width.
-                                                        ,720));
+                                                        ,700));
         PlayAreaPanel.ClickListener clickListener = new PlayAreaPanel.ClickListener();
         this.addMouseListener(clickListener);
     }
@@ -91,9 +91,18 @@ public class PlayAreaPanel extends JPanel {
             g.drawImage(Park.image, 0, 0, 1000, 700, null);
         }
         if(GameFrame.GameFrameButtonIsPressedOnce) {
-            imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
-            doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY()); //TODO
-            refreshLabelText();
+            Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
+
+            if(GridUtils.alreadyOnGridMap(GridUtils.gridConverter(prevPt))) {
+                imageSelector().paintIcon(this, g, (int) newPoint.getX(), (int) newPoint.getY());
+                //imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
+                doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY()); //TODO
+                refreshLabelText();
+            }
+            System.out.println(GridUtils.gridConverter(prevPt));
+            System.out.println(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
+            System.out.println(GridUtils.alreadyOnGridMap(GridUtils.gridConverter(prevPt)));
+
             //System.out.println((int) prevPt.getX() + " " + (int) prevPt.getY());
             GameFrame.GameFrameButtonIsPressedOnce = false;
         }
@@ -123,7 +132,9 @@ public class PlayAreaPanel extends JPanel {
         public void mousePressed(MouseEvent e) {
             prevPt = e.getPoint();
             if(GameFrame.GameFrameButtonIsPressedOnce) {
-                repaint((int)prevPt.getX(), (int)prevPt.getY(), WIDTH, HEIGHT);
+                Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
+                repaint((int)newPoint.getX(), (int)newPoint.getY(), WIDTH, HEIGHT);
+                //repaint((int)prevPt.getX(), (int)prevPt.getY(), WIDTH, HEIGHT);
             }
         }
     }

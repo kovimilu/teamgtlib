@@ -5,7 +5,7 @@ import java.nio.channels.Pipe;
 import java.util.ArrayList;
 
 public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
-    static public ArrayList<Point> gridMap; // 20 x 14   (1000 x 700)
+    static public ArrayList<Point> gridMap = new ArrayList<Point>(); // 20 x 14   (1000 x 700) //For some reason it's noly 20x13
     GridUtils(){}
 
     static public Point gridConverter(Point p) {
@@ -15,16 +15,29 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
         int yGrid = (int) p.getY() / 50;
         if((int) p.getY() % 50 > 0)yGrid++;
 
-        Point gridPos = null;
-        gridPos.setLocation(xGrid,yGrid);
+        Point gridPos = new Point(xGrid,yGrid);
 
         return gridPos;
     }
 
+    static public Point gridToPX(Point p) {
+        int xGrid = (int) p.getX() -1;
+        xGrid *= 50 ;
+
+        int yGrid = (int) p.getY() - 1;
+        yGrid *= 50 ;
+
+        Point pixelPos = new Point(xGrid,yGrid);
+
+        return pixelPos;
+    }
+
     static public boolean alreadyOnGridMap(Point p) {
         boolean is_in = false;
-        for(int i = 0; i < gridMap.size() && !is_in; ++i)
+        int n = gridMap.size();
+        for(int i = 0; i < n && !is_in; ++i)
         {
+            //should call gridConverter?
             if(gridConverter(p) == gridMap.get(i))is_in = true;
             else {
                 gridMap.add(p);
