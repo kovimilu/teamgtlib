@@ -99,22 +99,25 @@ public class PlayAreaPanel extends JPanel {
                 doAllThingForNow((int) newPoint.getX(), (int) newPoint.getY()); // TODO maybe done? (did: prevPt -> newPoint)
 
                 for (Building building : Park.buildings) {
-                    System.out.println("MyDebug " + building.getClassImagePath() + " " + building.getX() + " " + building.getY());
+//System.out.println("MyDebug " + building.getClassImagePath() + " " + building.getX() + " " + building.getY());
                     new ImageIcon(building.getClassImagePath()).paintIcon(this, g, building.getX(), building.getY());
                 }
 
                 //imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
                 refreshLabelText();
             }
+            /*
             System.out.println(GridUtils.gridConverter(prevPt));
             System.out.println(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
             System.out.println(GridUtils.isOnGridMap(GridUtils.gridConverter(prevPt)));
+            */
 
             //System.out.println((int) prevPt.getX() + " " + (int) prevPt.getY());
             GameFrame.GameFrameButtonIsPressedOnce = false;
         }
     }
 
+    /*
     // TODO decide if this and customPaint will be used
     public void paintComponent(Graphics g, ImageIcon paintThis)
     {
@@ -133,7 +136,7 @@ public class PlayAreaPanel extends JPanel {
 
     public void customPaint(Graphics g, ImageIcon paintThis) {
         paintComponent(g, paintThis);
-    }
+    }*/
 
     private class ClickListener extends MouseAdapter {
         public void mousePressed(MouseEvent e) {

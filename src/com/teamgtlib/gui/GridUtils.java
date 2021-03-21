@@ -41,11 +41,14 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
             }
         }*/
         for (Point point: gridMap) {
-            if(gridConverter(p) == point) {
+            System.out.println(p + "" + point);
+            if(p.equals(point)) {
+                System.out.println("Benne volt");
                 return true;
             }
         }
         gridMap.add(p);
+        System.out.println("Nem volt benne");
         return false;
     }
 
