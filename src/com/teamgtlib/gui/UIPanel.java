@@ -10,7 +10,7 @@ import java.awt.event.*;
 public class UIPanel extends JPanel {
     public UIPanel() {
         final int squareButtonsSize = 85;
-        setPreferredSize(new Dimension((squareButtonsSize + 5) * 3, 695));
+        setPreferredSize(new Dimension((squareButtonsSize + 5) * 3 + 10, 695));
         final JButton[] buttons = new JButton[11];
 
         //Rides
@@ -148,8 +148,7 @@ public class UIPanel extends JPanel {
      * Returns the "Item" on the pressed button.
      * @param e Gets an ActionEvent as a param.
      */
-    private void buttonItemReturner(ActionEvent e)
-    {
+    private void buttonItemReturner(ActionEvent e) {
         String[] buttonTypeSplit = e.toString().split("<br>", 0);
         GameFrame.GameFrameCurrentButtonItemImageName = buttonTypeSplit[1];
         //System.out.println(buttonTypeSplit[1]);
@@ -158,7 +157,6 @@ public class UIPanel extends JPanel {
     private final ActionListener buttonArrayActionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             if(!GameFrame.GameFrameButtonIsPressedOnce) {
                 buttonItemReturner(e);
             }
