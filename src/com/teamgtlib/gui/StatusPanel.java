@@ -4,11 +4,10 @@ import com.teamgtlib.Park;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class StatusPanel extends JPanel{
 
-    JLabel label = new JLabel("$1000000", SwingConstants.RIGHT);
+    JLabel label = new JLabel(String.valueOf(GameFrame.bg.park.player.getBudget()), SwingConstants.RIGHT);
 
     public StatusPanel(){
         setPreferredSize(new Dimension(1280,25));

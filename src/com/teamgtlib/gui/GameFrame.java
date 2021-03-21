@@ -24,12 +24,12 @@ public class GameFrame extends JFrame {
         ImageIcon logoImage = new ImageIcon("res/_logo.png");
         this.setIconImage(logoImage.getImage());
 
+        bg = new PlayAreaPanel();
+        this.getContentPane().add(bg);
+
         StatusPanel statusPanel = new StatusPanel();
         this.getContentPane().add(statusPanel, BorderLayout.NORTH);
         GameFrameStatusPanel = statusPanel;
-
-        bg = new PlayAreaPanel();
-        this.getContentPane().add(bg);
 
         UIPanel gamepanel = new UIPanel();
         this.getContentPane().add(gamepanel, BorderLayout.WEST);
