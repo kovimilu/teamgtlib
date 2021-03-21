@@ -1,11 +1,10 @@
 package com.teamgtlib.gui;
 
 import java.awt.*;
-import java.nio.channels.Pipe;
 import java.util.ArrayList;
 
 public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
-    static public ArrayList<Point> gridMap = new ArrayList<Point>(); // 20 x 14   (1000 x 700) //For some reason it's noly 20x13
+    static public ArrayList<Point> gridMap = new ArrayList<>(); // 20 x 14   (1000 x 700) //For some reason it's noly 20x13
     GridUtils(){}
 
     static public Point gridConverter(Point p) {
@@ -32,18 +31,22 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
         return pixelPos;
     }
 
-    static public boolean alreadyOnGridMap(Point p) {
-        boolean is_in = false;
-        int n = gridMap.size();
-        for(int i = 0; i < n && !is_in; ++i)
+    static public boolean isOnGridMap(Point p) {
+        /*int n = gridMap.size();
+        for(int i = 0; i < n; ++i)
         {
             //should call gridConverter?
-            if(gridConverter(p) == gridMap.get(i))is_in = true;
-            else {
-                gridMap.add(p);
+            if(gridConverter(p) == gridMap.get(i)) {
+                return true;
+            }
+        }*/
+        for (Point point: gridMap) {
+            if(gridConverter(p) == point) {
+                return true;
             }
         }
-        return !is_in;
+        gridMap.add(p);
+        return false;
     }
 
 }

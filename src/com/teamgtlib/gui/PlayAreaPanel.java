@@ -92,7 +92,7 @@ public class PlayAreaPanel extends JPanel {
         if(GameFrame.GameFrameButtonIsPressedOnce) {
             Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
 
-            if(GridUtils.alreadyOnGridMap(GridUtils.gridConverter(prevPt))) {
+            if(!GridUtils.isOnGridMap(GridUtils.gridConverter(prevPt))) {
                 /*System.out.println("MyDebug " + imageSelector().toString() + " " + newPoint.getX() + " " + newPoint.getY());
                 imageSelector().paintIcon(this, g, (int) newPoint.getX(), (int) newPoint.getY());*/
 
@@ -108,7 +108,7 @@ public class PlayAreaPanel extends JPanel {
             }
             System.out.println(GridUtils.gridConverter(prevPt));
             System.out.println(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
-            System.out.println(GridUtils.alreadyOnGridMap(GridUtils.gridConverter(prevPt)));
+            System.out.println(GridUtils.isOnGridMap(GridUtils.gridConverter(prevPt)));
 
             //System.out.println((int) prevPt.getX() + " " + (int) prevPt.getY());
             GameFrame.GameFrameButtonIsPressedOnce = false;
