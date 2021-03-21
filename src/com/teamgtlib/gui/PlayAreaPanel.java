@@ -1,10 +1,8 @@
 package com.teamgtlib.gui;
 
-import com.teamgtlib.Buildings.Buildable;
-import com.teamgtlib.Buildings.BuildingType;
-import com.teamgtlib.Buildings.DecorType;
-import com.teamgtlib.Buildings.RideType;
+import com.teamgtlib.Buildings.*;
 import com.teamgtlib.Park;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -27,27 +25,28 @@ public class PlayAreaPanel extends JPanel {
         this.addMouseListener(clickListener);
     }
 
+    // TODO: remove below two methods if not needed
     /**
      * This method Loads in the image selected by the UI Button last presses. <br>
      * Pressing before placing the img doesnt work yet.
      * //Also does some string formatting.//
      */
-    ImageIcon imageSelector()
+    /*ImageIcon imageSelector()
     {
         String filename = GameFrame.GameFrameCurrentButtonItemImageName.toLowerCase();
         filename = filename.substring(0, 1).toUpperCase() + filename.substring(1);
         String str = "res/" + filename + ".png";
         //System.out.println(str);
         return new ImageIcon(str);
-    }
+    }*/
 
-    ImageIcon imageSelector(String filename)
+    /*ImageIcon imageSelector(String filename)
     {
         filename = filename.substring(0, 1).toUpperCase() + filename.substring(1);
         String str = "res/" + filename + ".png";
         //System.out.println(str);
         return new ImageIcon(str);
-    }
+    }*/
 
     private Buildable theUgliestSolutionICouldFind()
     {
@@ -77,7 +76,7 @@ public class PlayAreaPanel extends JPanel {
 
     private void refreshLabelText()
     {
-        GameFrame.GameFrameStatusPanelString = "$" + park.player.getBudget();
+        GameFrame.GameFrameStatusPanelString = "$" + Park.player.getBudget();
         GameFrame.GameFrameStatusPanel.label.setText(GameFrame.GameFrameStatusPanelString);
         GameFrame.GameFrameStatusPanel.label.repaint();
 
@@ -94,9 +93,17 @@ public class PlayAreaPanel extends JPanel {
             Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
 
             if(GridUtils.alreadyOnGridMap(GridUtils.gridConverter(prevPt))) {
-                imageSelector().paintIcon(this, g, (int) newPoint.getX(), (int) newPoint.getY());
-                //imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
+                /*System.out.println("MyDebug " + imageSelector().toString() + " " + newPoint.getX() + " " + newPoint.getY());
+                imageSelector().paintIcon(this, g, (int) newPoint.getX(), (int) newPoint.getY());*/
+
                 doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY()); //TODO
+
+                for (Building building : Park.buildings) {
+                    System.out.println("MyDebug " + building.getClassImagePath() + " " + building.getX() + " " + building.getY());
+                    new ImageIcon(building.getClassImagePath()).paintIcon(this, g, building.getX(), building.getY());
+                }
+
+                //imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
                 refreshLabelText();
             }
             System.out.println(GridUtils.gridConverter(prevPt));
@@ -132,9 +139,10 @@ public class PlayAreaPanel extends JPanel {
         public void mousePressed(MouseEvent e) {
             prevPt = e.getPoint();
             if(GameFrame.GameFrameButtonIsPressedOnce) {
-                Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
-                repaint((int)newPoint.getX(), (int)newPoint.getY(), WIDTH, HEIGHT);
+                /*Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
+                repaint((int)newPoint.getX(), (int)newPoint.getY(), WIDTH, HEIGHT);*/
                 //repaint((int)prevPt.getX(), (int)prevPt.getY(), WIDTH, HEIGHT);
+                repaint();
             }
         }
     }
