@@ -37,6 +37,7 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
         int n = gridMap.size();
         for(int i = 0; i < n && !is_in; ++i)
         {
+            //should call gridConverter?
             if(gridConverter(p) == gridMap.get(i))is_in = true;
             else {
                 gridMap.add(p);

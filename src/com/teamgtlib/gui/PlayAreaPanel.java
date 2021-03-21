@@ -92,13 +92,17 @@ public class PlayAreaPanel extends JPanel {
         }
         if(GameFrame.GameFrameButtonIsPressedOnce) {
             Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
-            imageSelector().paintIcon(this, g, (int) newPoint.getX(), (int) newPoint.getY());
-            //imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
-            doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY()); //TODO
-            refreshLabelText();
+
+            if(GridUtils.alreadyOnGridMap(GridUtils.gridConverter(prevPt))) {
+                imageSelector().paintIcon(this, g, (int) newPoint.getX(), (int) newPoint.getY());
+                //imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
+                doAllThingForNow((int) prevPt.getX(), (int) prevPt.getY()); //TODO
+                refreshLabelText();
+            }
             System.out.println(GridUtils.gridConverter(prevPt));
             System.out.println(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
             System.out.println(GridUtils.alreadyOnGridMap(GridUtils.gridConverter(prevPt)));
+
             //System.out.println((int) prevPt.getX() + " " + (int) prevPt.getY());
             GameFrame.GameFrameButtonIsPressedOnce = false;
         }
@@ -130,6 +134,7 @@ public class PlayAreaPanel extends JPanel {
             if(GameFrame.GameFrameButtonIsPressedOnce) {
                 Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
                 repaint((int)newPoint.getX(), (int)newPoint.getY(), WIDTH, HEIGHT);
+                //repaint((int)prevPt.getX(), (int)prevPt.getY(), WIDTH, HEIGHT);
             }
         }
     }
