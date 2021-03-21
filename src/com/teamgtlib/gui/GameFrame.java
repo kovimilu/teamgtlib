@@ -1,5 +1,7 @@
 package com.teamgtlib.gui;
 
+import com.teamgtlib.Buildings.Buildable;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;

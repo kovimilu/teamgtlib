@@ -11,7 +11,7 @@ public class UIPanel extends JPanel {
     public UIPanel() {
         final int squareButtonsSize = 85;
         setPreferredSize(new Dimension((squareButtonsSize + 5) * 3, 695));
-        final JButton[] buttons = new JButton[8];
+        final JButton[] buttons = new JButton[11];
 
         //Rides
         RideType[] ridetypes = RideType.values();
@@ -57,6 +57,7 @@ public class UIPanel extends JPanel {
         buttonRoad.setText("<html>" + "Build:" + "<br>"
                 + "Road" + "<br>"
                 + "costs:" + "<br>" + "$"+ Road.COST_PRICE + "</html>");
+        buttons[i] = buttonRoad;
         add(buttonRoad);
 
         JButton buttonBin = new JButton();
@@ -65,14 +66,18 @@ public class UIPanel extends JPanel {
         buttonBin.setText("<html>" + "Build:" + "<br>"
                 + "Bin" + "<br>"
                 + "costs:" + "<br>" + "$"+ Bin.COST_PRICE + "</html>");
+        i++;
+        buttons[i] = buttonBin;
         add(buttonBin);
 
         JButton buttonShop = new JButton();
         buttonShop.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
         buttonShop.setMargin(new Insets(0, 0, 0, 0));
         buttonShop.setText("<html>" + "Build:" + "<br>"
-                + "Road" + "<br>"
+                + "Shop" + "<br>"
                 + "costs:" + "<br>" + "$"+ Shop.COST_PRICE + "</html>");
+        i++;
+        buttons[i] = buttonShop;
         add(buttonShop);
 
         //##
@@ -126,10 +131,14 @@ public class UIPanel extends JPanel {
         buttonDemolish.setText("Select Building To Demolish");
         add(buttonDemolish);
 
-
+        /*
         buttons[4].addActionListener(buttonArrayActionListener); //RollerC
         buttons[5].addActionListener(buttonArrayActionListener); //Bench
         buttonBin.addActionListener(buttonArrayActionListener); //Bin
+        */
+        for (int n = 0; n < buttons.length; ++n) {
+            buttons[n].addActionListener(buttonArrayActionListener);
+        }
         buttonDemolish.addMouseListener(isReleased);
         //buttons[4].addMouseListener(isRealesed);
         //button.setIcon(new ImageIcon(Park.image));
@@ -149,7 +158,7 @@ public class UIPanel extends JPanel {
             if(!GameFrame.GameFrameButtonIsPressedOnce) {
                 String[] buttonTypeSplit = e.toString().split("\\<br\\>", 0);
                 GameFrame.GameFrameCurrentButtonItemImageName = buttonTypeSplit[1];
-                //System.out.println(buttonTypeSplit[1]);
+                System.out.println(buttonTypeSplit[1]);
             }
             GameFrame.GameFrameButtonIsPressedOnce = true;
             /** endof 'Button Item Returner' **/

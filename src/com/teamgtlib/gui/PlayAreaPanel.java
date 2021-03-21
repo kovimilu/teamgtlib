@@ -1,8 +1,10 @@
 package com.teamgtlib.gui;
 
+import com.teamgtlib.Buildings.Buildable;
+import com.teamgtlib.Buildings.BuildingType;
 import com.teamgtlib.Buildings.DecorType;
+import com.teamgtlib.Buildings.RideType;
 import com.teamgtlib.Park;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -49,11 +51,29 @@ public class PlayAreaPanel extends JPanel {
         return new ImageIcon(str);
     }
 
+    private Buildable theUgliestSolutionICouldFind()
+    {
+        String str = GameFrame.GameFrameCurrentButtonItemImageName.toLowerCase();
+        str = str.substring(0, 1).toUpperCase() + str.substring(1);
+        if(str.equals("Carousel"))return RideType.CAROUSEL;
+        if(str.equals("Dodgem"))return RideType.DODGEM;
+        if(str.equals("Waterslide"))return RideType.WATERSLIDE;
+        if(str.equals("Ferriswheel"))return RideType.FERRISWHEEL;
+        if(str.equals("Rollercoaster"))return RideType.ROLLERCOASTER;
+
+        if(str.equals("Bench"))return DecorType.BENCH;
+        if(str.equals("Bush"))return DecorType.BUSH;
+        if(str.equals("Tree"))return DecorType.TREE;
+
+        if(str.equals("Shop"))return BuildingType.SHOP;
+        if(str.equals("Road"))return BuildingType.ROAD;
+        if(str.equals("Bin"))return BuildingType.BIN;
+        return null;
+    }
+
     private void doAllThingForNow(int x, int y)
     {
-        park.player.updateBudget(-5600);
-        //park.buildTest(x, y, GameFrame.GameFrameCurrentButtonItemImageName); //TODO Uncommenzting this line will crash the game xd
-        park.build(x, y, DecorType.BENCH);
+        park.build(x, y, theUgliestSolutionICouldFind());
         System.out.println(park.buildingsToString()); // for debugging
     }
 
