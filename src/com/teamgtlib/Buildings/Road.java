@@ -18,7 +18,7 @@ public class Road extends Building {
     }
 
     @Override
-    public void draw() throws IOException {
+    public void loadClassImage() throws IOException {
         //TODO
     }
 

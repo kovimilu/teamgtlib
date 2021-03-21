@@ -25,21 +25,19 @@ public class Player {
     }
 
     public void updateBudget(int budget) {
-
         this.budget += budget;
     }
 
-    public void updateVisitorCount(int visitorCount) {
+    public int getBudget() {
+        return budget;
+    }
 
+    public void updateVisitorCount(int visitorCount) {
         this.visitorCount += visitorCount;
     }
 
     public void updateWorkerCount(int workerCount) {
         this.workerCount += workerCount;
-    }
-
-    public int getBudget() {
-        return budget;
     }
 
     public int getVisitorCount() {

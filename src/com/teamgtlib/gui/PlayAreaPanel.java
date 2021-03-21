@@ -21,12 +21,9 @@ public class PlayAreaPanel extends JPanel {
     Park park = new Park();
 
     public PlayAreaPanel() throws IOException {
-        setPreferredSize(new Dimension(1280,720));
+        setPreferredSize(new Dimension(1280 - 270,720));
         PlayAreaPanel.ClickListener clickListener = new PlayAreaPanel.ClickListener();
         this.addMouseListener(clickListener);
-
-        park.draw();//TODO FIX: For now, this method loads the background image.
-
     }
 
     /**

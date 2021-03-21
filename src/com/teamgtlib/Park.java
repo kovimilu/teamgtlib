@@ -15,10 +15,10 @@ public class Park implements Drawable {
     public static Player player = null;
     public static ArrayList<NPC> npcs;
 
-    public Park(){
-
+    public Park() throws IOException {
         player = new Player();
         buildings = new ArrayList<>();
+        this.loadClassImage();
     }
 
     public void build(int x, int y , Buildable type)
@@ -29,9 +29,8 @@ public class Park implements Drawable {
         //System.out.println(building.toString());
     }
 
-    //TODO FIX:
     @Override
-    public void draw() throws IOException {
+    public void loadClassImage() throws IOException {
         String[] classNameSplit = getClass().toString().split("\\.", 0);
         Park.image = ImageIO.read(new FileInputStream(
                 "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));

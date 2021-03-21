@@ -1,7 +1,6 @@
 package com.teamgtlib;
 
 import com.teamgtlib.gui.GameFrame;
-
 import java.io.IOException;
 
 public class Main {

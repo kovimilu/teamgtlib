@@ -24,12 +24,9 @@ public abstract class Building implements Drawable {
         Park.buildings.remove(obj);
     }
 
-    /**
-     * Determens the type of the Class then reads in the corresponding image.
-     */
-    //TODO FIX:
+
     @Override
-    public void draw() throws IOException {
+    public void loadClassImage() throws IOException {
         String[] classNameSplit = getClass().toString().split("\\.", 0);
         Park.image = ImageIO.read(new FileInputStream(
                 "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
