@@ -22,7 +22,7 @@ public class Park implements Drawable {
         this.loadClassImage();
     }
 
-    public Boolean build(int x, int y , Buildable type)
+    public Boolean build(int x, int y , Buildable type) // returns whether the build succeeded
     {
         Building building = type.createObj(x,y);
         final int newBudget = player.getBudget() - building.getPrice();
