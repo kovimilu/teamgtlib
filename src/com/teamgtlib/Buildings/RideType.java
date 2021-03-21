@@ -1,6 +1,6 @@
 package com.teamgtlib.Buildings;
 
-public enum RideType implements Buildable{ //TODO megcseréltem a sorrendet a GUI miatt, remélem ez majd nem okoz gondot
+public enum RideType implements Buildable{
     CAROUSEL{
         @Override
         public Building createObj(int x, int y) {
@@ -30,7 +30,7 @@ public enum RideType implements Buildable{ //TODO megcseréltem a sorrendet a GU
         public Building createObj(int x, int y) {
             return new Ride(x,y,RideType.ROLLERCOASTER);
         }
-    };
+    }
 
 
 }

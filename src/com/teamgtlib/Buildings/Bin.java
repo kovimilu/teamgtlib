@@ -21,6 +21,11 @@ public class Bin extends Building {
     }
 
     @Override
+    public String toString() {
+        return "Bin";
+    }
+
+    @Override
     public void close(Building obj) {
         Park.buildings.remove(obj);
         if(currentBin > MAXBINS) currentBin--;
