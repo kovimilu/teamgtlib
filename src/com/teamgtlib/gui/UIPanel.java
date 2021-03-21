@@ -144,24 +144,25 @@ public class UIPanel extends JPanel {
         //button.setIcon(new ImageIcon(Park.image));
     }
 
+    /**
+     * Returns the "Item" on the pressed button.
+     * @param e Gets an ActionEvent as a param.
+     */
+    private void buttonItemReturner(ActionEvent e)
+    {
+        String[] buttonTypeSplit = e.toString().split("<br>", 0);
+        GameFrame.GameFrameCurrentButtonItemImageName = buttonTypeSplit[1];
+        //System.out.println(buttonTypeSplit[1]);
+    }
+
     private final ActionListener buttonArrayActionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            /**
-             * 'Button Item Returner'
-             *
-             * Returns the "Item" on the pressed button.
-             * <i>This might have to be a method some day.</i>
-             * //Does some RegEx//
-             * ### IF THE CALLS ARE NOT IN THE RIGHT ORDER THIS MAY CAUSE MAJOR RUNTIME ERRORS! ###
-             */
+
             if(!GameFrame.GameFrameButtonIsPressedOnce) {
-                String[] buttonTypeSplit = e.toString().split("\\<br\\>", 0);
-                GameFrame.GameFrameCurrentButtonItemImageName = buttonTypeSplit[1];
-                System.out.println(buttonTypeSplit[1]);
+                buttonItemReturner(e);
             }
             GameFrame.GameFrameButtonIsPressedOnce = true;
-            /** endof 'Button Item Returner' **/
         }
     };
 
