@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 public class StatusPanel extends JPanel{
 
-    JLabel label = new JLabel(GameFrame.GameFrameStatusPanelString, SwingConstants.RIGHT);
+    JLabel label = new JLabel("$1000000", SwingConstants.RIGHT);
 
     public StatusPanel(){
         setPreferredSize(new Dimension(1280,25));

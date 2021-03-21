@@ -21,7 +21,6 @@ public class Park implements Drawable {
         buildings = new ArrayList<>();
     }
 
-    //TODO This has to be done ASAP
     public void build(int x, int y , Buildable type)
     {
         Building building = type.createObj(x,y);

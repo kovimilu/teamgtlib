@@ -9,7 +9,7 @@ public class Player {
     private int workerCount;
 
     Player(){
-        budget = 100000;
+        budget = 1000000;
     }
 
     public void hireWorker(){

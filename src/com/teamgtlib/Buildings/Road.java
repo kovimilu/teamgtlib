@@ -1,8 +1,5 @@
 package com.teamgtlib.Buildings;
 
-import com.teamgtlib.Drawable;
-
-import java.awt.*;
 import java.io.IOException;
 
 public class Road extends Building {
