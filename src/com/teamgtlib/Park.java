@@ -1,6 +1,7 @@
 package com.teamgtlib;
 
-import com.teamgtlib.Buildings.*;
+import com.teamgtlib.Buildings.Buildable;
+import com.teamgtlib.Buildings.Building;
 import com.teamgtlib.NPCs.NPC;
 
 import javax.imageio.ImageIO;
@@ -21,11 +22,19 @@ public class Park implements Drawable {
         this.loadClassImage();
     }
 
-    public void build(int x, int y , Buildable type)
+    public Boolean build(int x, int y , Buildable type) // returns whether the build succeeded
     {
         Building building = type.createObj(x,y);
-        player.updateBudget(- building.getPrice());
-        buildings.add(building);
+        final int newBudget = player.getBudget() - building.getPrice();
+        if (newBudget >= 0) {
+            player.setBudget(newBudget);
+            buildings.add(building);
+            return true;
+        } else {
+            // TODO handle this
+            System.out.println("Not enough budget");
+            return false;
+        }
         //System.out.println(building.toString());
     }
 
