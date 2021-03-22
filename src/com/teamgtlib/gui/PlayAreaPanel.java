@@ -1,6 +1,7 @@
 package com.teamgtlib.gui;
 
 import com.teamgtlib.Buildings.*;
+import com.teamgtlib.GameException;
 import com.teamgtlib.Park;
 
 import javax.swing.*;
@@ -68,8 +69,7 @@ public class PlayAreaPanel extends JPanel {
         return null;
     }
 
-    private void doAllThingForNow(int x, int y)
-    {
+    private void doAllThingForNow(int x, int y) throws GameException {
         park.build(x, y, theUgliestSolutionICouldFind());
         System.out.println(park.buildingsToString()); // for debugging
     }
@@ -77,10 +77,20 @@ public class PlayAreaPanel extends JPanel {
     private void refreshLabelText()
     {
         GameFrame.GameFrameStatusPanelString = "$" + Park.player.getBudget();
-        GameFrame.GameFrameStatusPanel.label.setText(GameFrame.GameFrameStatusPanelString);
-        GameFrame.GameFrameStatusPanel.label.repaint();
+        GameFrame.GameFrameStatusPanel.budgetLabel.setText(GameFrame.GameFrameStatusPanelString);
+        GameFrame.GameFrameStatusPanel.budgetLabel.repaint();
 
     }
+
+    private void refreshExceptionLabelText(String e)
+    {
+        GameFrame.GameFrameStatusPanelString = e;
+        GameFrame.GameFrameStatusPanel.exceptionLabel.setText(GameFrame.GameFrameStatusPanelString);
+        GameFrame.GameFrameStatusPanel.exceptionLabel.repaint();
+
+    }
+
+
 
     @Override
     public void paintComponent(Graphics g)
@@ -96,7 +106,12 @@ public class PlayAreaPanel extends JPanel {
                 /*System.out.println("MyDebug " + imageSelector().toString() + " " + newPoint.getX() + " " + newPoint.getY());
                 imageSelector().paintIcon(this, g, (int) newPoint.getX(), (int) newPoint.getY());*/
 
-                doAllThingForNow((int) newPoint.getX(), (int) newPoint.getY()); // TODO maybe done? (did: prevPt -> newPoint)
+                try {
+                    doAllThingForNow((int) newPoint.getX(), (int) newPoint.getY()); // TODO maybe done? (did: prevPt -> newPoint)
+                } catch (GameException e) {
+                    //System.out.println(e);
+                    refreshExceptionLabelText(e.toString().split(":")[1]);
+                }
 
                 //imageSelector().paintIcon(this, g, (int) prevPt.getX(), (int) prevPt.getY());
                 refreshLabelText();

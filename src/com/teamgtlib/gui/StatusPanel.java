@@ -7,13 +7,25 @@ import java.awt.*;
 
 public class StatusPanel extends JPanel{
 
-    JLabel label = new JLabel( "$"+ String.valueOf(GameFrame.bg.park.player.getBudget()), SwingConstants.RIGHT);
+    JLabel exceptionLabel = new JLabel( "",SwingConstants.RIGHT);
+    JLabel countLabel = new JLabel( "guests: ..." + "visitors: ....",SwingConstants.CENTER);
+    JLabel budgetLabel = new JLabel( "$"+ String.valueOf(GameFrame.bg.park.player.getBudget()), SwingConstants.RIGHT);
 
     public StatusPanel(){
         setPreferredSize(new Dimension(1280,20));
-        label.setForeground(Color.green);
-        label.setPreferredSize(new Dimension(1200,15));
-        this.add(label);
+        budgetLabel.setForeground(Color.green);
+        budgetLabel.setPreferredSize(new Dimension(200,15));
+
+        exceptionLabel.setForeground(Color.red);
+        exceptionLabel.setPreferredSize(new Dimension(370,15));
+
+        countLabel.setForeground(Color.green);
+        countLabel.setPreferredSize(new Dimension(630,15));
+
+        this.add(exceptionLabel);
+        this.add(countLabel);
+        this.add(budgetLabel);
+        this.setVisible(true);
     }
 
     @Override
@@ -21,5 +33,6 @@ public class StatusPanel extends JPanel{
     {
         super.paintComponent(g);
         g.drawImage(Park.image, 0, 0, 1280, 720, null);
+
     }
 }
