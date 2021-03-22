@@ -22,7 +22,7 @@ public class Park implements Drawable {
         this.loadClassImage();
     }
 
-    public Boolean build(int x, int y , Buildable type) // returns whether the build succeeded
+    public Boolean build(int x, int y , Buildable type) throws GameException // returns whether the build succeeded
     {
         Building building = type.createObj(x,y);
         final int newBudget = player.getBudget() - building.getPrice();
@@ -31,11 +31,9 @@ public class Park implements Drawable {
             buildings.add(building);
             return true;
         } else {
-            // TODO handle this
-            System.out.println("Not enough budget");
-            return false;
+            throw new GameException("Not enough budget!");
+
         }
-        //System.out.println(building.toString());
     }
 
     @Override
