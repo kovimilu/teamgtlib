@@ -23,5 +23,5 @@ public class DecorConstants {
     public static final int TREE_PRICE     = 3550;
     public static final int TREE_MOODVALUE = 5;
     public static final int TREE_WIDTH     = 1;
-    public static final int TREE_HEIGHT    = 1;
+    public static final int TREE_HEIGHT    = 2;
 }
