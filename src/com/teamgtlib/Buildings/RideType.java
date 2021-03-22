@@ -7,10 +7,10 @@ public enum RideType implements Buildable{
             return new Ride(x,y,RideType.CAROUSEL);
         }
     },
-    DODGEM{
+    CASTLE{
         @Override
         public Building createObj(int x, int y) {
-            return new Ride(x,y,RideType.DODGEM);
+            return new Ride(x,y,RideType.CASTLE);
         }
     },
     WATERSLIDE{

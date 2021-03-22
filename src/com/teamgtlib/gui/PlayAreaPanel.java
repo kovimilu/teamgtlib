@@ -53,7 +53,7 @@ public class PlayAreaPanel extends JPanel {
         String str = GameFrame.GameFrameCurrentButtonItemImageName.toLowerCase();
         str = str.substring(0, 1).toUpperCase() + str.substring(1);
         if(str.equals("Carousel"))return RideType.CAROUSEL;
-        if(str.equals("Dodgem"))return RideType.DODGEM;
+        if(str.equals("Castle"))return RideType.CASTLE;
         if(str.equals("Waterslide"))return RideType.WATERSLIDE;
         if(str.equals("Ferriswheel"))return RideType.FERRISWHEEL;
         if(str.equals("Rollercoaster"))return RideType.ROLLERCOASTER;

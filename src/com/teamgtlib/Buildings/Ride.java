@@ -24,7 +24,7 @@ public class Ride extends Building {
                 width = RideConstants.CAROUSEL_WIDTH;
                 height = RideConstants.CAROUSEL_HEIGHT;
             }
-            case DODGEM -> {
+            case CASTLE -> {
                 MAXCAP = RideConstants.DODGEM_MAXCAP;
                 price = RideConstants.DODGEM_PRICE;
                 moodValue = RideConstants.DODGEM_MOODVALUE;
@@ -95,8 +95,8 @@ public class Ride extends Building {
             case CAROUSEL -> {
                 return "res/Carousel.png";
             }
-            case DODGEM -> {
-                return "res/Dodgem.png";
+            case CASTLE -> {
+                return "res/Castle.png";
             }
             case FERRISWHEEL -> {
                 return "res/Ferriswheel.png";
