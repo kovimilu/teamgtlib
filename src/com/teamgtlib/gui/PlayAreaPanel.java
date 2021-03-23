@@ -100,7 +100,7 @@ public class PlayAreaPanel extends JPanel {
     {
         super.paintComponent(g);
         if(backGroundDrawn) {
-            g.drawImage(Park.image, 0, 0, 1000, 700, null);
+            g.drawImage(Park.image, -280, -20, 1280, 720, null);
         }
         if(GameFrame.GameFrameButtonIsPressedOnce) {
             Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
