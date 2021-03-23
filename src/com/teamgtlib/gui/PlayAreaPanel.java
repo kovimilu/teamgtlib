@@ -82,8 +82,8 @@ public class PlayAreaPanel extends JPanel {
 
         if(!GameFrame.GameFrameButtonIsPressedOnce)GameFrame.GameFrameStatusPanelString = "";
         else GameFrame.GameFrameStatusPanelString = "Currently selected building: " + GameFrame.GameFrameCurrentButtonItemImageName;
-        GameFrame.GameFrameStatusPanel.exceptionLabel.setText(GameFrame.GameFrameStatusPanelString);
-        GameFrame.GameFrameStatusPanel.exceptionLabel.repaint();
+        GameFrame.GameFrameStatusPanel.clickLabel.setText(GameFrame.GameFrameStatusPanelString);
+        GameFrame.GameFrameStatusPanel.clickLabel.repaint();
     }
 
     private void refreshExceptionLabelText(String e)
