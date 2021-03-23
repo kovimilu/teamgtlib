@@ -12,7 +12,9 @@ public class Main {
 
         java.awt.EventQueue.invokeLater(() -> {
             try {
-                setupLookAndFeel();
+                if (System.getProperty("os.name").equals("Linux")) {
+                    setupLookAndFeel();
+                }
                 new GameFrame().setVisible(true);
             } catch (IOException e) {
                 e.printStackTrace();
