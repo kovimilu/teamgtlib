@@ -51,7 +51,7 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
 
     /**
      * @param p Coordinates of the Building.
-     * @return Returns true or false Depending on Weather is the Selected Area on the Map Occupied or not.
+     * @return Returns true or false Depending on weather the the selected area on the map is occupied or not.
      */
     static public boolean isOnGridMap(Point p) {
         for (Point point: gridMap) {
