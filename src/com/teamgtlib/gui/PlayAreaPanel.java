@@ -49,7 +49,7 @@ public class PlayAreaPanel extends JPanel {
         return new ImageIcon(str);
     }*/
 
-    private Buildable theUgliestSolutionICouldFind()
+    public static Buildable theUgliestSolutionICouldFind()
     {
         String str = GameFrame.GameFrameCurrentButtonItemImageName.toLowerCase();
         str = str.substring(0, 1).toUpperCase() + str.substring(1);

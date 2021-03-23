@@ -22,18 +22,22 @@ public class Park implements Drawable {
         this.loadClassImage();
     }
 
-    public Boolean build(int x, int y , Buildable type) throws GameException // returns whether the build succeeded
-    {
+    public Boolean build(int x, int y , Buildable type) throws GameException { /* returns whether the build succeeded */
         Building building = type.createObj(x,y);
         final int newBudget = player.getBudget() - building.getPrice();
         if (newBudget >= 0) {
             player.setBudget(newBudget);
             buildings.add(building);
             return true;
-        } else {
-            throw new GameException("Not enough budget!");
-
         }
+        else {
+            throw new GameException("Not enough budget!");
+        }
+    }
+
+    public static Building preBuild(int x, int y , Buildable type) {
+        Building preBuiltbuilding = type.createObj(x,y);
+        return preBuiltbuilding;
     }
 
     @Override

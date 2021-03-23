@@ -1,5 +1,8 @@
 package com.teamgtlib.gui;
 
+import com.teamgtlib.Buildings.Building;
+import com.teamgtlib.Park;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -31,15 +34,8 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
         return pixelPos;
     }
 
+    /*
     static public boolean isOnGridMap(Point p) {
-        /*int n = gridMap.size();
-        for(int i = 0; i < n; ++i)
-        {
-            //should call gridConverter?
-            if(gridConverter(p) == gridMap.get(i)) {
-                return true;
-            }
-        }*/
         for (Point point: gridMap) {
             System.out.println(p + "" + point);
             if(p.equals(point)) {
@@ -49,6 +45,25 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
         }
         gridMap.add(p);
         System.out.println("Nem volt benne");
+        return false;
+    }
+    */
+
+    static public boolean isOnGridMap(Point p) {
+        for (Point point: gridMap) {
+            System.out.println(p + "" + point);
+            if(p.equals(point)) return true;
+        }
+        Building PREBUILT = Park.preBuild(0,0, PlayAreaPanel.theUgliestSolutionICouldFind());
+        int WIDTH = PREBUILT.getWidth();
+        int HEIGHT = PREBUILT.getHeight();
+        for (int i = 0; i < WIDTH; ++i) {
+            for (int j = 0; j < HEIGHT; ++j) {
+                Point grisPos = new Point((int)p.getX() + i, (int)p.getY() + j);
+                gridMap.add(grisPos);
+            }
+        }
+System.out.println(gridMap); // debug
         return false;
     }
 
