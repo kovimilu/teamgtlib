@@ -161,6 +161,7 @@ public class UIPanel extends JPanel {
                 buttonItemReturner(e);
             }
             GameFrame.GameFrameButtonIsPressedOnce = true;
+            PlayAreaPanel.refreshLabelText();
         }
     };
 

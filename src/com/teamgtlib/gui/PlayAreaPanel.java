@@ -74,12 +74,16 @@ public class PlayAreaPanel extends JPanel {
         System.out.println(park.buildingsToString()); // for debugging
     }
 
-    private void refreshLabelText()
+    static public void refreshLabelText()
     {
         GameFrame.GameFrameStatusPanelString = "$" + Park.player.getBudget();
         GameFrame.GameFrameStatusPanel.budgetLabel.setText(GameFrame.GameFrameStatusPanelString);
         GameFrame.GameFrameStatusPanel.budgetLabel.repaint();
 
+        if(!GameFrame.GameFrameButtonIsPressedOnce)GameFrame.GameFrameStatusPanelString = "";
+        else GameFrame.GameFrameStatusPanelString = "Currently selected building: " + GameFrame.GameFrameCurrentButtonItemImageName;
+        GameFrame.GameFrameStatusPanel.exceptionLabel.setText(GameFrame.GameFrameStatusPanelString);
+        GameFrame.GameFrameStatusPanel.exceptionLabel.repaint();
     }
 
     private void refreshExceptionLabelText(String e)
@@ -87,7 +91,6 @@ public class PlayAreaPanel extends JPanel {
         GameFrame.GameFrameStatusPanelString = e;
         GameFrame.GameFrameStatusPanel.exceptionLabel.setText(GameFrame.GameFrameStatusPanelString);
         GameFrame.GameFrameStatusPanel.exceptionLabel.repaint();
-
     }
 
 
@@ -106,9 +109,11 @@ public class PlayAreaPanel extends JPanel {
                 /*System.out.println("MyDebug " + imageSelector().toString() + " " + newPoint.getX() + " " + newPoint.getY());
                 imageSelector().paintIcon(this, g, (int) newPoint.getX(), (int) newPoint.getY());*/
 
-                try {
+                try
+                {
                     doAllThingForNow((int) newPoint.getX(), (int) newPoint.getY()); // TODO maybe done? (did: prevPt -> newPoint)
-                } catch (GameException e) {
+                } catch (GameException e)
+                {
                     //System.out.println(e);
                     refreshExceptionLabelText(e.toString().split(":")[1]);
                 }
@@ -130,6 +135,7 @@ public class PlayAreaPanel extends JPanel {
 
             //System.out.println((int) prevPt.getX() + " " + (int) prevPt.getY());
             GameFrame.GameFrameButtonIsPressedOnce = false;
+            refreshLabelText();
         }
     }
 
