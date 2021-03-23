@@ -1,9 +1,9 @@
 package com.teamgtlib.gui;
 
-import com.teamgtlib.Buildings.Buildable;
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 
@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
 
     public GameFrame() throws IOException {
         setTitle("Beadandó");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setPreferredSize(new Dimension(1280, 720));
 
         ImageIcon logoImage = new ImageIcon("res/_logo.png");
@@ -38,5 +38,13 @@ public class GameFrame extends JFrame {
         pack();
         setLocationRelativeTo(null);
         this.setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                final int confirmed = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the game?", "Exit confirmation", JOptionPane.YES_NO_OPTION);
+                if (confirmed == JOptionPane.YES_OPTION) dispose();
+            }
+        });
+
     }
 }
