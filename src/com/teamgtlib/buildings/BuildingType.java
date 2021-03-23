@@ -1,4 +1,4 @@
-package com.teamgtlib.Buildings;
+package com.teamgtlib.buildings;
 
 public enum BuildingType implements Buildable {
     SHOP{

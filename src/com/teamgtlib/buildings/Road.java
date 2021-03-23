@@ -1,4 +1,4 @@
-package com.teamgtlib.Buildings;
+package com.teamgtlib.buildings;
 
 public class Road extends Building {
     private int x;

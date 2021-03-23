@@ -1,7 +1,7 @@
 package com.teamgtlib.gui;
 
-import com.teamgtlib.Buildings.*;
 import com.teamgtlib.Park;
+import com.teamgtlib.buildings.*;
 
 import javax.swing.*;
 import java.awt.*;

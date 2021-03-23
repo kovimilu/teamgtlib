@@ -1,8 +1,5 @@
 package com.teamgtlib;
 
-import com.teamgtlib.Buildings.*;
-import com.teamgtlib.*;
-
 public class Player {
     private int budget;
     private int visitorCount;

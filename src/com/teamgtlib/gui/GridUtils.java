@@ -1,7 +1,7 @@
 package com.teamgtlib.gui;
 
-import com.teamgtlib.Buildings.Building;
 import com.teamgtlib.Park;
+import com.teamgtlib.buildings.Building;
 
 import java.awt.*;
 import java.util.ArrayList;

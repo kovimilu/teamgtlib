@@ -1,8 +1,8 @@
 package com.teamgtlib;
 
-import com.teamgtlib.Buildings.Buildable;
-import com.teamgtlib.Buildings.Building;
 import com.teamgtlib.NPCs.NPC;
+import com.teamgtlib.buildings.Buildable;
+import com.teamgtlib.buildings.Building;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

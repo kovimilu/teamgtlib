@@ -1,4 +1,4 @@
-package com.teamgtlib.Buildings;
+package com.teamgtlib.buildings;
 
 import com.teamgtlib.Drawable;
 import com.teamgtlib.Park;

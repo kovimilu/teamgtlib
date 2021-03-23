@@ -1,4 +1,4 @@
-package com.teamgtlib.Buildings;
+package com.teamgtlib.buildings;
 
 public class Decor extends Building {
     private final DecorType type;
