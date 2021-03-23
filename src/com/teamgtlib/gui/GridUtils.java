@@ -49,12 +49,16 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
     }
     */
 
+    /**
+     * @param p Coordinates of the Building.
+     * @return Returns true or false Depending on Weather is the Selected Area on the Map Occupied or not.
+     */
     static public boolean isOnGridMap(Point p) {
         for (Point point: gridMap) {
             System.out.println(p + "" + point);
             if(p.equals(point)) return true;
         }
-        Building PREBUILT = Park.preBuild(0,0, PlayAreaPanel.theUgliestSolutionICouldFind());
+        Building PREBUILT = Park.preBuild(PlayAreaPanel.theUgliestSolutionICouldFind());
         int WIDTH = PREBUILT.getWidth();
         int HEIGHT = PREBUILT.getHeight();
         for (int i = 0; i < WIDTH; ++i) {
