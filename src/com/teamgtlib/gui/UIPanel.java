@@ -50,7 +50,6 @@ public class UIPanel extends JPanel {
             j++;
         }
 
-
         JButton buttonRoad = new JButton();
         buttonRoad.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
         buttonRoad.setMargin(new Insets(0, 0, 0, 0));
@@ -131,17 +130,10 @@ public class UIPanel extends JPanel {
         buttonDemolish.setText("Select Building To Demolish");
         add(buttonDemolish);
 
-        /*
-        buttons[4].addActionListener(buttonArrayActionListener); //RollerC
-        buttons[5].addActionListener(buttonArrayActionListener); //Bench
-        buttonBin.addActionListener(buttonArrayActionListener); //Bin
-        */
         for (int n = 0; n < buttons.length; ++n) {
             buttons[n].addActionListener(buttonArrayActionListener);
         }
         buttonDemolish.addMouseListener(isReleased);
-        //buttons[4].addMouseListener(isRealesed);
-        //button.setIcon(new ImageIcon(Park.image));
     }
 
     /**

@@ -24,7 +24,6 @@ public abstract class Building implements Drawable {
         Park.buildings.remove(obj);
     }
 
-
     @Override
     public void loadClassImage() throws IOException {
         String[] classNameSplit = getClass().toString().split("\\.", 0);
@@ -33,9 +32,6 @@ public abstract class Building implements Drawable {
     }
 
     public abstract String getClassImagePath();
-
-    /*String[] classNameSplit = getClass().toString().split("\\.", 0);
-        return "res/" + classNameSplit[classNameSplit.length - 1] + ".png";*/
 
     public int getX() {
         return x;

@@ -35,8 +35,7 @@ public class Decor extends Building {
 
     @Override
     public String toString() {
-        return "Decor" +
-                " " + type;
+        return "Decor" + " " + type;
     }
 
     @Override

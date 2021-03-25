@@ -1,7 +1,6 @@
 package com.teamgtlib.buildings;
 
 public class DecorConstants {
-    // Same reaseon as in RideConstansts
     public static final int DCA[][] = new int[3][3];
     public DecorConstants() {
             DCA[0][0] = BENCH_PRICE;

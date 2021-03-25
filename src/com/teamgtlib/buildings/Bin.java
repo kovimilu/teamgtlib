@@ -15,8 +15,6 @@ public class Bin extends Building {
         {
             currentBin++;
             this.moodValue = -25;
-
-            //Park.buildings.add(//Self)
         }
     }
 

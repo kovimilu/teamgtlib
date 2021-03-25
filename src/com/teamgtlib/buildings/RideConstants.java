@@ -1,7 +1,6 @@
 package com.teamgtlib.buildings;
 
 public class RideConstants {
-
     // Had to make an Array that contains the Prices to make the GUI generation easier.
     public static final int RCA[][] = new int[5][5];
     public RideConstants() {

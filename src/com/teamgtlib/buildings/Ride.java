@@ -85,8 +85,7 @@ public class Ride extends Building {
 
     @Override
     public String toString() {
-        return "Ride" +
-                " " + type;
+        return "Ride" + " " + type;
     }
 
     @Override
