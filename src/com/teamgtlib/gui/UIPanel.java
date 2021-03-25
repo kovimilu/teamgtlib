@@ -143,7 +143,6 @@ public class UIPanel extends JPanel {
     private void buttonItemReturner(ActionEvent e) {
         String[] buttonTypeSplit = e.toString().split("<br>", 0);
         GameFrame.GameFrameCurrentButtonItemImageName = buttonTypeSplit[1];
-        //System.out.println(buttonTypeSplit[1]);
     }
 
     private final ActionListener buttonArrayActionListener = new ActionListener() {

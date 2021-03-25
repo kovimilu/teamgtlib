@@ -12,11 +12,8 @@ import java.io.IOException;
 
 public class PlayAreaPanel extends JPanel {
 
-    final int WIDTH = 100;
-    final int HEIGHT = 100;
     Boolean backGroundDrawn = true;
     Point prevPt;
-
     Park park = new Park();
 
     public PlayAreaPanel() throws IOException {

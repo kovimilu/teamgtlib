@@ -37,10 +37,8 @@ public class Park implements Drawable {
 
     /**
      *
-     * @param x x Coordinate of the Building
-     * @param y y Coordinate of the Building
-     * @param type Buildable Enum
-     * @return Returns a Building type so that you can call it's methods.
+     * @param type Buildable
+     * @return @return Returns a Building type so that you can call it's methods.
      */
     public static Building preBuild(Buildable type) {
         Building preBuiltbuilding = type.createObj(0,0);

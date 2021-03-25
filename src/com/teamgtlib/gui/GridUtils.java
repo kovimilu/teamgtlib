@@ -6,10 +6,15 @@ import com.teamgtlib.buildings.Building;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
-    static public ArrayList<Point> gridMap = new ArrayList<>(); // 20 x 14   (1000 x 700) //For some reason it's noly 20x13
+public class GridUtils {
+    static public ArrayList<Point> gridMap = new ArrayList<>();
     GridUtils(){}
 
+    /**
+     * Converts Mouse position Points to gridMap Points.
+     * @param p Point type
+     * @return Returns converted Point.
+     */
     static public Point gridConverter(Point p) {
         int xGrid = (int) p.getX() / 50;
         if((int) p.getX() % 50 > 0)xGrid++;
@@ -22,6 +27,11 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
         return gridPos;
     }
 
+    /**
+     * Converts the gridMap position to Pixel Points.
+     * @param p Point type
+     * @return Returns the converte Point.
+     */
     static public Point gridToPX(Point p) {
         int xGrid = (int) p.getX() -1;
         xGrid *= 50 ;
@@ -33,21 +43,6 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
 
         return pixelPos;
     }
-
-    /*
-    static public boolean isOnGridMap(Point p) {
-        for (Point point: gridMap) {
-            System.out.println(p + "" + point);
-            if(p.equals(point)) {
-                System.out.println("Benne volt");
-                return true;
-            }
-        }
-        gridMap.add(p);
-        System.out.println("Nem volt benne");
-        return false;
-    }
-    */
 
     /**
      * @param p Coordinates of the Building.
@@ -67,8 +62,6 @@ public class GridUtils { //TODO Might make this as a GridPoint "type" Class.
                 gridMap.add(grisPos);
             }
         }
-System.out.println(gridMap); // debug
         return false;
     }
-
 }
