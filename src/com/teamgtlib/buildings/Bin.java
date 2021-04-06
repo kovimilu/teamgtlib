@@ -23,6 +23,11 @@ public class Bin extends Building {
         return "Bin";
     }
 
+    /**
+     *
+     * @param obj Buildging
+     * Removes the obj from the building container.
+     */
     @Override
     public void close(Building obj) {
         Park.buildings.remove(obj);

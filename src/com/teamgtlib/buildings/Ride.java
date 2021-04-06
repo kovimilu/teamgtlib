@@ -12,6 +12,13 @@ public class Ride extends Building {
     private final RideType type;
     private ArrayList<Visitor> queue; // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
 
+    /**
+     *
+     * @param x int
+     * @param y int
+     * @param type DecorType
+     * Creates a Ride object according to the type parameter.
+     */
     public Ride(int x, int y, RideType type) {
         super(x, y);
         this.type = type;

@@ -20,6 +20,11 @@ public abstract class Building implements Drawable {
         this.y = y;
     }
 
+    /**
+     *
+     * @param obj Buildging
+     * Removes the obj from the building container.
+     */
     public void close(Building obj) {
         Park.buildings.remove(obj);
     }

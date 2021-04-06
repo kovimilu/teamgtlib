@@ -1,5 +1,9 @@
 package com.teamgtlib.buildings;
 
+/**
+ * Creates the corresponding Decor (bench/bush/tree).
+ */
+
 public enum DecorType implements Buildable {
     BENCH{
         @Override

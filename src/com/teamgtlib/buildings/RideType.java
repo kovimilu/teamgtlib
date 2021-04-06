@@ -1,5 +1,9 @@
 package com.teamgtlib.buildings;
 
+/**
+ * Creates the corresponting Ride (carousel/castle/water slide/ferris wheel/roller coaster)
+ */
+
 public enum RideType implements Buildable{
     CAROUSEL{
         @Override

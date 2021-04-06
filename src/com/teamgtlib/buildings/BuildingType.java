@@ -1,5 +1,9 @@
 package com.teamgtlib.buildings;
 
+/**
+ * Creates the corresponding Building (shop/road/bin).
+ */
+
 public enum BuildingType implements Buildable {
     SHOP{
         @Override

@@ -3,6 +3,14 @@ package com.teamgtlib.buildings;
 public class Decor extends Building {
     private final DecorType type;
 
+    /**
+     *
+     * @param x int
+     * @param y int
+     * @param type DecorType
+     * Creates a Decor object according to the type parameter.
+     *
+     */
     public Decor(int x, int y, DecorType type) {
         super(x, y);
         this.type   = type;
