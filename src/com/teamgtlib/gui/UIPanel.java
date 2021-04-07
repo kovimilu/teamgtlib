@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Makes the UI Buttons and connexts them with their ActionListeners
+ */
 public class UIPanel extends JPanel {
     public UIPanel() {
         final int squareButtonsSize = 85;

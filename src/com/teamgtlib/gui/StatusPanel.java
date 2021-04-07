@@ -5,6 +5,9 @@ import com.teamgtlib.Park;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Class where the JLabels are created.
+ */
 public class StatusPanel extends JPanel{
 
     JLabel clickLabel = new JLabel( "",SwingConstants.LEFT);
