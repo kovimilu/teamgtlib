@@ -2,8 +2,10 @@ package com.teamgtlib.buildings;
 
 import com.teamgtlib.Drawable;
 import com.teamgtlib.Park;
+import com.teamgtlib.gui.GridUtils;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -34,6 +36,11 @@ public abstract class Building implements Drawable {
         String[] classNameSplit = getClass().toString().split("\\.", 0);
         Park.image = ImageIO.read(new FileInputStream(
                 "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
+    }
+
+    public Point whereAmI() {
+        Point p = new Point(this.x,this.y);
+        return p;
     }
 
     public abstract String getClassImagePath();
