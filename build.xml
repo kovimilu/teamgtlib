@@ -14,7 +14,7 @@
         <mkdir dir="out/artifacts/teamgtlib_jar"/>
         <jar destfile="out/artifacts/teamgtlib_jar/teamgtlib.jar" basedir="out/production/teamgtlib">
             <manifest>
-                <attribute name="Main-Class" value="Main"/>
+                <attribute name="Main-Class" value="com.teamgtlib.Main"/>
             </manifest>
         </jar>
     </target>
