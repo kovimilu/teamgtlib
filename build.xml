@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="teamgtlib" default="jar" basedir=".">
+
+    <target name="clean">
+        <delete dir="out"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="out/production/teamgtlib"/>
+        <javac srcdir="src" destdir="out/production/teamgtlib"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="out/artifacts/teamgtlib_jar"/>
+        <jar destfile="out/artifacts/teamgtlib_jar/teamgtlib.jar" basedir="out/production/teamgtlib">
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+        <java jar="out/artifacts/teamgtlib_jar/teamgtlib.jar" fork="true"/>
+    </target>
+
+    <target name="doc" depends="compile">
+        <tstamp>
+            <format property="timestamp" pattern="d.M.yyyy"
+                    locale="en"/>
+        </tstamp>
+        <mkdir dir="doc"/>
+        <javadoc sourcepath="src" destdir="doc"
+                 windowtitle="Beadandó">
+            <header>Thesis Generator</header>
+            <footer>Javadocs compiled ${timestamp}></footer>
+            <fileset dir="src/" includes="**/*.java" />
+        </javadoc>
+    </target>
+
+</project>
