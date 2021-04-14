@@ -1,0 +1,13 @@
+image: ubuntu:rolling
+before_script:
+    - apt update -qq
+    - apt install -qqy --no-upgrade --no-install-recommends openjdk-15-jdk ant
+    - export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
+build_program:
+    stage: build
+    script:
+        - ant -S jar
+    artifacts:
+        paths:
+            - out/artifacts/teamgtlib_jar
+        expire_in: '1'

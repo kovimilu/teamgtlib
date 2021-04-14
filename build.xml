@@ -6,6 +6,7 @@
     </target>
 
     <target name="compile">
+<<<<<<< HEAD
         <mkdir dir="out/production/teamgtlib"/>
         <javac srcdir="src" destdir="out/production/teamgtlib"/>
     </target>
@@ -15,12 +16,30 @@
         <jar destfile="out/artifacts/teamgtlib_jar/teamgtlib.jar" basedir="out/production/teamgtlib">
             <manifest>
                 <attribute name="Main-Class" value="com.teamgtlib.Main"/>
+=======
+        <mkdir dir="out/production/${ant.project.name}"/>
+        <javac srcdir="src" destdir="out/production/${ant.project.name}"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="out/artifacts/${ant.project.name}_jar"/>
+        <copy todir="out/artifacts/${ant.project.name}_jar/res">
+            <fileset dir="res"/>
+        </copy>
+        <jar destfile="out/artifacts/${ant.project.name}_jar/${ant.project.name}.jar" basedir="out/production/${ant.project.name}">
+            <manifest>
+                <attribute name="Main-Class" value="com.${ant.project.name}.Main"/>
+>>>>>>> origin/master
             </manifest>
         </jar>
     </target>
 
     <target name="run" depends="jar">
+<<<<<<< HEAD
         <java jar="out/artifacts/teamgtlib_jar/teamgtlib.jar" fork="true"/>
+=======
+        <java jar="out/artifacts/${ant.project.name}_jar/${ant.project.name}.jar" fork="true"/>
+>>>>>>> origin/master
     </target>
 
     <target name="doc" depends="compile">
@@ -31,7 +50,11 @@
         <mkdir dir="doc"/>
         <javadoc sourcepath="src" destdir="doc"
                  windowtitle="Beadandó">
+<<<<<<< HEAD
             <header>Thesis Generator</header>
+=======
+            <header>Beadandó</header>
+>>>>>>> origin/master
             <footer>Javadocs compiled ${timestamp}></footer>
             <fileset dir="src/" includes="**/*.java" />
         </javadoc>
