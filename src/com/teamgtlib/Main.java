@@ -1,9 +1,7 @@
 package com.teamgtlib;
 
-import com.formdev.flatlaf.FlatDarkLaf;
 import com.teamgtlib.gui.GameFrame;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class Main {
@@ -12,20 +10,10 @@ public class Main {
 
         java.awt.EventQueue.invokeLater(() -> {
             try {
-                if (System.getProperty("os.name").equals("Linux")) {
-                    setupLookAndFeel();
-                }
                 new GameFrame().setVisible(true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-    }
-    private static void setupLookAndFeel() {
-        try{
-            UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (UnsupportedLookAndFeelException ex) {
-            throw new IllegalStateException("Unsupported look and feel theme", ex);
-        }
     }
 }
