@@ -9,5 +9,5 @@ build_program:
         - ant -S jar
     artifacts:
         paths:
-            - out/artifacts/teamgtlib_jar/teamgtlib.jar
+            - out/artifacts/teamgtlib_jar
         expire_in: '1'

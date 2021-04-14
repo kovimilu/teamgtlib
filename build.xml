@@ -12,11 +12,13 @@
 
     <target name="jar" depends="compile">
         <mkdir dir="out/artifacts/${ant.project.name}_jar"/>
+        <copy todir="out/artifacts/${ant.project.name}_jar/res">
+            <fileset dir="res"/>
+        </copy>
         <jar destfile="out/artifacts/${ant.project.name}_jar/${ant.project.name}.jar" basedir="out/production/${ant.project.name}">
             <manifest>
                 <attribute name="Main-Class" value="com.${ant.project.name}.Main"/>
             </manifest>
-            <fileset dir="res"/>
         </jar>
     </target>
 
