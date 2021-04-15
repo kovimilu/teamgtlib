@@ -58,11 +58,11 @@ public class PlayAreaPanel extends JPanel {
         GameFrame.GameFrameStatusPanel.budgetLabel.setText(GameFrame.GameFrameStatusPanelString);
         GameFrame.GameFrameStatusPanel.budgetLabel.repaint();
 
-        if (GameFrame.GameFrameButtonIsPressedOnce) {
+        if (GameFrame.SelectionState == SelectionType.BUILD) {
             GameFrame.GameFrameStatusPanelString = "Currently selected building: " + GameFrame.GameFrameCurrentButtonItemImageName;
-        } else if (GameFrame.DemolishButtonIsPressedOnce) {
+        } else if (GameFrame.SelectionState == SelectionType.DEMOLISH) {
             GameFrame.GameFrameStatusPanelString = "Select building to demolish";
-        } else {
+        } else if (GameFrame.SelectionState == SelectionType.NONE) {
             GameFrame.GameFrameStatusPanelString = "";
         }
 
@@ -86,7 +86,7 @@ public class PlayAreaPanel extends JPanel {
         if(backGroundDrawn) {
             g.drawImage(Park.image, -280, -20, 1280, 720, null);
         }
-        if(GameFrame.GameFrameButtonIsPressedOnce) {
+        if(GameFrame.SelectionState == SelectionType.BUILD) {
             Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
             //TODO
             //Building Area Market
@@ -105,7 +105,7 @@ public class PlayAreaPanel extends JPanel {
                     refreshExceptionLabelText(e.toString().split(":")[1]);
                 }
             }
-            GameFrame.GameFrameButtonIsPressedOnce = false;
+            GameFrame.SelectionState = SelectionType.NONE;
             refreshLabelText();
         }
         for (Building building : Park.buildings) {
@@ -116,9 +116,9 @@ public class PlayAreaPanel extends JPanel {
     private class ClickListener extends MouseAdapter {
         public void mousePressed(MouseEvent e) {
             prevPt = e.getPoint();
-            if (GameFrame.DemolishButtonIsPressedOnce) {
+            if (GameFrame.SelectionState == SelectionType.DEMOLISH) {
                 UIPanel.demolish();
-                GameFrame.DemolishButtonIsPressedOnce = false; // can be done in UIPanel.demolish() as well
+                GameFrame.SelectionState = SelectionType.NONE; // can be done in UIPanel.demolish() as well
                 refreshLabelText();
             }
             repaint();

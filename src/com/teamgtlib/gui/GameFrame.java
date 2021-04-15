@@ -9,8 +9,7 @@ import java.io.IOException;
 
 public class GameFrame extends JFrame {
 
-    static public boolean GameFrameButtonIsPressedOnce = false;
-    static public boolean DemolishButtonIsPressedOnce = false;
+    static public SelectionType SelectionState = SelectionType.NONE;
     static public String GameFrameCurrentButtonItemImageName = "";
     static public String GameFrameStatusPanelString = "";
     static public StatusPanel GameFrameStatusPanel = null;

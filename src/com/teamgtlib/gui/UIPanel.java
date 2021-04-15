@@ -150,11 +150,10 @@ public class UIPanel extends JPanel {
     private final ActionListener buttonArrayActionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(!GameFrame.GameFrameButtonIsPressedOnce) {
+            if(GameFrame.SelectionState == SelectionType.NONE) {
                 buttonItemReturner(e);
             }
-            GameFrame.DemolishButtonIsPressedOnce = false;
-            GameFrame.GameFrameButtonIsPressedOnce = true;
+            GameFrame.SelectionState = SelectionType.BUILD;
             System.out.println("GAMEFRAME BUTTON PRESSED");
             PlayAreaPanel.refreshLabelText();
         }
@@ -167,8 +166,7 @@ public class UIPanel extends JPanel {
             // super.mouseReleased(e);
             // GameFrame.bg.revalidate();
             // bg.repaint();
-            GameFrame.GameFrameButtonIsPressedOnce = false;
-            GameFrame.DemolishButtonIsPressedOnce = true;
+            GameFrame.SelectionState = SelectionType.DEMOLISH;
             System.out.println("DEMOLISH BUTTON PRESSED");
             PlayAreaPanel.refreshLabelText();
         }
