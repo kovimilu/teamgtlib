@@ -179,6 +179,7 @@ public class UIPanel extends JPanel {
         for (Building building : Park.buildings){
             if (building.getX() == newPoint.x && building.getY() == newPoint.y) {
                 Park.buildings.remove(building);
+                GridUtils.removeFromGridMap(GridUtils.gridConverter(PlayAreaPanel.prevPt));
                 System.out.println("REMOVED");
                 break;
             }

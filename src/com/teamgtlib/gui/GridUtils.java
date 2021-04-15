@@ -22,9 +22,7 @@ public class GridUtils {
         int yGrid = (int) p.getY() / 50;
         if((int) p.getY() % 50 > 0)yGrid++;
 
-        Point gridPos = new Point(xGrid,yGrid);
-
-        return gridPos;
+        return new Point(xGrid,yGrid);
     }
 
     /**
@@ -39,9 +37,7 @@ public class GridUtils {
         int yGrid = (int) p.getY() - 1;
         yGrid *= 50 ;
 
-        Point pixelPos = new Point(xGrid,yGrid);
-
-        return pixelPos;
+        return new Point(xGrid,yGrid);
     }
 
     /**
@@ -58,10 +54,14 @@ public class GridUtils {
         int HEIGHT = PREBUILT.getHeight();
         for (int i = 0; i < WIDTH; ++i) {
             for (int j = 0; j < HEIGHT; ++j) {
-                Point grisPos = new Point((int)p.getX() + i, (int)p.getY() + j);
-                gridMap.add(grisPos);
+                Point gridPos = new Point((int)p.getX() + i, (int)p.getY() + j);
+                gridMap.add(gridPos);
             }
         }
         return false;
+    }
+
+    public static void removeFromGridMap(Point p) {
+        gridMap.remove(p);
     }
 }
