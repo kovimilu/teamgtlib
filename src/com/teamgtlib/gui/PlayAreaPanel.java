@@ -14,7 +14,7 @@ import java.io.IOException;
 public class PlayAreaPanel extends JPanel {
 
     Boolean backGroundDrawn = true;
-    Point prevPt;
+    static Point prevPt;
     Point CurrentMousePt;
     Park park = new Park();
 
@@ -58,8 +58,14 @@ public class PlayAreaPanel extends JPanel {
         GameFrame.GameFrameStatusPanel.budgetLabel.setText(GameFrame.GameFrameStatusPanelString);
         GameFrame.GameFrameStatusPanel.budgetLabel.repaint();
 
-        if(!GameFrame.GameFrameButtonIsPressedOnce)GameFrame.GameFrameStatusPanelString = "";
-        else GameFrame.GameFrameStatusPanelString = "Currently selected building: " + GameFrame.GameFrameCurrentButtonItemImageName;
+        if (GameFrame.GameFrameButtonIsPressedOnce) {
+            GameFrame.GameFrameStatusPanelString = "Currently selected building: " + GameFrame.GameFrameCurrentButtonItemImageName;
+        } else if (GameFrame.DemolishButtonIsPressedOnce) {
+            GameFrame.GameFrameStatusPanelString = "Select building to demolish";
+        } else {
+            GameFrame.GameFrameStatusPanelString = "";
+        }
+
         GameFrame.GameFrameStatusPanel.clickLabel.setText(GameFrame.GameFrameStatusPanelString);
         GameFrame.GameFrameStatusPanel.clickLabel.repaint();
     }
@@ -82,7 +88,6 @@ public class PlayAreaPanel extends JPanel {
         }
         if(GameFrame.GameFrameButtonIsPressedOnce) {
             Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
-
             //TODO
             //Building Area Market
             g.setColor(Color.green);
@@ -91,7 +96,6 @@ public class PlayAreaPanel extends JPanel {
                     park.preBuild(theUgliestSolutionICouldFind()).getWidth() * 50,
                     park.preBuild(theUgliestSolutionICouldFind()).getHeight() * 50);
             //Building Area Market #END
-
             if(!GridUtils.isOnGridMap(GridUtils.gridConverter(prevPt))) {
                 try {
                     doAllThingForNow((int) newPoint.getX(), (int) newPoint.getY());
@@ -100,25 +104,24 @@ public class PlayAreaPanel extends JPanel {
                 catch (GameException e) {
                     refreshExceptionLabelText(e.toString().split(":")[1]);
                 }
-
-                refreshLabelText();
             }
-
-            for (Building building : Park.buildings) {
-                new ImageIcon(building.getClassImagePath()).paintIcon(this, g, building.getX(), building.getY());
-            }
-
             GameFrame.GameFrameButtonIsPressedOnce = false;
             refreshLabelText();
+        }
+        for (Building building : Park.buildings) {
+            new ImageIcon(building.getClassImagePath()).paintIcon(this, g, building.getX(), building.getY());
         }
     }
 
     private class ClickListener extends MouseAdapter {
         public void mousePressed(MouseEvent e) {
             prevPt = e.getPoint();
-            if(GameFrame.GameFrameButtonIsPressedOnce) {
-                repaint();
+            if (GameFrame.DemolishButtonIsPressedOnce) {
+                UIPanel.demolish();
+                GameFrame.DemolishButtonIsPressedOnce = false; // can be done in UIPanel.demolish() as well
+                refreshLabelText();
             }
+            repaint();
         }
     }
 

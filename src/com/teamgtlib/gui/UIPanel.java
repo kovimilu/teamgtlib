@@ -109,7 +109,6 @@ public class UIPanel extends JPanel {
         add(buttonFC);
         //##
 
-
         String str1 = "Worker";
         JButton buttonHW = new JButton();
         buttonHW.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
@@ -127,15 +126,15 @@ public class UIPanel extends JPanel {
                 + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
         add(buttonFW);
 
-
         JButton buttonDemolish = new JButton();
         buttonDemolish.setPreferredSize(new Dimension(squareButtonsSize * 3,squareButtonsSize));
         buttonDemolish.setText("Select Building To Demolish");
         add(buttonDemolish);
 
-        for (int n = 0; n < buttons.length; ++n) {
-            buttons[n].addActionListener(buttonArrayActionListener);
+        for (JButton button : buttons) {
+            button.addActionListener(buttonArrayActionListener);
         }
+
         buttonDemolish.addMouseListener(isReleased);
     }
 
@@ -154,7 +153,9 @@ public class UIPanel extends JPanel {
             if(!GameFrame.GameFrameButtonIsPressedOnce) {
                 buttonItemReturner(e);
             }
+            GameFrame.DemolishButtonIsPressedOnce = false;
             GameFrame.GameFrameButtonIsPressedOnce = true;
+            System.out.println("GAMEFRAME BUTTON PRESSED");
             PlayAreaPanel.refreshLabelText();
         }
     };
@@ -165,17 +166,31 @@ public class UIPanel extends JPanel {
         public void mouseReleased(MouseEvent e) {
             // super.mouseReleased(e);
             // GameFrame.bg.revalidate();
-
-            // TODO do below and leave out the desired building
             // bg.repaint();
-            /*for (Building building : Park.buildings){
-                String[] classNameSplit = building.getClass().toString().split("\\.", 0);
-                // bg.paintComponent();
-                // imageSelector(classNameSplit[classNameSplit.length - 1])
-            }*/
+            GameFrame.GameFrameButtonIsPressedOnce = false;
+            GameFrame.DemolishButtonIsPressedOnce = true;
+            System.out.println("DEMOLISH BUTTON PRESSED");
+            PlayAreaPanel.refreshLabelText();
         }
     };
 
+    public static void demolish() {
+        Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(PlayAreaPanel.prevPt)));
+        System.out.println(Park.buildings.toString());
+
+        for (Building building : Park.buildings){
+            if (building.getX() == newPoint.x && building.getY() == newPoint.y) {
+                Park.buildings.remove(building);
+                System.out.println("REMOVED");
+                break;
+            }
+        }
+
+        // GameFrame.DemolishButtonIsPressedOnce = false; // done in PlayAreaPanel's ClickListener
+        System.out.println("NOW FALSE");
+        GameFrame.bg.repaint(); // can be bg.repaint() as well with static import
+        System.out.println(Park.buildings.toString());
+    }
 
     @Override
     public void paintComponent(Graphics g)
