@@ -8,12 +8,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 
 public class PlayAreaPanel extends JPanel {
 
     Boolean backGroundDrawn = true;
     Point prevPt;
+    Point CurrentMousePt;
     Park park = new Park();
 
     public PlayAreaPanel() throws IOException {
@@ -21,6 +23,8 @@ public class PlayAreaPanel extends JPanel {
                                                         ,700));
         PlayAreaPanel.ClickListener clickListener = new PlayAreaPanel.ClickListener();
         this.addMouseListener(clickListener);
+        PlayAreaPanel.MoveListener moveListener = new PlayAreaPanel.MoveListener();
+        this.addMouseMotionListener(moveListener);
     }
 
     public static Buildable theUgliestSolutionICouldFind()
@@ -79,6 +83,15 @@ public class PlayAreaPanel extends JPanel {
         if(GameFrame.GameFrameButtonIsPressedOnce) {
             Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
 
+            //TODO
+            //Building Area Market
+            g.setColor(Color.green);
+            Point newCurrentMousePt = new Point(GridUtils.gridToPX(GridUtils.gridConverter(CurrentMousePt)));
+            g.drawRect((int)newCurrentMousePt.getX(), (int)newCurrentMousePt.getY(),
+                    park.preBuild(theUgliestSolutionICouldFind()).getWidth() * 50,
+                    park.preBuild(theUgliestSolutionICouldFind()).getHeight() * 50);
+            //Building Area Market #END
+
             if(!GridUtils.isOnGridMap(GridUtils.gridConverter(prevPt))) {
                 try {
                     doAllThingForNow((int) newPoint.getX(), (int) newPoint.getY());
@@ -106,6 +119,20 @@ public class PlayAreaPanel extends JPanel {
             if(GameFrame.GameFrameButtonIsPressedOnce) {
                 repaint();
             }
+        }
+    }
+
+    private class MoveListener implements MouseMotionListener {
+        @Override
+        public void mouseDragged(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+                CurrentMousePt = e.getPoint();
+                //System.out.println(" x: " + e.getX() + ", y: " + e.getY());
+
         }
     }
 }
