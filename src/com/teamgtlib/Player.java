@@ -1,5 +1,8 @@
 package com.teamgtlib;
 
+import com.teamgtlib.NPCs.Maintenance;
+import com.teamgtlib.NPCs.Visitor;
+
 public class Player {
     private int budget;
     private int visitorCount;
@@ -9,8 +12,9 @@ public class Player {
         budget = 1000000;
     }
 
-    public void hireWorker(){
-        //TODO később
+    public void hireMaintenance() {
+        Maintenance m = new Maintenance();
+        Park.npcs.add(m);
     }
 
     public void fireWorker(){
