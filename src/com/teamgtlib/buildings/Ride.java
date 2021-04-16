@@ -86,9 +86,9 @@ public class Ride extends Building {
         durability -= 0;
     }
 
-    private void timer() {
+    /*private void timer() {
 
-    }
+    }*/
 
     @Override
     public String toString() {

@@ -3,7 +3,7 @@ package com.teamgtlib.buildings;
 /**
  * Shows a building's state.
  */
-enum BuildingState {
+public enum BuildingState {
     UNBUILT,
     BUILDING,
     BUILT,

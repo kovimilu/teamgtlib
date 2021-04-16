@@ -2,12 +2,15 @@ package com.teamgtlib.buildings;
 
 import com.teamgtlib.Drawable;
 import com.teamgtlib.Park;
+import com.teamgtlib.gui.GameFrame;
 import com.teamgtlib.gui.GridUtils;
+import com.teamgtlib.gui.PlayAreaPanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Timer;
 
 public abstract class Building implements Drawable {
     final int x;
@@ -16,10 +19,13 @@ public abstract class Building implements Drawable {
     int height;
     int price;
     int moodValue;
+    BuildingState state;
 
     Building(int x, int y) {
         this.x = x;
         this.y = y;
+        this.state = BuildingState.UNBUILT;
+        timer();
     }
 
     /**
@@ -29,6 +35,22 @@ public abstract class Building implements Drawable {
      */
     public void close(Building obj) {
         Park.buildings.remove(obj);
+    }
+
+    public void timer(){
+        Timer t = new java.util.Timer();
+        t.schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        setState(BuildingState.BUILT);
+                        GameFrame.bg.repaint();
+                        t.cancel();
+                    }
+                },
+                5000
+
+        );
     }
 
     @Override
@@ -44,6 +66,10 @@ public abstract class Building implements Drawable {
     }
 
     public abstract String getClassImagePath();
+
+    public String getBuildImagePath(){
+        return "res/Worker.png";
+    }
 
     public int getX() {
         return x;
@@ -68,4 +94,12 @@ public abstract class Building implements Drawable {
     public int getMoodValue() {
         return moodValue;
     }
+
+    public void setState(BuildingState state){
+        this.state = state;
+    }
+
+    public BuildingState getState(){
+        return this.state;
+    };
 }

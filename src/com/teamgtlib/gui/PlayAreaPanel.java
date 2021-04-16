@@ -115,7 +115,14 @@ public class PlayAreaPanel extends JPanel {
         }
         //draw buildings
         for (Building building : Park.buildings) {
-            new ImageIcon(building.getClassImagePath()).paintIcon(this, g, building.getX(), building.getY());
+            if(building.getState() == BuildingState.BUILT){
+                new ImageIcon(building.getClassImagePath()).paintIcon(this, g, building.getX(), building.getY());
+            }else if(building.getState() == BuildingState.UNBUILT){
+                resizeImage(new ImageIcon(building.getBuildImagePath()),building.getWidth()*50, building.getHeight()*50).paintIcon(this, g, building.getX(), building.getY());
+            }
+
+
+
         }
         //draw npcs
         for (NPC npc : Park.npcs) {
@@ -132,6 +139,13 @@ public class PlayAreaPanel extends JPanel {
             g.fillOval(GridUtils.gridToPX(npc.getX()) + 12, GridUtils.gridToPX(npc.getY()) + 12,20,20);
         }
 
+    }
+
+    private ImageIcon resizeImage(ImageIcon imageIcon, int w, int h){
+        Image image = imageIcon.getImage(); // transform it
+        Image newimg = image.getScaledInstance(w, h,  java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);  // transform it back
+        return imageIcon;
     }
 
     private class ClickListener extends MouseAdapter {
