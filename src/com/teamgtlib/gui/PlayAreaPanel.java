@@ -1,6 +1,7 @@
 package com.teamgtlib.gui;
 
 import com.teamgtlib.GameException;
+import com.teamgtlib.NPCs.NPC;
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.*;
 
@@ -108,9 +109,25 @@ public class PlayAreaPanel extends JPanel {
             GameFrame.SelectionState = SelectionType.NONE;
             refreshLabelText();
         }
+        //draw buildings
         for (Building building : Park.buildings) {
             new ImageIcon(building.getClassImagePath()).paintIcon(this, g, building.getX(), building.getY());
         }
+        //draw npcs
+        for (NPC npc : Park.npcs) {
+            if(npc.getClassString().equals("Visitor")) {
+                g.setColor(Color.cyan);
+            }
+            if(npc.getClassString().equals("Maintenance")) {
+                g.setColor(Color.orange);
+            }
+            if(npc.getClassString().equals("Cleaner")) {
+                g.setColor(Color.magenta);
+            }
+            //g.fillOval(0 + 12,0 + 12,20,20);
+            g.fillOval(GridUtils.gridToPX(1) + 12, GridUtils.gridToPX(1) + 12,20,20);
+        }
+
     }
 
     private class ClickListener extends MouseAdapter {
