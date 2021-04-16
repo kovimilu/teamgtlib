@@ -116,4 +116,8 @@ public class Ride extends Building {
         }
         return null;
     }
+
+    public int getDurability() {
+        return durability;
+    }
 }

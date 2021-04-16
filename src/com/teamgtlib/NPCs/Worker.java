@@ -1,6 +1,11 @@
 package com.teamgtlib.NPCs;
 
-public abstract class Worker extends NPC {
-    private int wage = 450;
+import com.teamgtlib.Park;
 
+public abstract class Worker extends NPC {
+    int wage = 450;
+
+    public void payment(int wage) {
+        Park.player.updateBudget(-wage);
+    }
 }

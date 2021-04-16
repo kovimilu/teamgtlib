@@ -134,7 +134,8 @@ public class UIPanel extends JPanel {
         for (JButton button : buttons) {
             button.addActionListener(buttonArrayActionListener);
         }
-        buttonHM.addActionListener(HireWorker);
+        buttonHM.addActionListener(HireMaintenance);
+        buttonHC.addActionListener(HireCleaner);
 
         buttonDemolish.addMouseListener(isReleased);
     }
@@ -160,11 +161,20 @@ public class UIPanel extends JPanel {
         }
     };
 
-    private final ActionListener HireWorker = new ActionListener() {
+    private final ActionListener HireMaintenance = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
           Park.player.hireMaintenance();
           GameFrame.bg.repaint();
+          PlayAreaPanel.refreshLabelText();
+        }
+    };
+
+    private final ActionListener HireCleaner = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Park.player.hireCleaner();
+            GameFrame.bg.repaint();
         }
     };
 

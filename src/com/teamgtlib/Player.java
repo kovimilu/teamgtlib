@@ -1,5 +1,6 @@
 package com.teamgtlib;
 
+import com.teamgtlib.NPCs.Cleaner;
 import com.teamgtlib.NPCs.Maintenance;
 import com.teamgtlib.NPCs.Visitor;
 
@@ -15,6 +16,12 @@ public class Player {
     public void hireMaintenance() {
         Maintenance m = new Maintenance();
         Park.npcs.add(m);
+        workerCount++;
+    }
+
+    public void hireCleaner() {
+        Cleaner c = new Cleaner();
+        Park.npcs.add(c);
     }
 
     public void fireWorker(){

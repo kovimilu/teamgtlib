@@ -14,6 +14,11 @@ public class Visitor extends NPC {
         hasGarbage = false;
     }
 
+    @Override
+    public void whatToDo() {
+
+    }
+
     public void updateMood(int changeBy) {
         mood += changeBy;
     }

@@ -59,6 +59,10 @@ public class PlayAreaPanel extends JPanel {
         GameFrame.GameFrameStatusPanel.budgetLabel.setText(GameFrame.GameFrameStatusPanelString);
         GameFrame.GameFrameStatusPanel.budgetLabel.repaint();
 
+        GameFrame.GameFrameStatusPanel.countLabel.setText("Workers: " + Park.player.getWorkerCount() + " | "
+                + "Visitors: " + Park.player.getVisitorCount());
+        GameFrame.GameFrameStatusPanel.countLabel.repaint();
+
         if (GameFrame.SelectionState == SelectionType.BUILD) {
             GameFrame.GameFrameStatusPanelString = "Currently selected building: " + GameFrame.GameFrameCurrentButtonItemImageName;
         } else if (GameFrame.SelectionState == SelectionType.DEMOLISH) {
@@ -125,7 +129,7 @@ public class PlayAreaPanel extends JPanel {
                 g.setColor(Color.magenta);
             }
             //g.fillOval(0 + 12,0 + 12,20,20);
-            g.fillOval(GridUtils.gridToPX(1) + 12, GridUtils.gridToPX(1) + 12,20,20);
+            g.fillOval(GridUtils.gridToPX(npc.getX()) + 12, GridUtils.gridToPX(npc.getY()) + 12,20,20);
         }
 
     }

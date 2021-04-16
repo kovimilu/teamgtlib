@@ -1,5 +1,6 @@
 package com.teamgtlib.NPCs;
 
+import com.teamgtlib.Drawable;
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Building;
 
@@ -16,9 +17,7 @@ public abstract class NPC {
         return gridMap;
     }
 
-    public void whatToDo(){
-
-    }
+    public abstract void whatToDo();
 
     public void budgetChange(int price) {
         Park.player.updateBudget(price);
