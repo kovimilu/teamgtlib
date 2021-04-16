@@ -63,12 +63,10 @@ public class PlayAreaPanel extends JPanel {
                 + "Visitors: " + Park.player.getVisitorCount());
         GameFrame.GameFrameStatusPanel.countLabel.repaint();
 
-        if (GameFrame.SelectionState == SelectionType.BUILD) {
-            GameFrame.GameFrameStatusPanelString = "Currently selected building: " + GameFrame.GameFrameCurrentButtonItemImageName;
-        } else if (GameFrame.SelectionState == SelectionType.DEMOLISH) {
-            GameFrame.GameFrameStatusPanelString = "Select building to demolish";
-        } else if (GameFrame.SelectionState == SelectionType.NONE) {
-            GameFrame.GameFrameStatusPanelString = "";
+        switch (GameFrame.SelectionState) {
+            case NONE -> GameFrame.GameFrameStatusPanelString = "";
+            case BUILD -> GameFrame.GameFrameStatusPanelString = "Currently selected building: " + GameFrame.GameFrameCurrentButtonItemImageName;
+            case DEMOLISH -> GameFrame.GameFrameStatusPanelString = "Select building to demolish";
         }
 
         GameFrame.GameFrameStatusPanel.clickLabel.setText(GameFrame.GameFrameStatusPanelString);
