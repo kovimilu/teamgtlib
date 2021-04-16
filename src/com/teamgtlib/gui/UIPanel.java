@@ -163,7 +163,7 @@ public class UIPanel extends JPanel {
     private final ActionListener HireWorker = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-          Park.player.hireWorker();
+          Park.player.hireMaintenance();
           GameFrame.bg.repaint();
         }
     };
