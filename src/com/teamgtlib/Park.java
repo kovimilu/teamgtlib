@@ -21,8 +21,9 @@ public class Park implements Drawable {
      * @throws IOException
      */
     public Park() throws IOException {
-        player = new Player();
         buildings = new ArrayList<>();
+        npcs = new ArrayList<>();
+        player = new Player();
         this.loadClassImage();
     }
 
