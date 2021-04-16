@@ -61,7 +61,15 @@ public class GridUtils {
         return false;
     }
 
-    public static void removeFromGridMap(Point p) {
-        gridMap.remove(p);
+    public static void removeBuildingFromGridMap(Building building) {
+        int WIDTH = building.getWidth();
+        int HEIGHT = building.getHeight();
+        Point p = GridUtils.gridConverter(new Point(building.getX(), building.getY()));
+        for (int i = 1; i <= WIDTH; ++i) {
+            for (int j = 1; j <= HEIGHT; ++j) {
+                Point gridPos = new Point((int)p.getX() + i, (int)p.getY() + j);
+                gridMap.remove(gridPos);
+            }
+        }
     }
 }
