@@ -109,14 +109,14 @@ public class UIPanel extends JPanel {
         add(buttonFC);
         //##
 
-        String str1 = "Worker";
-        JButton buttonHW = new JButton();
-        buttonHW.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-        buttonHW.setMargin(new Insets(0, 0, 0, 0));
-        buttonHW.setText("<html>" + "Hire:" + "<br>"
+        String str1 = "Maintenance";
+        JButton buttonHM = new JButton();
+        buttonHM.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonHM.setMargin(new Insets(0, 0, 0, 0));
+        buttonHM.setText("<html>" + "Hire:" + "<br>"
                 + str1 + "<br>"
                 + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
-        add(buttonHW);
+        add(buttonHM);
 
         JButton buttonFW = new JButton();
         buttonFW.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
@@ -134,6 +134,7 @@ public class UIPanel extends JPanel {
         for (JButton button : buttons) {
             button.addActionListener(buttonArrayActionListener);
         }
+        buttonHM.addActionListener(HireWorker);
 
         buttonDemolish.addMouseListener(isReleased);
     }
@@ -156,6 +157,14 @@ public class UIPanel extends JPanel {
             GameFrame.SelectionState = SelectionType.BUILD;
             System.out.println("GAMEFRAME BUTTON PRESSED");
             PlayAreaPanel.refreshLabelText();
+        }
+    };
+
+    private final ActionListener HireWorker = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          Park.player.hireWorker();
+          GameFrame.bg.repaint();
         }
     };
 
