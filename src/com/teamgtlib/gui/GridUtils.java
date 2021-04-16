@@ -26,18 +26,42 @@ public class GridUtils {
     }
 
     /**
+     * Overloaded function.
+     * Converts Mouse position Coordinate to gridMap Coordinate.
+     * @param p int type
+     * @return Returns converted Coordinate.
+     */
+    static public int gridConverter(int p) {
+        int xGrid = p / 50;
+        if(p % 50 > 0)xGrid++;
+
+        return xGrid;
+    }
+
+    /**
      * Converts the gridMap position to Pixel Points.
      * @param p Point type
-     * @return Returns the converte Point.
+     * @return Returns the converted Point.
      */
     static public Point gridToPX(Point p) {
-        int xGrid = (int) p.getX() -1;
+        int xGrid = (int) p.getX() - 1;
         xGrid *= 50 ;
 
         int yGrid = (int) p.getY() - 1;
         yGrid *= 50 ;
 
         return new Point(xGrid,yGrid);
+    }
+    /**
+     * Converts the gridMap position to Pixel Coordinate.
+     * @param p Point type
+     * @return Returns the converted Coordinate.
+     */
+    static public int gridToPX(int p) {
+        int xGrid = p - 1;
+        xGrid *= 50 ;
+
+        return xGrid;
     }
 
     /**
