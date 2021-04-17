@@ -8,6 +8,8 @@ public class Road extends Building {
 
     public Road(int x, int y){
       super(x,y);
+      width = 1;
+      height = 1;
       price = COST_PRICE;
     }
 

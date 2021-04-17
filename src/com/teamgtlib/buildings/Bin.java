@@ -9,6 +9,8 @@ public class Bin extends Building {
 
     public Bin(int x, int y) {
         super(x, y);
+        width = 1;
+        height = 1;
         price = COST_PRICE;
         if(currentBin > MAXBINS); //TODO throw exception
         else

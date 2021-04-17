@@ -113,9 +113,10 @@ public class PlayAreaPanel extends JPanel {
         }
         //draw buildings
         for (Building building : Park.buildings) {
-            if(building.getState() == BuildingState.BUILT){
+            if(building.getState() == BuildingState.BUILT) {
                 new ImageIcon(building.getClassImagePath()).paintIcon(this, g, building.getX(), building.getY());
-            }else if(building.getState() == BuildingState.UNBUILT){
+            }
+            else if(building.getState() == BuildingState.UNBUILT) {
                 resizeImage(new ImageIcon(building.getBuildImagePath()),building.getWidth()*50, building.getHeight()*50).paintIcon(this, g, building.getX(), building.getY());
             }
 
@@ -166,9 +167,9 @@ public class PlayAreaPanel extends JPanel {
 
         @Override
         public void mouseMoved(MouseEvent e) {
-                CurrentMousePt = e.getPoint();
+            CurrentMousePt = e.getPoint();
+            //GameFrame.bg.repaint();
                 //System.out.println(" x: " + e.getX() + ", y: " + e.getY());
-
         }
     }
 }
