@@ -39,17 +39,14 @@ public abstract class Building implements Drawable {
 
     public void timer(){
         Timer t = new java.util.Timer();
-        t.schedule(
-                new java.util.TimerTask() {
+        t.schedule(new java.util.TimerTask() {
                     @Override
                     public void run() {
                         setState(BuildingState.BUILT);
                         GameFrame.bg.repaint();
                         t.cancel();
                     }
-                },
-                5000
-
+                },5000
         );
     }
 
