@@ -15,6 +15,7 @@ public class Park implements Drawable {
     public static ArrayList<Building> buildings;
     public static Player player = null;
     public static ArrayList<NPC> npcs;
+    public static Building[][] playAreaPanel= new Building[14][20];
 
     /**
      * Create the park with one new player and building container.
@@ -40,13 +41,35 @@ public class Park implements Drawable {
         Building building = type.createObj(x,y);
         final int newBudget = player.getBudget() - building.getPrice();
         if (newBudget >= 0) {
+
+            for (int i = 0; i<building.getHeight(); i++) {
+                for (int j = 0; j < building.getWidth(); j++) {
+                    if (playAreaPanel[y / 50 + i][x / 50 + j] != null) {
+                        throw new GameException("Not an empty space!");
+                    }
+                    playAreaPanel[y / 50 + i][x / 50 + j] = building;
+                }
+            }
+
             player.setBudget(newBudget);
             buildings.add(building);
+
+
+            //map of the playAreaPanel (for debug)
+            for(int i = 0; i<14; i++){
+                for(int j = 0; j<20; j++){
+                    System.out.print(playAreaPanel[i][j] + " ");
+                }
+                System.out.println();
+            }
+
             return true;
         }
         else {
             throw new GameException("Not enough budget!");
         }
+
+
     }
 
     /**
