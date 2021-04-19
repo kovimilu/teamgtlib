@@ -3,6 +3,8 @@ package com.teamgtlib.buildings;
 import com.teamgtlib.NPCs.Visitor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Timer;
 
 public class Ride extends Building {
     private BuildingState state = BuildingState.UNBUILT;
@@ -62,33 +64,47 @@ public class Ride extends Building {
         }
     }
 
-    public void next() {
+    public void start() {
         // queue-ból szed ki legfeljebb MAXCAP-nyi Visitor-t, majd meghívja a startRide()-ot
+        if (!currentPassengers.isEmpty()) {
+            for (int i = 0; i < MAXCAP; i++) {
+                Visitor boardingPassenger = queue.remove(i);
+                boardingPassenger.buyTicket(price);
+                currentPassengers.add(boardingPassenger);
+            }
+            startRide();
+        }
     }
 
     private void startRide() {
-        /* TODO
+        /*
         ha timer letelt, vagy teli a Ride kapacitás,
          akkor start timer
          ha elég az ember, ezt hívja meg a next
          */
-
+        Timer timer = new java.util.Timer();
+        timer.schedule(new java.util.TimerTask() {
+                       @Override
+                       public void run() {
+                           rideEnded();
+                           timer.cancel();
+                       }
+                   },10000 // TODO edit to actual value
+        );
     }
 
-    private void stopRide() {
-        /* TODO
+    private void rideEnded() {
+        /*
         cap-ból kiveszi az embereket
         számértékek hozzáadása
          */
         for (Visitor passenger : currentPassengers) {
-            passenger.updateMood(0);
+            currentPassengers.remove(passenger);
+            passenger.updateMood(moodValue);
         }
-        durability -= 0;
+        durability -= 0; // TODO fill with value (maybe add to constants per ride type)
+        start();
     }
-
-    /*private void timer() {
-
-    }*/
 
     @Override
     public String toString() {
@@ -120,4 +136,12 @@ public class Ride extends Building {
     public int getDurability() {
         return durability;
     }
+
+    public void addToQueue(Visitor visitor) { queue.add(visitor); }
+
+    public void addToQueue(Visitor[] visitors) { queue.addAll(Arrays.asList(visitors)); }
+
+    public void setState(BuildingState state) { this.state = state; }
+
+    public BuildingState getState() { return state; }
 }

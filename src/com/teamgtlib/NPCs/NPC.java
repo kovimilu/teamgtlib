@@ -1,6 +1,5 @@
 package com.teamgtlib.NPCs;
 
-import com.teamgtlib.Drawable;
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Building;
 import com.teamgtlib.gui.GameFrame;
@@ -21,9 +20,7 @@ public abstract class NPC {
 
     public abstract void whatToDo();
 
-    public void budgetChange(int price) {
-        Park.player.updateBudget(price);
-    }
+    public void changeParkBudgetBy(int price) { Park.player.changeBudgetBy(price); }
 
     public void timer(ArrayList<Point> testpath) {
         Timer t = new java.util.Timer();

@@ -2,7 +2,6 @@ package com.teamgtlib;
 
 import com.teamgtlib.NPCs.Cleaner;
 import com.teamgtlib.NPCs.Maintenance;
-import com.teamgtlib.NPCs.Visitor;
 
 public class Player {
     private int budget;
@@ -32,9 +31,7 @@ public class Player {
         //TODO később
     }
 
-    public void updateBudget(int budget) {
-        this.budget += budget;
-    }
+    public void changeBudgetBy(int budget) { this.budget += budget; }
 
     public int getBudget() {
         return budget;
