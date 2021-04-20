@@ -103,6 +103,10 @@ public class Park implements Drawable {
     }
 
     private void initBuildings() {
+        initBuildHelper(1, 1, BuildingType.ROAD);
+    }
+
+    private void initBuildHelper(int x, int y, BuildingType type) {
         Building building = null;
         try {
             building = build(1,1, BuildingType.ROAD);
