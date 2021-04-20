@@ -144,4 +144,8 @@ public class Ride extends Building {
     public void setState(BuildingState state) { this.state = state; }
 
     public BuildingState getState() { return state; }
+
+    public ArrayList<Visitor> getCurrentPassengers() { return currentPassengers; }
+
+    public ArrayList<Visitor> getQueue() { return queue; }
 }
