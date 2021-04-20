@@ -3,6 +3,8 @@ package com.teamgtlib;
 import com.teamgtlib.NPCs.NPC;
 import com.teamgtlib.buildings.Buildable;
 import com.teamgtlib.buildings.Building;
+import com.teamgtlib.buildings.BuildingType;
+import com.teamgtlib.gui.GridUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -27,6 +29,7 @@ public class Park implements Drawable {
         npcs = new ArrayList<>();
         player = new Player();
         this.loadClassImage();
+        initBuildings();
     }
 
     /**
@@ -38,7 +41,7 @@ public class Park implements Drawable {
      *         and the method adds the building to the container.
      * @throws GameException
      */
-    public Boolean build(int x, int y , Buildable type) throws GameException { /* returns whether the build succeeded */
+    public Building build(int x, int y , Buildable type) throws GameException { /* returns whether the build succeeded */
         Building building = type.createObj(x,y);
         final int newBudget = player.getBudget() - building.getPrice();
         if (newBudget >= 0) {
@@ -64,7 +67,7 @@ public class Park implements Drawable {
                 System.out.println();
             }
 
-            return true;
+            return building;
         }
         else {
             throw new GameException("Not enough budget!");
@@ -81,8 +84,7 @@ public class Park implements Drawable {
      * @return @return Returns a Building type so that you can call it's methods.
      */
     public static Building preBuild(Buildable type) {
-        Building preBuiltbuilding = type.createObj(0,0);
-        return preBuiltbuilding;
+        return type.createObj(0,0);
     }
 
     @Override
@@ -98,5 +100,15 @@ public class Park implements Drawable {
 
     public String buildingsToString() { // for debugging
         return buildings.toString();
+    }
+
+    private void initBuildings() {
+        Building building = null;
+        try {
+            building = build(1,1, BuildingType.ROAD);
+        } catch (GameException exception) {
+            exception.printStackTrace();
+        }
+        GridUtils.addGridMap(new Point(building.getX(), building.getY()), BuildingType.ROAD);
     }
 }
