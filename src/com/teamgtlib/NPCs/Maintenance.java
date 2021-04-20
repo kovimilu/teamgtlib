@@ -20,10 +20,10 @@ public class Maintenance extends Worker {
     public Maintenance() {
         //x = rand.nextInt(10);
         //y = rand.nextInt(10);
-        x = 2;
-        y = 2;
+        x = 10;
+        y = 14;
         testpath = new ArrayList<>();
-        searchPath(Park.playAreaPanel[0][5],Park.playAreaPanel,testpath,(x-1),(y-1));
+        searchPath(Park.playAreaPanel[6][10],Park.playAreaPanel,testpath,(x-1),(y-1));
         for (int i = 0; i<Park.buildings.size(); i++){
             if(Park.buildings.get(i) instanceof Road){
                 ((Road) Park.buildings.get(i)).setVisited(false);

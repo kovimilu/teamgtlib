@@ -28,16 +28,20 @@ public abstract class NPC {
         if(playAreaPanel[y][x] instanceof Road){
             if (((Road) playAreaPanel[y][x]).getVisited() == false){
                 ((Road) playAreaPanel[y][x]).setVisited(true);
-                try{
+
                     int dx = -1;
                     int dy = 0;
-                    if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                        path.add(new Point(x+1,y+1));
-                        return true;
+                    if(x+dx >= 0 && x+dx < 20){
+                        if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
+                            path.add(new Point(x+1,y+1));
+                            return true;
+                        }
                     }
+
 
                     dx = 1;
                     dy = 0;
+                    if(dx + x > 0 && dx + x < 20)
                     if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
                         path.add(new Point(x+1,y+1));
                         return true;
@@ -45,27 +49,33 @@ public abstract class NPC {
 
                     dx = 0;
                     dy = -1;
-                    if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                        path.add(new Point(x+1,y+1));
-                        return true;
+                    if(y+dy > 0 && y+dy < 14){
+                        if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
+                            path.add(new Point(x+1,y+1));
+                            return true;
+                        }
                     }
+
 
                     dx = 0;
                     dy = 1;
-                    if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                        path.add(new Point(x+1,y+1));
-
+                    if(y+dy > 0 && dy + y < 14){
+                        if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
+                            path.add(new Point(x+1,y+1));
+                            return true;
+                        }
                     }
-                 return true;
-                }catch (Exception e){
-                    //System.out.println(e);
-                }
+
+
+
 
             }
         }
 
         return false;
     }
+
+
 
     public abstract void whatToDo();
 
