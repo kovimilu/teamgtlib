@@ -31,9 +31,9 @@ public abstract class NPC {
 
                     int dx = -1;
                     int dy = 0;
-                    if(x+dx >= 0 && x+dx < 20){
+                    if(x+dx >= 0 && x+dx <= 20){
                         if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                            path.add(new Point(x+1,y+1));
+                            path.add(new Point(x,y));
                             return true;
                         }
                     }
@@ -41,17 +41,17 @@ public abstract class NPC {
 
                     dx = 1;
                     dy = 0;
-                    if(dx + x > 0 && dx + x < 20)
+                    if(dx + x > 0 && dx + x <= 20)
                     if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                        path.add(new Point(x+1,y+1));
+                        path.add(new Point(x,y));
                         return true;
                     }
 
                     dx = 0;
                     dy = -1;
-                    if(y+dy > 0 && y+dy < 14){
+                    if(y+dy > 0 && y+dy <= 14){
                         if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                            path.add(new Point(x+1,y+1));
+                            path.add(new Point(x,y));
                             return true;
                         }
                     }
@@ -59,15 +59,12 @@ public abstract class NPC {
 
                     dx = 0;
                     dy = 1;
-                    if(y+dy > 0 && dy + y < 14){
+                    if(y+dy > 0 && dy + y <= 14){
                         if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                            path.add(new Point(x+1,y+1));
+                            path.add(new Point(x,y));
                             return true;
                         }
                     }
-
-
-
 
             }
         }
@@ -105,8 +102,8 @@ public abstract class NPC {
         for (Point p : testpath) {
             GameFrame.bg.repaint();
             wait(500);
-            setX((int)p.getX());
-            setY((int)p.getY());
+            setX((int)p.getX()+1);
+            setY((int)p.getY()+1);
 
         }
     }

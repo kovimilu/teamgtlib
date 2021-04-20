@@ -31,7 +31,7 @@ public class Maintenance extends Worker {
         }
 
         if(testpath.size() > 0){
-            for (int i = testpath.size()-1; i > 0; i--)
+            for (int i = testpath.size()-1; i >= 0; i--)
             {
                 System.out.println("test: " + testpath.get(i));
             }
