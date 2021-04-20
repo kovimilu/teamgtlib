@@ -24,7 +24,6 @@ public class Ride extends Building {
     public Ride(int x, int y, RideType type) {
         super(x, y);
         this.type = type;
-        this.state = BuildingState.UNBUILT;
 
         switch (type) {
             case CAROUSEL -> {
@@ -68,14 +67,12 @@ public class Ride extends Building {
 
     public void start() {
         // queue-ból szed ki legfeljebb MAXCAP-nyi Visitor-t, majd meghívja a startRide()-ot
-        if (!currentPassengers.isEmpty()) {
-            for (int i = 0; i < MAXCAP; i++) {
-                Visitor boardingPassenger = queue.remove(i);
-                boardingPassenger.buyTicket(price);
-                currentPassengers.add(boardingPassenger);
-            }
-            startRide();
+        for (int i = 0; i < MAXCAP; i++) {
+            Visitor boardingPassenger = queue.remove(i);
+            boardingPassenger.buyTicket(price);
+            currentPassengers.add(boardingPassenger);
         }
+        startRide();
     }
 
     private void startRide() {
@@ -105,7 +102,7 @@ public class Ride extends Building {
             passenger.updateMood(moodValue);
         }
         durability -= 0; // TODO fill with value (maybe add to constants per ride type)
-        start();
+        if (!queue.isEmpty()) start();
     }
 
     @Override
