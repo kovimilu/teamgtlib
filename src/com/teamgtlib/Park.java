@@ -61,12 +61,12 @@ public class Park implements Drawable {
 
 
             //map of the playAreaPanel (for debug)
-            for(int i = 0; i<14; i++){
+            /*for(int i = 0; i<14; i++){
                 for(int j = 0; j<20; j++){
                     System.out.print(playAreaPanel[i][j] + " ");
                 }
                 System.out.println();
-            }
+            }*/
 
             return building;
         }

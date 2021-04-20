@@ -18,28 +18,10 @@ public class Maintenance extends Worker {
     Random rand = new Random();
 
     public Maintenance() {
-        //x = rand.nextInt(10);
-        //y = rand.nextInt(10);
         x = 10;
         y = 14;
         testpath = new ArrayList<>();
-        searchPath(Park.playAreaPanel[6][10],Park.playAreaPanel,testpath,(x-1),(y-1));
-        for (int i = 0; i<Park.buildings.size(); i++){
-            if(Park.buildings.get(i) instanceof Road){
-                ((Road) Park.buildings.get(i)).setVisited(false);
-            }
-        }
-
-        if(testpath.size() > 0){
-            for (int i = testpath.size()-1; i >= 0; i--)
-            {
-                System.out.println("test: " + testpath.get(i));
-            }
-        }else{
-            System.out.println("nincs path");
-        }
-
-        Collections.reverse(testpath);
+        pathFinding(Park.playAreaPanel[6][10],Park.playAreaPanel,testpath,(x-1),(y-1));
         wage = 1670;
         rides = new ArrayList<>();
         getRides();

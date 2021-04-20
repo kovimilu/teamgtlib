@@ -7,19 +7,39 @@ import com.teamgtlib.gui.GameFrame;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Timer;
 
 public abstract class NPC {
     int x, y;
     static public ArrayList<Point> gridMap2 = new ArrayList<>();
 
-    public ArrayList pathFinding(Building obj) {
-        ArrayList<Point> gridMap = new ArrayList<>();
-        gridMap.add(obj.whereAmI());
-        return gridMap;
+    public ArrayList pathFinding(Building obj, Building[][] playAreaPanel, ArrayList<Point> path, int x, int y ) {
+        searchPath(obj, playAreaPanel, path, x, y);
+        for (int i = 0; i<Park.buildings.size(); i++){
+            if(Park.buildings.get(i) instanceof Road){
+                ((Road) Park.buildings.get(i)).setVisited(false);
+            }
+        }
+
+        //for debug
+        /*if(path.size() > 0){
+            for (int i = path.size()-1; i >= 0; i--)
+            {
+                System.out.println("test: " + path.get(i));
+            }
+        }else{
+            System.out.println("nincs path");
+        }*/
+
+        Collections.reverse(path);
+
+        return path;
+
+
     }
 
-    public boolean searchPath(Building obj, Building[][] playAreaPanel, ArrayList<Point> path, int x, int y){
+    public static boolean searchPath(Building obj, Building[][] playAreaPanel, ArrayList<Point> path, int x, int y){
         if(playAreaPanel[y][x] == playAreaPanel[obj.getY()/50][obj.getX()/50]){
             path.add(new Point(x,y));
             return true;
