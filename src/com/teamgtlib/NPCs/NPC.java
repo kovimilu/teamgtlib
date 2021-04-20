@@ -21,7 +21,7 @@ public abstract class NPC {
 
     public boolean searchPath(Building obj, Building[][] playAreaPanel, ArrayList<Point> path, int x, int y){
         //path.add(obj.whereAmI()); //end point
-        System.out.println(playAreaPanel[y][x]);
+       //System.out.println(playAreaPanel[y][x]);
         if(playAreaPanel[y][x] == playAreaPanel[obj.getY()/50][obj.getX()/50]){
             path.add(new Point(x,y));
             return true;

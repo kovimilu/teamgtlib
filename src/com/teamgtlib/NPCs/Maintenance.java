@@ -21,7 +21,7 @@ public class Maintenance extends Worker {
         //x = rand.nextInt(10);
         //y = rand.nextInt(10);
         x = 2;
-        y = 1;
+        y = 2;
         testpath = new ArrayList<>();
         searchPath(Park.playAreaPanel[0][5],Park.playAreaPanel,testpath,(x-1),(y-1));
         for (int i = 0; i<Park.buildings.size(); i++){
@@ -29,12 +29,18 @@ public class Maintenance extends Worker {
                 ((Road) Park.buildings.get(i)).setVisited(false);
             }
         }
-        for (int i = testpath.size()-1; i != 0; i--)
-        {
-            //Point p = new Point(1 + i,1);
-            //testpath.add(p);
-            System.out.println("test: " + testpath.get(i));
+
+        if(testpath.size() > 0){
+            for (int i = testpath.size()-1; i > 0; i--)
+            {
+                //Point p = new Point(1 + i,1);
+                //testpath.add(p);
+                System.out.println("test: " + testpath.get(i));
+            }
+        }else{
+            System.out.println("nincs path");
         }
+
         Collections.reverse(testpath);
         wage = 1670;
         rides = new ArrayList<>();
