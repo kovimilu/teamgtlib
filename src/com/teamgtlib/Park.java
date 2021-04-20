@@ -15,7 +15,7 @@ public class Park implements Drawable {
     public static ArrayList<Building> buildings;
     public static Player player = null;
     public static ArrayList<NPC> npcs;
-    public static Building[][] playAreaPanel= new Building[14][20];
+    public static Building[][] playAreaPanel;
 
     /**
      * Create the park with one new player and building container.
@@ -23,6 +23,7 @@ public class Park implements Drawable {
      */
     public Park() throws IOException {
         buildings = new ArrayList<>();
+        playAreaPanel = new Building[14][20];
         npcs = new ArrayList<>();
         player = new Player();
         this.loadClassImage();
@@ -72,6 +73,8 @@ public class Park implements Drawable {
 
     }
 
+
+
     /**
      *
      * @param type Buildable
@@ -87,6 +90,10 @@ public class Park implements Drawable {
         String[] classNameSplit = getClass().toString().split("\\.", 0);
         Park.image = ImageIO.read(new FileInputStream(
                 "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
+    }
+
+    public Building[][] getPlayAreaPanel(){
+        return playAreaPanel;
     }
 
     public String buildingsToString() { // for debugging

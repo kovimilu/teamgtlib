@@ -2,6 +2,7 @@ package com.teamgtlib.NPCs;
 
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Building;
+import com.teamgtlib.buildings.Road;
 import com.teamgtlib.gui.GameFrame;
 
 import java.awt.*;
@@ -16,6 +17,56 @@ public abstract class NPC {
         ArrayList<Point> gridMap = new ArrayList<>();
         gridMap.add(obj.whereAmI());
         return gridMap;
+    }
+
+    public boolean searchPath(Building obj, Building[][] playAreaPanel, ArrayList<Point> path, int x, int y){
+        //path.add(obj.whereAmI()); //end point
+        System.out.println(playAreaPanel[y][x]);
+        if(playAreaPanel[y][x] == playAreaPanel[obj.getY()/50][obj.getX()/50]){
+            path.add(new Point(x,y));
+            return true;
+        }
+
+        if(playAreaPanel[y][x] instanceof Road){
+            if (((Road) playAreaPanel[y][x]).getVisited() == false){
+                ((Road) playAreaPanel[y][x]).setVisited(true);
+                try{
+                    int dx = -1;
+                    int dy = 0;
+                    if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
+                        path.add(new Point(x+1,y+1));
+                        return true;
+                    }
+
+                    dx = 1;
+                    dy = 0;
+                    if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
+                        path.add(new Point(x+1,y+1));
+                        return true;
+                    }
+
+                    dx = 0;
+                    dy = -1;
+                    if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
+                        path.add(new Point(x+1,y+1));
+                        return true;
+                    }
+
+                    dx = 0;
+                    dy = 1;
+                    if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
+                        path.add(new Point(x+1,y+1));
+
+                    }
+                 return true;
+                }catch (Exception e){
+                    //System.out.println(e);
+                }
+
+            }
+        }
+
+        return false;
     }
 
     public abstract void whatToDo();

@@ -68,6 +68,18 @@ public abstract class Building implements Drawable {
         return "res/Worker.png";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Building)) {
+            return false;
+        }
+        Building b = (Building) o;
+        return x == b.x && y == b.y;
+    }
+
     public int getX() {
         return x;
     }

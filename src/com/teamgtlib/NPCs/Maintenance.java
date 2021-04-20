@@ -1,14 +1,13 @@
 package com.teamgtlib.NPCs;
 
 import com.teamgtlib.Park;
-import com.teamgtlib.buildings.Building;
-import com.teamgtlib.buildings.BuildingState;
-import com.teamgtlib.buildings.Ride;
+import com.teamgtlib.buildings.*;
 import com.teamgtlib.gui.GameFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Timer;
 
@@ -21,14 +20,22 @@ public class Maintenance extends Worker {
     public Maintenance() {
         //x = rand.nextInt(10);
         //y = rand.nextInt(10);
-        x = 1;
+        x = 2;
         y = 1;
         testpath = new ArrayList<>();
-        for (int i = 0; i < 10; ++i)
-        {
-            Point p = new Point(1 + i,1);
-            testpath.add(p);
+        searchPath(Park.playAreaPanel[0][5],Park.playAreaPanel,testpath,(x-1),(y-1));
+        for (int i = 0; i<Park.buildings.size(); i++){
+            if(Park.buildings.get(i) instanceof Road){
+                ((Road) Park.buildings.get(i)).setVisited(false);
+            }
         }
+        for (int i = testpath.size()-1; i != 0; i--)
+        {
+            //Point p = new Point(1 + i,1);
+            //testpath.add(p);
+            System.out.println("test: " + testpath.get(i));
+        }
+        Collections.reverse(testpath);
         wage = 1670;
         rides = new ArrayList<>();
         getRides();

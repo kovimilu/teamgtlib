@@ -5,12 +5,14 @@ public class Road extends Building {
     private int y;
     public static int COST_PRICE = 1000;
     private int[] garbageLocations;
+    private boolean visited;
 
     public Road(int x, int y){
       super(x,y);
       width = 1;
       height = 1;
       price = COST_PRICE;
+      visited = false;
     }
 
     private void cleaned(){
@@ -30,5 +32,13 @@ public class Road extends Building {
     @Override
     public String getClassImagePath() {
         return "res/Road.png";
+    }
+
+    public void setVisited (boolean visited){
+        this.visited = visited;
+    }
+
+    public boolean getVisited(){
+        return this.visited;
     }
 }
