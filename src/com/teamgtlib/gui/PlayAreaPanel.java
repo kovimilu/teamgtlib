@@ -100,6 +100,7 @@ public class PlayAreaPanel extends JPanel {
                     park.preBuild(theUgliestSolutionICouldFind()).getHeight() * 50);
             //Building Area Market #END
             if(!GridUtils.isOnGridMap(GridUtils.gridConverter(prevPt))) {
+                GameFrame.SelectionState = SelectionType.NONE;
                 try {
                     doAllThingForNow((int) newPoint.getX(), (int) newPoint.getY());
                     // TODO maybe done? (did: prevPt -> newPoint)
@@ -108,7 +109,6 @@ public class PlayAreaPanel extends JPanel {
                     refreshExceptionLabelText(e.toString().split(":")[1]);
                 }
             }
-            GameFrame.SelectionState = SelectionType.NONE;
             refreshLabelText();
         }
         //draw buildings
