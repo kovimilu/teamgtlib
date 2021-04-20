@@ -42,7 +42,7 @@ public class Park implements Drawable {
      *         and the method adds the building to the container.
      * @throws GameException
      */
-    public Building build(int x, int y , Buildable type) throws GameException { /* returns whether the build succeeded */
+    public Building build(int x, int y , Buildable type, boolean updateBudget) throws GameException { /* returns whether the build succeeded */
         Building building = type.createObj(x,y);
         final int newBudget = player.getBudget() - building.getPrice();
         if (newBudget >= 0) {
@@ -56,7 +56,7 @@ public class Park implements Drawable {
                 }
             }
 
-            player.setBudget(newBudget);
+            if (updateBudget) player.setBudget(newBudget);
             buildings.add(building);
 
 
@@ -124,7 +124,7 @@ public class Park implements Drawable {
     private void initBuildHelper(int x, int y, Buildable type) {
         Building building = null;
         try {
-            building = build(GridUtils.gridToPX(x), GridUtils.gridToPX(y), type);
+            building = build(GridUtils.gridToPX(x), GridUtils.gridToPX(y), type, false);
         } catch (GameException exception) {
             exception.printStackTrace();
         }

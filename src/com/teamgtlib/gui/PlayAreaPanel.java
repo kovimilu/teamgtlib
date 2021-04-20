@@ -49,7 +49,7 @@ public class PlayAreaPanel extends JPanel {
     }
 
     private void doAllThingForNow(int x, int y) throws GameException {
-        park.build(x, y, theUgliestSolutionICouldFind());
+        park.build(x, y, theUgliestSolutionICouldFind(), true);
         System.out.println(park.buildingsToString()); // for debugging
     }
 
