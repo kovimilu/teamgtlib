@@ -24,8 +24,7 @@ public abstract class Building implements Drawable {
     Building(int x, int y) {
         this.x = x;
         this.y = y;
-        this.state = BuildingState.UNBUILT;
-        timer();
+        this.state = BuildingState.BUILT;
     }
 
     /**

@@ -33,8 +33,6 @@ public class Maintenance extends Worker {
         if(testpath.size() > 0){
             for (int i = testpath.size()-1; i > 0; i--)
             {
-                //Point p = new Point(1 + i,1);
-                //testpath.add(p);
                 System.out.println("test: " + testpath.get(i));
             }
         }else{

@@ -24,6 +24,7 @@ public class Ride extends Building {
     public Ride(int x, int y, RideType type) {
         super(x, y);
         this.type = type;
+        this.state = BuildingState.UNBUILT;
 
         switch (type) {
             case CAROUSEL -> {
@@ -62,6 +63,7 @@ public class Ride extends Building {
                 height = RideConstants.WATERSLIDE_HEIGHT;
             }
         }
+        timer();
     }
 
     public void start() {
