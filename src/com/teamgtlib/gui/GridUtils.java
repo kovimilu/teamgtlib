@@ -2,6 +2,9 @@ package com.teamgtlib.gui;
 
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Building;
+import com.teamgtlib.buildings.BuildingType;
+import com.teamgtlib.buildings.Ride;
+import com.teamgtlib.buildings.RideType;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -74,6 +77,23 @@ public class GridUtils {
             if(p.equals(point)) return true;
         }
         Building PREBUILT = Park.preBuild(PlayAreaPanel.theUgliestSolutionICouldFind());
+        int WIDTH = PREBUILT.getWidth();
+        int HEIGHT = PREBUILT.getHeight();
+        for (int i = 0; i < WIDTH; ++i) {
+            for (int j = 0; j < HEIGHT; ++j) {
+                Point gridPos = new Point((int)p.getX() + i, (int)p.getY() + j);
+                gridMap.add(gridPos);
+            }
+        }
+        return false;
+    }
+
+    static public boolean addGridMap(Point p, BuildingType type) {
+        for (Point point: gridMap) {
+            System.out.println(p + "" + point);
+            if(p.equals(point)) return true;
+        }
+        Building PREBUILT = Park.preBuild(type);
         int WIDTH = PREBUILT.getWidth();
         int HEIGHT = PREBUILT.getHeight();
         for (int i = 0; i < WIDTH; ++i) {
