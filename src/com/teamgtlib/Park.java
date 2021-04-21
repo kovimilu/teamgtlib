@@ -1,6 +1,7 @@
 package com.teamgtlib;
 
 import com.teamgtlib.NPCs.NPC;
+import com.teamgtlib.NPCs.Visitor;
 import com.teamgtlib.buildings.Buildable;
 import com.teamgtlib.buildings.Building;
 import com.teamgtlib.buildings.BuildingType;
@@ -31,6 +32,7 @@ public class Park implements Drawable {
         player = new Player();
         this.loadClassImage();
         initBuildings();
+        initVisitors();
     }
 
     /**
@@ -53,6 +55,8 @@ public class Park implements Drawable {
                         throw new GameException("Not an empty space!");
                     }
                     playAreaPanel[y / 50 + i][x / 50 + j] = building;
+                    System.out.printf("ParK.buidl: x:" + playAreaPanel[y / 50 + i][x / 50 + j].getX() +
+                            " y: " + playAreaPanel[y / 50 + i][x / 50 + j].getY() );
                 }
             }
 
@@ -73,8 +77,6 @@ public class Park implements Drawable {
         else {
             throw new GameException("Not enough budget!");
         }
-
-
     }
 
 
@@ -129,5 +131,9 @@ public class Park implements Drawable {
             exception.printStackTrace();
         }
         GridUtils.addGridMap(new Point(building.getX(), building.getY()), BuildingType.ROAD);
+    }
+
+    private void initVisitors() {
+        Visitor v = new Visitor();
     }
 }

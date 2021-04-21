@@ -31,7 +31,9 @@ public class Player {
         //TODO később
     }
 
-    public void changeBudgetBy(int budget) { this.budget += budget; }
+    public void changeBudgetBy(int budget) {
+        this.budget += budget;
+    }
 
     public int getBudget() {
         return budget;

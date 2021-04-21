@@ -122,8 +122,8 @@ public abstract class NPC {
         for (Point p : testpath) {
             GameFrame.bg.repaint();
             wait(500);
-            setX((int)p.getX()+1);
-            setY((int)p.getY()+1);
+            setX((int)p.getX());
+            setY((int)p.getY());
 
         }
     }
