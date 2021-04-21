@@ -3,6 +3,7 @@ package com.teamgtlib.NPCs;
 public class Cleaner extends Worker {
 
     public Cleaner() {
+        super(10,10);
         x = 1;
         y = 1;
         wage = 435;

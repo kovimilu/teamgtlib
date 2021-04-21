@@ -18,14 +18,15 @@ public class Maintenance extends Worker {
     Random rand = new Random();
 
     public Maintenance() {
+        super(10,10);
         x = 10;
         y = 14;
         testpath = new ArrayList<>();
-        pathFinding(Park.playAreaPanel[6][10],Park.playAreaPanel,testpath,(x-1),(y-1));
+        //pathFinding(Park.playAreaPanel[6][10],Park.playAreaPanel,testpath,(x-1),(y-1));
         wage = 1670;
         rides = new ArrayList<>();
         getRides();
-        timer(testpath);
+        timer();
     }
 
     private void getRides() {

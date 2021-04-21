@@ -4,106 +4,90 @@ import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Building;
 import com.teamgtlib.buildings.Road;
 import com.teamgtlib.gui.GameFrame;
+import com.teamgtlib.gui.GridUtils;
+import com.teamgtlib.gui.PlayAreaPanel;
+import com.teamgtlib.pathfinding.*;
 
 import java.awt.*;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Timer;
 
 public abstract class NPC {
     int x, y;
-    static public ArrayList<Point> gridMap2 = new ArrayList<>();
+    public List<Point_> path;
 
-    public ArrayList pathFinding(Building obj, Building[][] playAreaPanel, ArrayList<Point> path, int x, int y ) {
-        searchPath(obj, playAreaPanel, path, x, y);
-        for (int i = 0; i<Park.buildings.size(); i++){
-            if(Park.buildings.get(i) instanceof Road){
-                ((Road) Park.buildings.get(i)).setVisited(false);
+    public NPC(int x, int y) {
+        path = new ArrayList<>();
+        this.x = x;
+        this.y = y;
+        GameFrame.bg.repaint();
+        update();
+    }
+
+    public void update() {
+        whatToDo();
+        timer();
+        //updateTimer();
+    }
+
+    public void updateTimer() {
+        Timer t = new java.util.Timer();
+        t.schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
+                update();
+                GameFrame.bg.repaint();
+                t.cancel(); }
+        }, 500);
+    }
+
+    public List<Point_> pathfinding() {
+        int width = 20;
+        int height = 14;
+        boolean[][] tiles = new boolean[width][height];
+
+        // Fill it with values, false represents blocking tile
+        for (int x = 0; x < 5; x++)
+            for (int y = 0; y < 5; y++)
+                tiles[x][y] = false;
+
+        for(int i = 0; i < Park.buildings.size(); ++i) {
+            if(Park.buildings.get(i).toString().equals("Road")) {
+                System.out.printf("\nRoad(" + i + ") : x: " + (GridUtils.gridConverter(Park.buildings.get(i).getX()) + 1)
+                + ", y: " + (GridUtils.gridConverter(Park.buildings.get(i).getY())+ 1));
+                tiles[GridUtils.gridConverter(Park.buildings.get(i).getX())]
+                        [GridUtils.gridConverter(Park.buildings.get(i).getY())] = true;
             }
         }
 
-        //for debug
-        /*if(path.size() > 0){
-            for (int i = path.size()-1; i >= 0; i--)
-            {
-                System.out.println("test: " + path.get(i));
-            }
-        }else{
-            System.out.println("nincs path");
-        }*/
+        // Create a Grid instance
+        Grid grid = new Grid(width, height, tiles);
 
-        Collections.reverse(path);
+        // Create endPoint_s
+        Point_ start  = new Point_(10 - 1, 7 - 1);
+        Point_ target = new Point_(12 - 1, 11 - 1);
 
+        // Last argument will make this search be 4 directional
+        List<Point_> path = PathFinding.findPath(grid, start, target, false);
+
+        // Print the path
+        for (Point_ point : path) System.out.println(point);
         return path;
-
-
     }
-
-    public static boolean searchPath(Building obj, Building[][] playAreaPanel, ArrayList<Point> path, int x, int y){
-        if(playAreaPanel[y][x] == playAreaPanel[obj.getY()/50][obj.getX()/50]){
-            path.add(new Point(x,y));
-            return true;
-        }
-
-        if(playAreaPanel[y][x] instanceof Road){
-            if (((Road) playAreaPanel[y][x]).getVisited() == false){
-                ((Road) playAreaPanel[y][x]).setVisited(true);
-
-                    int dx = -1;
-                    int dy = 0;
-                    if(x+dx >= 0 && x+dx <= 20){
-                        if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                            path.add(new Point(x,y));
-                            return true;
-                        }
-                    }
-
-
-                    dx = 1;
-                    dy = 0;
-                    if(dx + x > 0 && dx + x <= 20)
-                    if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                        path.add(new Point(x,y));
-                        return true;
-                    }
-
-                    dx = 0;
-                    dy = -1;
-                    if(y+dy > 0 && y+dy <= 14){
-                        if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                            path.add(new Point(x,y));
-                            return true;
-                        }
-                    }
-
-
-                    dx = 0;
-                    dy = 1;
-                    if(y+dy > 0 && dy + y <= 14){
-                        if(searchPath(obj,playAreaPanel,path,x+dx, y+dy)){
-                            path.add(new Point(x,y));
-                            return true;
-                        }
-                    }
-
-            }
-        }
-
-        return false;
-    }
-
 
 
     public abstract void whatToDo();
 
     public void changeParkBudgetBy(int price) { Park.player.changeBudgetBy(price); }
 
-    public void timer(ArrayList<Point> testpath) {
+    public void timer() {
         Timer t = new java.util.Timer();
         t.schedule(new java.util.TimerTask() {
             @Override
             public void run() {
-                move(testpath);
+                move(path);
                 GameFrame.bg.repaint();
                 t.cancel(); }
         }, 500);
@@ -118,12 +102,16 @@ public abstract class NPC {
         }
     }
 
-    public void move(ArrayList<Point> testpath) {
-        for (Point p : testpath) {
+    public void move(List<Point_> path) {
+        //System.out.printf("MOVE LE FUT?: ");
+        int n = path.size();
+        //System.out.printf(String.valueOf(n));
+        for (int i = 0; i < n; ++i) {
+            System.out.printf("MOVE LE FUT?: ");
             GameFrame.bg.repaint();
             wait(500);
-            setX((int)p.getX());
-            setY((int)p.getY());
+            setX(path.get(i).getX() + 1);
+            setY(path.get(i).getY() + 1);
 
         }
     }

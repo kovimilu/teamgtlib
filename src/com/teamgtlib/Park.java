@@ -6,6 +6,7 @@ import com.teamgtlib.buildings.Buildable;
 import com.teamgtlib.buildings.Building;
 import com.teamgtlib.buildings.BuildingType;
 import com.teamgtlib.buildings.DecorType;
+import com.teamgtlib.gui.GameFrame;
 import com.teamgtlib.gui.GridUtils;
 
 import javax.imageio.ImageIO;
@@ -13,6 +14,7 @@ import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class Park implements Drawable {
     public static Image image;
@@ -32,9 +34,21 @@ public class Park implements Drawable {
         player = new Player();
         this.loadClassImage();
         initBuildings();
-        initVisitors();
+        //initVisitors();
+        timer();
     }
 
+
+    public void timer() {
+        Timer t = new java.util.Timer();
+        t.schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
+                initVisitors();
+                GameFrame.bg.repaint();
+                t.cancel(); }
+        }, 500);
+    }
     /**
      *
      * @param x int
@@ -107,20 +121,23 @@ public class Park implements Drawable {
 
     private void initBuildings() {
         initBuildHelper(10, 14, BuildingType.ROAD);
-        initBuildHelper(9, 13, DecorType.TREE);
-        initBuildHelper(11, 13, DecorType.TREE);
         initBuildHelper(10, 13, BuildingType.ROAD);
         initBuildHelper(10, 12, BuildingType.ROAD);
         initBuildHelper(10, 11, BuildingType.ROAD);
-        initBuildHelper(11, 11, BuildingType.ROAD);
-        initBuildHelper(12, 11, BuildingType.ROAD);
         initBuildHelper(10, 10, BuildingType.ROAD);
-        initBuildHelper(11, 10, DecorType.BENCH);
-        initBuildHelper(8, 10, BuildingType.SHOP);
-        initBuildHelper(13, 10, DecorType.BUSH);
         initBuildHelper(10, 9, BuildingType.ROAD);
         initBuildHelper(10, 8, BuildingType.ROAD);
         initBuildHelper(10, 7, BuildingType.ROAD);
+        initBuildHelper(11, 11, BuildingType.ROAD);
+        initBuildHelper(12, 11, BuildingType.ROAD);
+
+
+        initBuildHelper(11, 10, DecorType.BENCH);
+        initBuildHelper(8, 10, BuildingType.SHOP);
+        initBuildHelper(13, 10, DecorType.BUSH);
+        initBuildHelper(9, 13, DecorType.TREE);
+        initBuildHelper(11, 13, DecorType.TREE);
+
     }
 
     private void initBuildHelper(int x, int y, Buildable type) {
