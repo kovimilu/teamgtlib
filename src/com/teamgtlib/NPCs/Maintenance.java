@@ -41,12 +41,8 @@ public class Maintenance extends Worker {
     */
     @Override
     public void whatToDo() {
-        /*for (Ride ride : this.rides) {
-            if(ride.getDurability() >= 50 ) repair(ride);
-            break;
-        }
-
-         */
+        this.path = pathfinding(this.x,this.y,12,11);
+        timer();
     }
 
     public void repair(Building obj) {
