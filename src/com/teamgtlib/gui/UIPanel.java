@@ -119,13 +119,13 @@ public class UIPanel extends JPanel {
                 + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
         add(buttonHM);
 
-        JButton buttonFW = new JButton();
-        buttonFW.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
-        buttonFW.setMargin(new Insets(0, 0, 0, 0));
-        buttonFW.setText("<html>" + "Fire:" + "<br>"
+        JButton buttonFM = new JButton();
+        buttonFM.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonFM.setMargin(new Insets(0, 0, 0, 0));
+        buttonFM.setText("<html>" + "Fire:" + "<br>"
                 + str1 + "<br>"
                 + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
-        add(buttonFW);
+        add(buttonFM);
 
         JButton buttonDemolish = new JButton();
         buttonDemolish.setPreferredSize(new Dimension(squareButtonsSize * 3,squareButtonsSize));
@@ -136,7 +136,9 @@ public class UIPanel extends JPanel {
             button.addActionListener(buttonArrayActionListener);
         }
         buttonHM.addActionListener(HireMaintenance);
+        buttonFM.addActionListener(FireMaintenance);
         buttonHC.addActionListener(HireCleaner);
+        buttonFC.addActionListener(FireCleaner);
 
         buttonDemolish.addMouseListener(isReleased);
     }
@@ -171,11 +173,30 @@ public class UIPanel extends JPanel {
         }
     };
 
+    private final ActionListener FireMaintenance = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Park.player.fireMaintenance();
+            GameFrame.bg.repaint();
+            PlayAreaPanel.refreshLabelText();
+        }
+    };
+
     private final ActionListener HireCleaner = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             Park.player.hireCleaner();
             GameFrame.bg.repaint();
+            PlayAreaPanel.refreshLabelText();
+        }
+    };
+
+    private final ActionListener FireCleaner = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Park.player.fireCleaner();
+            GameFrame.bg.repaint();
+            PlayAreaPanel.refreshLabelText();
         }
     };
 

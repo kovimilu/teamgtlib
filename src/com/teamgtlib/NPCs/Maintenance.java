@@ -12,23 +12,24 @@ import java.util.Random;
 import java.util.Timer;
 
 public class Maintenance extends Worker {
-    public static ArrayList<Ride> rides;
-    public ArrayList<Point> testpath;
+    //public static ArrayList<Ride> rides;
+    //public ArrayList<Point> testpath;
 
     Random rand = new Random();
 
     public Maintenance() {
-        super(10,10);
+        super(10,13);
         x = 10;
-        y = 14;
-        testpath = new ArrayList<>();
+        y = 13;
+
         //pathFinding(Park.playAreaPanel[6][10],Park.playAreaPanel,testpath,(x-1),(y-1));
         wage = 1670;
-        rides = new ArrayList<>();
-        getRides();
-        timer();
+        //rides = new ArrayList<>();
+        Park.npcs.add(this);
+        //getRides();
+        //timer();
     }
-
+    /*
     private void getRides() {
         for (Building building : Park.buildings) {
             String[] buildingString = building.getClassImagePath().split(" ",0);
@@ -37,13 +38,15 @@ public class Maintenance extends Worker {
             }
         }
     }
-
+    */
     @Override
     public void whatToDo() {
-        for (Ride ride : this.rides) {
+        /*for (Ride ride : this.rides) {
             if(ride.getDurability() >= 50 ) repair(ride);
             break;
         }
+
+         */
     }
 
     public void repair(Building obj) {

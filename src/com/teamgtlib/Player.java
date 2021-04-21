@@ -20,11 +20,30 @@ public class Player {
 
     public void hireCleaner() {
         Cleaner c = new Cleaner();
-        Park.npcs.add(c);
+        workerCount++;
     }
 
-    public void fireWorker(){
-        //TODO később
+    public void fireMaintenance(){
+        int n = Park.npcs.size();
+        System.out.printf(String.valueOf(n));
+        for (int i = 0; i < workerCount; ++i)
+        {
+            System.out.printf(Park.npcs.get(i).getClassString());
+            if(Park.npcs.get(i).getClassString().equals("Maintenance")) {
+                Park.npcs.remove(Park.npcs.get(i));
+                System.out.printf("asd");
+
+            }
+            break;
+        }
+    }
+
+    public void fireCleaner(){
+        int n = Park.npcs.size();
+        for (int i = 0; i < n; ++i){
+            if(Park.npcs.get(i).getClassString().equals("Cleaner"))Park.npcs.remove(Park.npcs.get(i));
+            break;
+        }
     }
 
     public void replaceWorker(){

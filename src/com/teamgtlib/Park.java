@@ -152,7 +152,6 @@ public class Park implements Drawable {
 
     private void initVisitors() {
         Visitor v = new Visitor();
-
         //Visitor v1 = new Visitor();
         //v1.update();
     }

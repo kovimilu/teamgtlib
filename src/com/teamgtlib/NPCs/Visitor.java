@@ -18,6 +18,7 @@ public class Visitor extends NPC {
         //mood = rand.nextInt(30) + 45; //45-75
         //this.mood = 30;
         hasGarbage = false;
+        Park.player.setVisitorCount(Park.player.getWorkerCount() + 1);
         Park.npcs.add(this);
 
     }

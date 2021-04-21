@@ -26,6 +26,7 @@ public abstract class NPC {
         this.x = x;
         this.y = y;
         GameFrame.bg.repaint();
+        PlayAreaPanel.refreshLabelText();;
         update();
     }
 
