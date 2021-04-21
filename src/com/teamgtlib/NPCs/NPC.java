@@ -49,6 +49,14 @@ public abstract class NPC {
         }, path.size() * 550);
     }
 
+    /**
+     *
+     * @param sx starting x
+     * @param sy starting y
+     * @param fx finish x
+     * @param fy finish y
+     * @return path List, containing the the Points to the destination.
+     */
     public List<Point_> pathfinding(int sx, int sy, int fx, int fy) {
         int width = 20;
         int height = 14;
