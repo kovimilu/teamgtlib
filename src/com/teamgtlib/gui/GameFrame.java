@@ -41,7 +41,9 @@ public class GameFrame extends JFrame {
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                final int confirmed = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the game?", "Exit confirmation", JOptionPane.YES_NO_OPTION);
+                final int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Are you sure you want to exit the game?", "Exit confirmation",
+                        JOptionPane.YES_NO_OPTION);
                 if (confirmed == JOptionPane.YES_OPTION) dispose();
             }
         });

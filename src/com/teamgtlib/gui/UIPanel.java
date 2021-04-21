@@ -210,7 +210,7 @@ public class UIPanel extends JPanel {
         // GameFrame.DemolishButtonIsPressedOnce = false; // done in PlayAreaPanel's ClickListener
         System.out.println("NOW FALSE");
         GameFrame.bg.repaint(); // can be bg.repaint() as well with static import
-        System.out.println(Park.buildings.toString());
+        //System.out.println(Park.buildings.toString());
     }
 
     public static void demolishFromMatrix(Point newPoint){

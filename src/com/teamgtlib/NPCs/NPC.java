@@ -16,7 +16,10 @@ import java.util.Timer;
 
 public abstract class NPC {
     int x, y;
+    int mood = 50; // TODO maybe add default value
+    Boolean currentlyMoving = false;
     public List<Point_> path;
+
 
     public NPC(int x, int y) {
         path = new ArrayList<>();
@@ -28,8 +31,11 @@ public abstract class NPC {
 
     public void update() {
         whatToDo();
-        timer();
-        //updateTimer();
+        //update();
+        //timer();
+        if(!currentlyMoving && Park.npcs.contains(this)) {
+            updateTimer();
+        }
     }
 
     public void updateTimer() {
@@ -40,10 +46,10 @@ public abstract class NPC {
                 update();
                 GameFrame.bg.repaint();
                 t.cancel(); }
-        }, 500);
+        }, path.size() * 550);
     }
 
-    public List<Point_> pathfinding() {
+    public List<Point_> pathfinding(int sx, int sy, int fx, int fy) {
         int width = 20;
         int height = 14;
         boolean[][] tiles = new boolean[width][height];
@@ -55,8 +61,8 @@ public abstract class NPC {
 
         for(int i = 0; i < Park.buildings.size(); ++i) {
             if(Park.buildings.get(i).toString().equals("Road")) {
-                System.out.printf("\nRoad(" + i + ") : x: " + (GridUtils.gridConverter(Park.buildings.get(i).getX()) + 1)
-                + ", y: " + (GridUtils.gridConverter(Park.buildings.get(i).getY())+ 1));
+                //System.out.printf("\nRoad(" + i + ") : x: " + (GridUtils.gridConverter(Park.buildings.get(i).getX()) + 1)
+                //+ ", y: " + (GridUtils.gridConverter(Park.buildings.get(i).getY())+ 1));
                 tiles[GridUtils.gridConverter(Park.buildings.get(i).getX())]
                         [GridUtils.gridConverter(Park.buildings.get(i).getY())] = true;
             }
@@ -66,19 +72,27 @@ public abstract class NPC {
         Grid grid = new Grid(width, height, tiles);
 
         // Create endPoint_s
-        Point_ start  = new Point_(10 - 1, 7 - 1);
-        Point_ target = new Point_(12 - 1, 11 - 1);
+        Point_ start  = new Point_(sx - 1, sy - 1);
+        Point_ target = new Point_(fx - 1, fy - 1);
 
         // Last argument will make this search be 4 directional
         List<Point_> path = PathFinding.findPath(grid, start, target, false);
 
         // Print the path
-        for (Point_ point : path) System.out.println(point);
+        //for (Point_ point : path) System.out.println(point);
         return path;
     }
 
 
     public abstract void whatToDo();
+
+    void leave() {
+        wait(500);
+        setX(0);
+        setY(0);
+        GameFrame.bg.repaint();
+        Park.npcs.remove(this);
+    }
 
     public void changeParkBudgetBy(int price) { Park.player.changeBudgetBy(price); }
 
@@ -103,17 +117,14 @@ public abstract class NPC {
     }
 
     public void move(List<Point_> path) {
-        //System.out.printf("MOVE LE FUT?: ");
         int n = path.size();
-        //System.out.printf(String.valueOf(n));
         for (int i = 0; i < n; ++i) {
-            System.out.printf("MOVE LE FUT?: ");
             GameFrame.bg.repaint();
             wait(500);
             setX(path.get(i).getX() + 1);
             setY(path.get(i).getY() + 1);
-
         }
+        currentlyMoving = false;
     }
 
     public int getX() {

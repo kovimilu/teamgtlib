@@ -69,8 +69,8 @@ public class Park implements Drawable {
                         throw new GameException("Not an empty space!");
                     }
                     playAreaPanel[y / 50 + i][x / 50 + j] = building;
-                    System.out.printf("ParK.buidl: x:" + playAreaPanel[y / 50 + i][x / 50 + j].getX() +
-                            " y: " + playAreaPanel[y / 50 + i][x / 50 + j].getY() );
+                    //System.out.printf("ParK.buidl: x:" + playAreaPanel[y / 50 + i][x / 50 + j].getX() +
+                      //      " y: " + playAreaPanel[y / 50 + i][x / 50 + j].getY() );
                 }
             }
 
@@ -152,5 +152,8 @@ public class Park implements Drawable {
 
     private void initVisitors() {
         Visitor v = new Visitor();
+
+        //Visitor v1 = new Visitor();
+        //v1.update();
     }
 }
