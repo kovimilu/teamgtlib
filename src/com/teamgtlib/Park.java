@@ -2,10 +2,7 @@ package com.teamgtlib;
 
 import com.teamgtlib.NPCs.NPC;
 import com.teamgtlib.NPCs.Visitor;
-import com.teamgtlib.buildings.Buildable;
-import com.teamgtlib.buildings.Building;
-import com.teamgtlib.buildings.BuildingType;
-import com.teamgtlib.buildings.DecorType;
+import com.teamgtlib.buildings.*;
 import com.teamgtlib.gui.GameFrame;
 import com.teamgtlib.gui.GridUtils;
 
@@ -134,6 +131,8 @@ public class Park implements Drawable {
         initBuildHelper(9, 9, BuildingType.ROAD);
         initBuildHelper(8, 9, BuildingType.ROAD);
         initBuildHelper(8, 8, BuildingType.BIN);
+
+        initBuildHelper(11, 5, RideType.CASTLE);
 
         initBuildHelper(11, 10, DecorType.BENCH);
         initBuildHelper(8, 10, BuildingType.SHOP);

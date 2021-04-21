@@ -1,6 +1,7 @@
 package com.teamgtlib.NPCs;
 
 import com.teamgtlib.Park;
+import com.teamgtlib.Player;
 import com.teamgtlib.buildings.*;
 import com.teamgtlib.gui.GameFrame;
 
@@ -26,6 +27,7 @@ public class Maintenance extends Worker {
         wage = 1670;
         //rides = new ArrayList<>();
         Park.npcs.add(this);
+        Park.player.changeBudgetBy(-wage);
         //getRides();
         //timer();
     }

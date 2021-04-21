@@ -9,6 +9,7 @@ public class Cleaner extends Worker {
         x = 10;
         y = 13;
         wage = 435;
+        Park.player.changeBudgetBy(-wage);
         Park.npcs.add(this);
     }
 
