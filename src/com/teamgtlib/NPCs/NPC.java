@@ -94,13 +94,14 @@ public abstract class NPC {
 
     public abstract void whatToDo();
 
-    void leave() {
+    public void leave() {
         wait(500);
         setX(0);
         setY(0);
+        wait(100);
         GameFrame.bg.repaint();
-        t.cancel();
         Park.npcs.remove(this);
+        t.cancel();
     }
 
     public void changeParkBudgetBy(int price) { Park.player.changeBudgetBy(price); }

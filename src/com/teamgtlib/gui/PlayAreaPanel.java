@@ -92,6 +92,7 @@ public class PlayAreaPanel extends JPanel {
         if(GameFrame.SelectionState == SelectionType.BUILD) {
             Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
             //TODO
+            /*
             //Building Area Market
             g.setColor(Color.green);
             Point newCurrentMousePt = new Point(GridUtils.gridToPX(GridUtils.gridConverter(CurrentMousePt)));
@@ -99,6 +100,7 @@ public class PlayAreaPanel extends JPanel {
                     park.preBuild(theUgliestSolutionICouldFind()).getWidth() * 50,
                     park.preBuild(theUgliestSolutionICouldFind()).getHeight() * 50);
             //Building Area Market #END
+            */
             if(!GridUtils.isOnGridMap(GridUtils.gridConverter(prevPt))) {
                 GameFrame.SelectionState = SelectionType.NONE;
                 try {

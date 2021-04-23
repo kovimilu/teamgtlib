@@ -73,7 +73,7 @@ public class GridUtils {
      */
     static public boolean isOnGridMap(Point p) {
         for (Point point: gridMap) {
-            System.out.println(p + "" + point);
+            //System.out.println(p + "" + point);
             if(p.equals(point)) return true;
         }
         Building PREBUILT = Park.preBuild(PlayAreaPanel.theUgliestSolutionICouldFind());
@@ -90,7 +90,7 @@ public class GridUtils {
 
     static public boolean addGridMap(Point p, BuildingType type) {
         for (Point point: gridMap) {
-            System.out.println(p + "" + point);
+            //System.out.println(p + "" + point);
             if(p.equals(point)) return true;
         }
         Building PREBUILT = Park.preBuild(type);

@@ -12,7 +12,8 @@ public class StatusPanel extends JPanel{
 
     JLabel clickLabel = new JLabel( "",SwingConstants.LEFT);
     JLabel exceptionLabel = new JLabel( "",SwingConstants.RIGHT);
-    JLabel countLabel = new JLabel( "Workers: "+ Park.player.getWorkerCount() + " | " + "Visitors: ...",SwingConstants.CENTER);
+    JLabel countLabel = new JLabel( "Workers: "+ Park.player.getWorkerCount() + " | " + "Visitors: "
+            + Park.player.getVisitorCount(),SwingConstants.CENTER);
     JLabel budgetLabel = new JLabel( "$"+ GameFrame.bg.park.player.getBudget(), SwingConstants.RIGHT);
 
     public StatusPanel(){
