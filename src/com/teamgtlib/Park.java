@@ -18,7 +18,6 @@ public class Park implements Drawable {
     public static ArrayList<Building> buildings;
     public static Player player = null;
     public static ArrayList<NPC> npcs;
-    public static Building[][] playAreaPanel;
 
     /**
      * Create the park with one new player and building container.
@@ -26,7 +25,6 @@ public class Park implements Drawable {
      */
     public Park() throws IOException {
         buildings = new ArrayList<>();
-        playAreaPanel = new Building[14][20];
         npcs = new ArrayList<>();
         player = new Player();
         this.loadClassImage();
@@ -60,28 +58,8 @@ public class Park implements Drawable {
         final int newBudget = player.getBudget() - building.getPrice();
         if (newBudget >= 0) {
 
-            for (int i = 0; i<building.getHeight(); i++) {
-                for (int j = 0; j < building.getWidth(); j++) {
-                    if (playAreaPanel[y / 50 + i][x / 50 + j] != null) {
-                        throw new GameException("Not an empty space!");
-                    }
-                    playAreaPanel[y / 50 + i][x / 50 + j] = building;
-                    //System.out.printf("ParK.buidl: x:" + playAreaPanel[y / 50 + i][x / 50 + j].getX() +
-                      //      " y: " + playAreaPanel[y / 50 + i][x / 50 + j].getY() );
-                }
-            }
-
             if (updateBudget) player.setBudget(newBudget);
             buildings.add(building);
-
-
-            //map of the playAreaPanel (for debug)
-            /*for(int i = 0; i<14; i++){
-                for(int j = 0; j<20; j++){
-                    System.out.print(playAreaPanel[i][j] + " ");
-                }
-                System.out.println();
-            }*/
 
             return building;
         }
@@ -106,10 +84,6 @@ public class Park implements Drawable {
         String[] classNameSplit = getClass().toString().split("\\.", 0);
         Park.image = ImageIO.read(new FileInputStream(
                 "res/" + classNameSplit[classNameSplit.length - 1] + ".png"));
-    }
-
-    public Building[][] getPlayAreaPanel(){
-        return playAreaPanel;
     }
 
     public String buildingsToString() { // for debugging

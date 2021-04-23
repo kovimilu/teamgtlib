@@ -226,27 +226,12 @@ public class UIPanel extends JPanel {
             }
         }
 
-        demolishFromMatrix(newPoint);
-
         // GameFrame.DemolishButtonIsPressedOnce = false; // done in PlayAreaPanel's ClickListener
         System.out.println("NOW FALSE");
         GameFrame.bg.repaint(); // can be bg.repaint() as well with static import
         //System.out.println(Park.buildings.toString());
     }
 
-    public static void demolishFromMatrix(Point newPoint){
-        for (int i = 0; i<14; i++) {
-            for (int j = 0; j < 20; j++) {
-                if(Park.playAreaPanel[i][j] != null){
-                    if (Park.playAreaPanel[i][j].getX() == newPoint.x && Park.playAreaPanel[i][j].getY() == newPoint.y) {
-                        Park.playAreaPanel[i][j] = null;
-                        //break;
-                    }
-                }
-
-            }
-        }
-    }
 
     @Override
     public void paintComponent(Graphics g)
