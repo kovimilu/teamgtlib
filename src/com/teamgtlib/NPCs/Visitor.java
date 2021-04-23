@@ -18,34 +18,48 @@ public class Visitor extends NPC {
         //mood = rand.nextInt(30) + 45; //45-75
         //this.mood = 30;
         hasGarbage = false;
+        setVisitorCountAndRefreshLabelText();
+        Park.npcs.add(this);
+    }
+
+    private void setVisitorCountAndRefreshLabelText() {
         Park.player.setVisitorCount(Park.player.getVisitorCount() + 1);
         GameFrame.bg.refreshLabelText();
-        Park.npcs.add(this);
     }
 
     @Override
     public void whatToDo() {
 
-        if(this.mood < 20 && !currentlyMoving)
-        {
+        if(this.mood < 20 && !currentlyMoving) {
             //this.currentlyMoving = true;
-            this.path = pathfinding(this.x,this.y,10,13);
+            this.path = pathfinding(this.x,this.y,10,14);
             //timer();
+            currentlyMoving = true;
             move(path);
             leave();
+            setVisitorCountAndRefreshLabelText();
             //GameFrame.bg.repaint();
         }
-        if(this.mood > 20 && !currentlyMoving)
-        {
+        if(this.mood >= 50 && !currentlyMoving) {
             //this.currentlyMoving = true;
             this.path = pathfinding(this.x,this.y,10,7);
-
-            //this.mood -= 50;
+            this.mood -= 5;
             //timer();
+            //ha van szemét
+
+            currentlyMoving = true;
             move(path);
         }
-        //random cuccuk pathfindig rando mridehoz vagy bolthoz vagy haza megy
+        if(this.mood >= 45 && !currentlyMoving) {
+            this.path = pathfinding(this.x,this.y,8,9);
+            this.mood -= 50;
+            currentlyMoving = true;
+            move(path);
+            wait(100);
 
+        }
+
+        //random cuccuk pathfindig rando mridehoz vagy bolthoz vagy haza megy
         else System.out.printf("qwe");
     }
 

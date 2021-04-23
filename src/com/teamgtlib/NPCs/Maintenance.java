@@ -45,7 +45,12 @@ public class Maintenance extends Worker {
     public void whatToDo() {
         this.path = pathfinding(this.x,this.y,12,11);
         //timer();
+        //wage();
         move(path);
+    }
+
+    private void wage() {
+        Park.player.changeBudgetBy(-wage);
     }
 
     public void repair(Building obj) {

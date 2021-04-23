@@ -4,7 +4,7 @@ public class Road extends Building {
     private int x;
     private int y;
     public static int COST_PRICE = 1000;
-    private int[] garbageLocations;
+    private boolean garbageLocations = false;
     private boolean visited;
 
     public Road(int x, int y){
@@ -13,6 +13,10 @@ public class Road extends Building {
       height = 1;
       price = COST_PRICE;
       visited = false;
+    }
+
+    public void setgarbageLocations() {
+        garbageLocations = true;
     }
 
     private void cleaned(){
