@@ -44,7 +44,8 @@ public class Maintenance extends Worker {
     @Override
     public void whatToDo() {
         this.path = pathfinding(this.x,this.y,12,11);
-        timer();
+        //timer();
+        move(path);
     }
 
     public void repair(Building obj) {

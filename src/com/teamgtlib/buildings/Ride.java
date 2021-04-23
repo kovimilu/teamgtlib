@@ -1,6 +1,7 @@
 package com.teamgtlib.buildings;
 
 import com.teamgtlib.NPCs.Visitor;
+import com.teamgtlib.gui.GameFrame;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,6 +64,19 @@ public class Ride extends Building {
             }
         }
         timer();
+    }
+
+    public void timer(){
+        Timer t = new java.util.Timer();
+        t.schedule(new java.util.TimerTask() {
+                       @Override
+                       public void run() {
+                           setState(BuildingState.BUILT);
+                           GameFrame.bg.repaint();
+                           t.cancel();
+                       }
+                   },5000
+        );
     }
 
     public void start() {

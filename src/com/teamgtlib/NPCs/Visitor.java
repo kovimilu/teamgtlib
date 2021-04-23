@@ -30,7 +30,8 @@ public class Visitor extends NPC {
         {
             //this.currentlyMoving = true;
             this.path = pathfinding(this.x,this.y,10,13);
-            timer();
+            //timer();
+            move(path);
             leave();
             //GameFrame.bg.repaint();
         }
@@ -39,8 +40,9 @@ public class Visitor extends NPC {
             //this.currentlyMoving = true;
             this.path = pathfinding(this.x,this.y,10,7);
 
-            this.mood -= 50;
-            timer();
+            //this.mood -= 50;
+            //timer();
+            move(path);
         }
         //random cuccuk pathfindig rando mridehoz vagy bolthoz vagy haza megy
 

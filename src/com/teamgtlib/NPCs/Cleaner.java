@@ -16,7 +16,8 @@ public class Cleaner extends Worker {
     @Override
     public void whatToDo() {
         this.path = pathfinding(this.x,this.y,8,9);
-        timer();
+        //timer();
+        move(path);
     }
 
     public void clean() {

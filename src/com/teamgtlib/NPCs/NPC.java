@@ -27,31 +27,30 @@ public abstract class NPC {
         this.y = y;
         GameFrame.bg.repaint();
         PlayAreaPanel.refreshLabelText();;
-        update();
+        updateTimer();
     }
 
     public void update() {
         whatToDo();
         //update();
         //timer();
-        if(!currentlyMoving && Park.npcs.contains(this)) {
-            updateTimer();
-        }
+        //if(!currentlyMoving && Park.npcs.contains(this)) {
+        //    updateTimer();
+        //}
     }
 
+    Timer t = new java.util.Timer();
     public void updateTimer() {
-        Timer t = new java.util.Timer();
-        t.schedule(new java.util.TimerTask() {
+        t.scheduleAtFixedRate(new java.util.TimerTask() {
             @Override
             public void run() {
-                update();
+                whatToDo();
                 GameFrame.bg.repaint();
-                t.cancel(); }
-        }, path.size() * 550);
+            }
+        }, 0, 5000);
     }
 
     /**
-     *
      * @param sx starting x
      * @param sy starting y
      * @param fx finish x
@@ -100,6 +99,7 @@ public abstract class NPC {
         setX(0);
         setY(0);
         GameFrame.bg.repaint();
+        t.cancel();
         Park.npcs.remove(this);
     }
 

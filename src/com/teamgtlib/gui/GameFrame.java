@@ -1,5 +1,7 @@
 package com.teamgtlib.gui;
 
+import com.teamgtlib.Park;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -44,7 +46,7 @@ public class GameFrame extends JFrame {
                 final int confirmed = JOptionPane.showConfirmDialog(null,
                         "Are you sure you want to exit the game?", "Exit confirmation",
                         JOptionPane.YES_NO_OPTION);
-                if (confirmed == JOptionPane.YES_OPTION) dispose();
+                if (confirmed == JOptionPane.YES_OPTION) System.exit(0);
             }
         });
 

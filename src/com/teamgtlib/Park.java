@@ -35,17 +35,17 @@ public class Park implements Drawable {
         timer();
     }
 
-
+    Timer t = new java.util.Timer();
     public void timer() {
-        Timer t = new java.util.Timer();
-        t.schedule(new java.util.TimerTask() {
+        t.scheduleAtFixedRate(new java.util.TimerTask() {
             @Override
             public void run() {
                 initVisitors();
                 GameFrame.bg.repaint();
-                t.cancel(); }
-        }, 500);
+            }
+        }, 5000, 3000);
     }
+
     /**
      *
      * @param x int
