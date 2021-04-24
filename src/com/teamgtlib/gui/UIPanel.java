@@ -1,6 +1,5 @@
 package com.teamgtlib.gui;
 
-import com.teamgtlib.GameException;
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.*;
 
@@ -131,6 +130,13 @@ public class UIPanel extends JPanel {
         buttonDemolish.setPreferredSize(new Dimension(squareButtonsSize * 3,squareButtonsSize));
         buttonDemolish.setText("Select Building To Demolish");
         add(buttonDemolish);
+
+        JSlider priceSlider = new JSlider(0,10,5);
+        priceSlider.setMajorTickSpacing(5);
+        priceSlider.setMinorTickSpacing(1);
+        priceSlider.setPaintTicks(true);
+        priceSlider.setPaintLabels(true);
+        add(priceSlider);
 
         for (JButton button : buttons) {
             button.addActionListener(buttonArrayActionListener);
