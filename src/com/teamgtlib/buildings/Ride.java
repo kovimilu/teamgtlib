@@ -32,6 +32,8 @@ public class Ride extends Building {
         super(x, y);
         this.type = type;
         usageCost = UIPanel.getPriceSliderValue();
+        if (usageCost == 0) usageCost = 5; // TODO maybe set later
+        System.out.println("USAGECOST:" + usageCost);
 
         switch (type) {
             case CAROUSEL -> {
@@ -97,7 +99,7 @@ public class Ride extends Building {
             //System.out.printf(String.valueOf(boardingPassenger));
 
             //boardingPassenger.buyTicket(usageCost);
-            System.out.printf(String.valueOf(Park.player.getBudget()));
+            System.out.print(Park.player.getBudget());
             currentPassengers.add(boardingPassenger);
         }
         startRide();
