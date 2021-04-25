@@ -11,7 +11,7 @@ import java.awt.event.*;
  * Makes the UI Buttons and connexts them with their ActionListeners
  */
 public class UIPanel extends JPanel {
-    private int priceSliderValue;
+    private static int priceSliderValue;
     public UIPanel() {
         final int squareButtonsSize = 85;
         setPreferredSize(new Dimension((squareButtonsSize + 5) * 3 + 10, 700));
@@ -240,7 +240,7 @@ public class UIPanel extends JPanel {
         //System.out.println(Park.buildings.toString());
     }
 
-    public int getPriceSliderValue() { return priceSliderValue; }
+    public static int getPriceSliderValue() { return priceSliderValue; }
 
     @Override
     public void paintComponent(Graphics g)

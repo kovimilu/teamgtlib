@@ -2,6 +2,7 @@ package com.teamgtlib.buildings;
 
 import com.teamgtlib.NPCs.Visitor;
 import com.teamgtlib.gui.GameFrame;
+import com.teamgtlib.gui.UIPanel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +15,7 @@ public class Ride extends Building {
     private ArrayList<Visitor> currentPassengers;
     private final RideType type;
     private ArrayList<Visitor> queue; // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
+    private int usageCost;
 
     /**
      *
@@ -25,6 +27,7 @@ public class Ride extends Building {
     public Ride(int x, int y, RideType type) {
         super(x, y);
         this.type = type;
+        usageCost = UIPanel.getPriceSliderValue();
 
         switch (type) {
             case CAROUSEL -> {
@@ -83,7 +86,7 @@ public class Ride extends Building {
         // queue-ból szed ki legfeljebb MAXCAP-nyi Visitor-t, majd meghívja a startRide()-ot
         for (int i = 0; i < MAXCAP; i++) {
             Visitor boardingPassenger = queue.remove(i);
-            boardingPassenger.buyTicket(price);
+            boardingPassenger.buyTicket(usageCost);
             currentPassengers.add(boardingPassenger);
         }
         startRide();
