@@ -138,6 +138,8 @@ public class UIPanel extends JPanel {
         priceSlider.setPaintTicks(true);
         priceSlider.setPaintLabels(true);
         add(priceSlider);
+        priceSliderValue = priceSlider.getValue();
+        System.out.println("PRICESLIDERVALUE:" + priceSliderValue);
         priceSlider.addChangeListener(e -> priceSliderValue = priceSlider.getValue());
 
         for (JButton button : buttons) {
