@@ -11,6 +11,7 @@ import java.awt.event.*;
  * Makes the UI Buttons and connexts them with their ActionListeners
  */
 public class UIPanel extends JPanel {
+    private int priceSliderValue;
     public UIPanel() {
         final int squareButtonsSize = 85;
         setPreferredSize(new Dimension((squareButtonsSize + 5) * 3 + 10, 700));
@@ -137,6 +138,7 @@ public class UIPanel extends JPanel {
         priceSlider.setPaintTicks(true);
         priceSlider.setPaintLabels(true);
         add(priceSlider);
+        priceSlider.addChangeListener(e -> priceSliderValue = priceSlider.getValue());
 
         for (JButton button : buttons) {
             button.addActionListener(buttonArrayActionListener);
@@ -238,6 +240,7 @@ public class UIPanel extends JPanel {
         //System.out.println(Park.buildings.toString());
     }
 
+    public int getPriceSliderValue() { return priceSliderValue; }
 
     @Override
     public void paintComponent(Graphics g)
