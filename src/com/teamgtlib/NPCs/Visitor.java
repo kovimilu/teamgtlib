@@ -1,5 +1,6 @@
 package com.teamgtlib.NPCs;
 import com.teamgtlib.Park;
+import com.teamgtlib.buildings.Ride;
 import com.teamgtlib.gui.GameFrame;
 
 import java.awt.*;
@@ -69,6 +70,7 @@ public class Visitor extends NPC {
 
 
         String Choice = random.get(rand.nextInt(10));
+
         System.out.printf(Choice + "\n");
 
 
@@ -80,7 +82,8 @@ public class Visitor extends NPC {
             currentlyMoving = true;
             move(path);
             leave();
-            setVisitorCountAndRefreshLabelText();
+            Park.player.setVisitorCount(Park.player.getVisitorCount() - 1);
+            GameFrame.bg.refreshLabelText();
             //GameFrame.bg.repaint();
         }
         if(Choice.equals("IDLE") && !currentlyMoving) {
@@ -90,15 +93,18 @@ public class Visitor extends NPC {
             wait(1000);
             move(path);
         }
-        if(Choice.equals("RIDE")&& !currentlyMoving) {
+        if(Choice.equals("RIDE") && !currentlyMoving) {
             //this.currentlyMoving = true;
             this.path = pathfinding(this.x,this.y,10,7);
+            Ride r = (Ride) Park.buildings.get(13);;
             this.mood -= 5;
             //timer();
             //ha van szemét
 
             currentlyMoving = true;
             move(path);
+            r.addToQueue(this);
+            r.start();
         }
         if(Choice.equals("EAT") && !currentlyMoving) {
             //TODO random shop + shop metódusok hívása

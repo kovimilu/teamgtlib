@@ -31,6 +31,7 @@ public class Park implements Drawable {
         initBuildings();
         //initVisitors();
         timer();
+        //System.out.printf(buildingsToString());
     }
 
     Timer t = new java.util.Timer();
@@ -41,7 +42,7 @@ public class Park implements Drawable {
                 initVisitors();
                 GameFrame.bg.repaint();
             }
-        }, 5000, 300000);
+        }, 5000, 5000);
     }
 
     /**
@@ -106,7 +107,7 @@ public class Park implements Drawable {
         initBuildHelper(8, 9, BuildingType.ROAD);
         initBuildHelper(8, 8, BuildingType.BIN);
 
-        //initBuildHelper(11, 5, RideType.CASTLE);
+        initBuildHelper(11, 5, RideType.CASTLE);
 
         initBuildHelper(11, 10, DecorType.BENCH);
         initBuildHelper(8, 10, BuildingType.SHOP);

@@ -1,20 +1,24 @@
 package com.teamgtlib.buildings;
 
 import com.teamgtlib.NPCs.Visitor;
+import com.teamgtlib.Park;
 import com.teamgtlib.gui.GameFrame;
+import com.teamgtlib.gui.PlayAreaPanel;
 import com.teamgtlib.gui.UIPanel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Timer;
 
+import static java.lang.Math.min;
+
 public class Ride extends Building {
     private BuildingState state = BuildingState.UNBUILT;
     private int durability;
     private int MAXCAP;
-    private ArrayList<Visitor> currentPassengers;
+    private ArrayList<Visitor> currentPassengers = new ArrayList<>();
     private final RideType type;
-    private ArrayList<Visitor> queue; // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
+    private ArrayList<Visitor> queue = new ArrayList<>(); // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
     private int usageCost;
 
     /**
@@ -84,9 +88,16 @@ public class Ride extends Building {
 
     public void start() {
         // queue-ból szed ki legfeljebb MAXCAP-nyi Visitor-t, majd meghívja a startRide()-ot
-        for (int i = 0; i < MAXCAP; i++) {
+        int n = min(MAXCAP, queue.size());
+        for (int i = 0; i < n; i++) {
+            //System.out.printf(String.valueOf(queue));
+            queue.get(i).buyTicket(usageCost);
+            PlayAreaPanel.refreshLabelText();
             Visitor boardingPassenger = queue.remove(i);
-            boardingPassenger.buyTicket(usageCost);
+            //System.out.printf(String.valueOf(boardingPassenger));
+
+            //boardingPassenger.buyTicket(usageCost);
+            System.out.printf(String.valueOf(Park.player.getBudget()));
             currentPassengers.add(boardingPassenger);
         }
         startRide();
