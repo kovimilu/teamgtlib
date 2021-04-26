@@ -120,7 +120,9 @@ public class PlayAreaPanel extends JPanel {
                         GridUtils.gridToPX(building.getY()));
             }
             else if(building.getState() == BuildingState.UNBUILT) {
-                resizeImage(new ImageIcon(building.getBuildImagePath()),building.getWidth()*50, building.getHeight()*50).paintIcon(this, g, building.getX(), building.getY());
+                resizeImage(new ImageIcon(building.getBuildImagePath()),building.getWidth()*50,
+                        building.getHeight()*50).paintIcon(this, g, GridUtils.gridToPX(building.getX()),
+                        GridUtils.gridToPX(building.getY()));
             }
 
 
