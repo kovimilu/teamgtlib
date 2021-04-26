@@ -237,7 +237,6 @@ public class UIPanel extends JPanel {
         }
 
         // GameFrame.DemolishButtonIsPressedOnce = false; // done in PlayAreaPanel's ClickListener
-        GameFrame.SelectionState = SelectionType.NONE; // can be done in UIPanel.demolish() as well
         System.out.println("NOW FALSE");
         GameFrame.bg.repaint(); // can be bg.repaint() as well with static import
         //System.out.println(Park.buildings.toString());
