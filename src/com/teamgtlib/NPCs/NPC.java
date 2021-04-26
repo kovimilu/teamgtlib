@@ -39,7 +39,7 @@ public abstract class NPC {
                 rides.add((Ride)building);
             }
         }
-        System.out.print(rides);
+        //System.out.print(rides);
         return rides;
     }
 
@@ -87,9 +87,9 @@ public abstract class NPC {
     public Ride rollRandomRide() {
         ArrayList<Ride> rides = getRides();
         Random rand = new Random();
-        //int r = rand.nextInt(getRides().size());
+        int r = rand.nextInt(getRides().size());
 
-        return rides.get(0);
+        return rides.get(r);
     }
 
 

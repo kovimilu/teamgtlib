@@ -95,23 +95,16 @@ public class Visitor extends NPC {
         }
         if(Choice.equals("RIDE") && !currentlyMoving) {
             //this.currentlyMoving = true;
-
-            Point adjRoads = getAdjacentRoadsToRideCoords(rollRandomRide());
+            Ride r = rollRandomRide();
+            Point adjRoads = getAdjacentRoadsToRideCoords(r);
             if (adjRoads != null) {
                 Point p = new Point(adjRoads);
                 this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
+                currentlyMoving = true;
+                move(path);
+                r.addToQueue(this);
+                r.start();
             }
-
-            //this.path = pathfinding(this.x,this.y,10,7);
-            Ride r = (Ride) Park.buildings.get(13);
-            this.mood -= 5;
-            //timer();
-            //ha van szemét
-
-            currentlyMoving = true;
-            move(path);
-            r.addToQueue(this);
-            r.start();
         }
         if(Choice.equals("EAT") && !currentlyMoving) {
             //TODO random shop + shop metódusok hívása
