@@ -74,6 +74,11 @@ public abstract class Building implements Drawable {
         return y;
     }
 
+    public Point getPoints() {
+        Point p = new Point(this.x, this.y);
+        return p;
+    }
+
     public int getWidth() {
         return width;
     }

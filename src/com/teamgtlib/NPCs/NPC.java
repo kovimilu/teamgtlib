@@ -10,10 +10,8 @@ import com.teamgtlib.gui.PlayAreaPanel;
 import com.teamgtlib.pathfinding.*;
 
 import java.awt.*;
+import java.util.*;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Timer;
 
 public abstract class NPC {
     int x, y;
@@ -28,40 +26,65 @@ public abstract class NPC {
         GameFrame.bg.repaint();
         PlayAreaPanel.refreshLabelText();
         updateTimer();
-        System.out.printf(String.valueOf(Park.buildings.get(0).getX()));
     }
 
     private ArrayList<Ride> getRides() {
         ArrayList<Ride> rides = new ArrayList<>();
         for (Building building : Park.buildings) {
-            String[] buildingString = building.getClassImagePath().split(" ",0);
-            if(buildingString.equals("Ride")) {
+            String[] buildingString = building.toString().split("\\ ",0);
+            //System.out.printf(String.valueOf(buildingString));
+            if(buildingString[0].equals("Ride")) {
                 rides.add((Ride)building);
             }
         }
+        System.out.printf(String.valueOf(rides));
         return rides;
     }
 
-    private void getAdjacentRoadsToRide(Ride obj) {
-        Point North_P = new Point();
-        Point West_P = new Point();
-        Point South_P = new Point();
-        Point East_P = new Point();
+    public Point getAdjacentRoadsToRideCoords(Ride obj) {
+        Point North_P = new Point(obj.getX(),obj.getY() - 1);
+        Point East_P = new Point(obj.getX() + 1,obj.getY());
+        Point South_P = new Point(obj.getX(),obj.getY() + 1);
+        Point West_P = new Point(obj.getX() - 1,obj.getY());
+
+        ArrayList<Point> Adj = new ArrayList<>();
+
         int n = Park.buildings.size();
-        for(int i = 0; i < n; ++i)
-        {
-            if(Park.buildings.get(i).getX() - 1 == obj.getX() && Park.buildings.get(i).getY() == obj.getY())
-            {
-                //if(Park.buildings.get(i))
+        for(int i = 0; i < n; ++i) {
+            if(Park.buildings.get(i).getPoints().equals(North_P)) Adj.add(North_P);
+            if(Park.buildings.get(i).getPoints().equals(East_P)) Adj.add(East_P);
+            if(Park.buildings.get(i).getPoints().equals(South_P)) Adj.add(South_P);
+            if(Park.buildings.get(i).getPoints().equals(West_P)) Adj.add(West_P);
+        }
+
+        //Distance
+        ArrayList<Point> Adj_Diffs = new ArrayList<>();
+        int n1 = Adj.size();
+        for(int i = 0; i < n1; ++i) {
+            //TODO this. might has to be point
+            Point p = new Point(Math.abs((int)Adj.get(i).getX() - this.x), Math.abs((int)Adj.get(i).getY() - this.y));
+            Adj_Diffs.add(p);
+        }
+
+        Point min_p = new Point(Adj_Diffs.get(0));
+        int n2 = Adj_Diffs.size();
+        for(int i = 1; i < n2; ++i) {
+            if((Adj_Diffs.get(i).getX() + Adj_Diffs.get(i).getX() > (min_p.getX() + min_p.getY()))) {
+                min_p.setLocation(Adj_Diffs.get(i));
             }
         }
 
+        System.out.printf(String.valueOf(min_p));
+        return min_p;
     }
 
 
-    private void rollRandomRide()
-    {
+    public Ride rollRandomRide() {
+        ArrayList<Ride> rides = getRides();
+        Random rand = new Random();
+        //int r = rand.nextInt(getRides().size());
 
+        return rides.get(0);
     }
 
 
