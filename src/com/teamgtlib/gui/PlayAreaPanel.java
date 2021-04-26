@@ -90,7 +90,7 @@ public class PlayAreaPanel extends JPanel {
             g.drawImage(Park.image, -280, -20, 1280, 720, null);
         }
         if(GameFrame.SelectionState == SelectionType.BUILD) {
-            Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(prevPt)));
+            Point newPoint = new Point(GridUtils.gridConverter(prevPt));
             //TODO
             /*
             //Building Area Market
