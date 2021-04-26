@@ -1,4 +1,4 @@
-image: ubuntu:latest
+image: ubuntu:groovy
 before_script:
     - apt update -qq
     - apt install -qqy --no-upgrade --no-install-recommends openjdk-15-jdk ant
