@@ -3,8 +3,6 @@ package com.teamgtlib.gui;
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Building;
 import com.teamgtlib.buildings.BuildingType;
-import com.teamgtlib.buildings.Ride;
-import com.teamgtlib.buildings.RideType;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -108,9 +106,10 @@ public class GridUtils {
     public static void removeBuildingFromGridMap(Building building) {
         int WIDTH = building.getWidth();
         int HEIGHT = building.getHeight();
-        Point p = GridUtils.gridConverter(new Point(building.getX(), building.getY()));
-        for (int i = 1; i <= WIDTH; ++i) {
-            for (int j = 1; j <= HEIGHT; ++j) {
+        Point p = new Point(building.getX(), building.getY());
+        System.out.println("REMOVING: " + p);
+        for (int i = 0; i < WIDTH; ++i) {
+            for (int j = 0; j < HEIGHT; ++j) {
                 Point gridPos = new Point((int)p.getX() + i, (int)p.getY() + j);
                 gridMap.remove(gridPos);
             }
