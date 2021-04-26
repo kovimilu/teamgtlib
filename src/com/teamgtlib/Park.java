@@ -45,7 +45,7 @@ public class Park implements Drawable {
                     GameFrame.bg.repaint();
                 }
             }
-        }, 0, 5000);
+        }, 50, 5000);
     }
 
     /**

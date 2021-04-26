@@ -79,7 +79,7 @@ public abstract class NPC {
             }
         }
 
-        System.out.print(Adj.get(minIndex) + "\n");
+        System.out.print("Ride Coords: " + Adj.get(minIndex) + "\n");
         return Adj.get(minIndex);
     }
 

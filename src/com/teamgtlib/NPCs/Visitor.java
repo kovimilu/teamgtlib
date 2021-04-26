@@ -41,7 +41,7 @@ public class Visitor extends NPC {
 
         random.add(IDLE);
         random.add(LEAVE);
-        random.add(EAT);
+        random.add(RIDE);
         random.add(RIDE);
         random.add(random.get(rand.nextInt(4)));
         // 5
