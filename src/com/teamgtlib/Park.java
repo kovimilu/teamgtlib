@@ -18,6 +18,7 @@ public class Park implements Drawable {
     public static ArrayList<Building> buildings;
     public static Player player = null;
     public static ArrayList<NPC> npcs;
+    public static int MAXVISITORS = 10; // just to see it works
 
     /**
      * Create the park with one new player and building container.
@@ -39,10 +40,12 @@ public class Park implements Drawable {
         t.scheduleAtFixedRate(new java.util.TimerTask() {
             @Override
             public void run() {
-                initVisitors();
-                GameFrame.bg.repaint();
+                if(player.getVisitorCount() < MAXVISITORS){
+                    initVisitors();
+                    GameFrame.bg.repaint();
+                }
             }
-        }, 5000, 10000);
+        }, 0, 5000);
     }
 
     /**
