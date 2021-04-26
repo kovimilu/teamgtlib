@@ -224,7 +224,7 @@ public class UIPanel extends JPanel {
     };
 
     public static void demolish() {
-        Point newPoint = new Point(GridUtils.gridToPX(GridUtils.gridConverter(PlayAreaPanel.prevPt)));
+        Point newPoint = new Point(GridUtils.gridConverter(PlayAreaPanel.prevPt));
         System.out.println(Park.buildings.toString());
 
         for (Building building : Park.buildings){
