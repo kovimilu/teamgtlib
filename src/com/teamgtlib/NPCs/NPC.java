@@ -3,15 +3,17 @@ package com.teamgtlib.NPCs;
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Building;
 import com.teamgtlib.buildings.Ride;
-import com.teamgtlib.buildings.Road;
 import com.teamgtlib.gui.GameFrame;
-import com.teamgtlib.gui.GridUtils;
 import com.teamgtlib.gui.PlayAreaPanel;
-import com.teamgtlib.pathfinding.*;
+import com.teamgtlib.pathfinding.Grid;
+import com.teamgtlib.pathfinding.PathFinding;
+import com.teamgtlib.pathfinding.Point_;
 
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Timer;
 
 public abstract class NPC {
     int x, y;
@@ -37,7 +39,7 @@ public abstract class NPC {
                 rides.add((Ride)building);
             }
         }
-        System.out.printf(String.valueOf(rides));
+        System.out.print(rides);
         return rides;
     }
 
@@ -57,12 +59,13 @@ public abstract class NPC {
             if(Park.buildings.get(i).getPoints().equals(West_P)) Adj.add(West_P);
         }
 
+        if (Adj.isEmpty()) return null;
+
         //Distance
         ArrayList<Point> Adj_Diffs = new ArrayList<>();
-        int n1 = Adj.size();
-        for(int i = 0; i < n1; ++i) {
+        for (Point point : Adj) {
             //TODO this. might has to be point
-            Point p = new Point(Math.abs((int)Adj.get(i).getX() - this.x), Math.abs((int)Adj.get(i).getY() - this.y));
+            Point p = new Point(Math.abs((int) point.getX() - this.x), Math.abs((int) point.getY() - this.y));
             Adj_Diffs.add(p);
         }
 
@@ -76,7 +79,7 @@ public abstract class NPC {
             }
         }
 
-        System.out.printf(String.valueOf(Adj.get(minIndex) + "\n"));
+        System.out.print(Adj.get(minIndex) + "\n");
         return Adj.get(minIndex);
     }
 
@@ -144,11 +147,10 @@ public abstract class NPC {
         Point_ target = new Point_(fx - 1, fy - 1);
 
         // Last argument will make this search be 4 directional
-        List<Point_> path = PathFinding.findPath(grid, start, target, false);
 
         // Print the path
         //for (Point_ point : path) System.out.println(point);
-        return path;
+        return PathFinding.findPath(grid, start, target, false);
     }
 
 
@@ -188,11 +190,11 @@ public abstract class NPC {
 
     public void move(List<Point_> path) {
         int n = path.size();
-        for (int i = 0; i < n; ++i) {
+        for (Point_ point_ : path) {
             GameFrame.bg.repaint();
             wait(500);
-            setX(path.get(i).getX() + 1);
-            setY(path.get(i).getY() + 1);
+            setX(point_.getX() + 1);
+            setY(point_.getY() + 1);
         }
         currentlyMoving = false;
     }
