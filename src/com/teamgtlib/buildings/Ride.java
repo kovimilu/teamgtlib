@@ -90,19 +90,21 @@ public class Ride extends Building {
 
     public void start() {
         // queue-ból szed ki legfeljebb MAXCAP-nyi Visitor-t, majd meghívja a startRide()-ot
-        int n = min(MAXCAP, queue.size());
-        for (int i = 0; i < n; i++) {
-            //System.out.printf(String.valueOf(queue));
-            queue.get(i).buyTicket(usageCost);
-            PlayAreaPanel.refreshLabelText();
-            Visitor boardingPassenger = queue.remove(i);
-            //System.out.printf(String.valueOf(boardingPassenger));
+        if (!queue.isEmpty()) {
+            int n = min(MAXCAP, queue.size());
+            for (int i = 0; i < n; i++) {
+                //System.out.printf(String.valueOf(queue));
+                queue.get(i).buyTicket(usageCost);
+                PlayAreaPanel.refreshLabelText();
+                Visitor boardingPassenger = queue.remove(i);
+                //System.out.printf(String.valueOf(boardingPassenger));
 
-            //boardingPassenger.buyTicket(usageCost);
-            System.out.print(Park.player.getBudget());
-            currentPassengers.add(boardingPassenger);
+                //boardingPassenger.buyTicket(usageCost);
+                System.out.print(Park.player.getBudget());
+                currentPassengers.add(boardingPassenger);
+            }
+            startRide();
         }
-        startRide();
     }
 
     private void startRide() {
@@ -132,7 +134,7 @@ public class Ride extends Building {
             passenger.updateMood(moodValue);
         }
         durability -= 0; // TODO fill with value (maybe add to constants per ride type)
-        if (!queue.isEmpty()) start();
+        start();
     }
 
     @Override
