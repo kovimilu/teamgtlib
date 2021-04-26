@@ -67,15 +67,17 @@ public abstract class NPC {
         }
 
         Point min_p = new Point(Adj_Diffs.get(0));
+        int minIndex = 0;
         int n2 = Adj_Diffs.size();
         for(int i = 1; i < n2; ++i) {
             if((Adj_Diffs.get(i).getX() + Adj_Diffs.get(i).getX() > (min_p.getX() + min_p.getY()))) {
                 min_p.setLocation(Adj_Diffs.get(i));
+                minIndex = i;
             }
         }
 
-        System.out.printf(String.valueOf(min_p));
-        return min_p;
+        System.out.printf(String.valueOf(Adj.get(minIndex) + "\n"));
+        return Adj.get(minIndex);
     }
 
 

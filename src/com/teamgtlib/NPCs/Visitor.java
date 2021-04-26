@@ -96,10 +96,10 @@ public class Visitor extends NPC {
         if(Choice.equals("RIDE") && !currentlyMoving) {
             //this.currentlyMoving = true;
 
-            //Point p = new Point(getAdjacentRoadsToRideCoords(rollRandomRide()));
-            //this.path = pathfinding(this.x,this.y,(int)p.getX(), (int)p.getY());
+            Point p = new Point(getAdjacentRoadsToRideCoords(rollRandomRide()));
+            this.path = pathfinding(this.x,this.y,(int)p.getX(), (int)p.getY());
 
-            this.path = pathfinding(this.x,this.y,10,7);
+            //this.path = pathfinding(this.x,this.y,10,7);
             Ride r = (Ride) Park.buildings.get(13);
             this.mood -= 5;
             //timer();
