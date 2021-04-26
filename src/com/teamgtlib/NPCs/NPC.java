@@ -2,6 +2,7 @@ package com.teamgtlib.NPCs;
 
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Building;
+import com.teamgtlib.buildings.Ride;
 import com.teamgtlib.buildings.Road;
 import com.teamgtlib.gui.GameFrame;
 import com.teamgtlib.gui.GridUtils;
@@ -20,15 +21,49 @@ public abstract class NPC {
     Boolean currentlyMoving = false;
     public List<Point_> path;
 
-
     public NPC(int x, int y) {
         path = new ArrayList<>();
         this.x = x;
         this.y = y;
         GameFrame.bg.repaint();
-        PlayAreaPanel.refreshLabelText();;
+        PlayAreaPanel.refreshLabelText();
         updateTimer();
+        System.out.printf(String.valueOf(Park.buildings.get(0).getX()));
     }
+
+    private ArrayList<Ride> getRides() {
+        ArrayList<Ride> rides = new ArrayList<>();
+        for (Building building : Park.buildings) {
+            String[] buildingString = building.getClassImagePath().split(" ",0);
+            if(buildingString.equals("Ride")) {
+                rides.add((Ride)building);
+            }
+        }
+        return rides;
+    }
+
+    private void getAdjacentRoadsToRide(Ride obj) {
+        Point North_P = new Point();
+        Point West_P = new Point();
+        Point South_P = new Point();
+        Point East_P = new Point();
+        int n = Park.buildings.size();
+        for(int i = 0; i < n; ++i)
+        {
+            if(Park.buildings.get(i).getX() - 1 == obj.getX() && Park.buildings.get(i).getY() == obj.getY())
+            {
+                //if(Park.buildings.get(i))
+            }
+        }
+
+    }
+
+
+    private void rollRandomRide()
+    {
+
+    }
+
 
     public void update() {
         whatToDo();
@@ -71,8 +106,8 @@ public abstract class NPC {
             if(Park.buildings.get(i).toString().equals("Road")) {
                 //System.out.printf("\nRoad(" + i + ") : x: " + (GridUtils.gridConverter(Park.buildings.get(i).getX()) + 1)
                 //+ ", y: " + (GridUtils.gridConverter(Park.buildings.get(i).getY())+ 1));
-                tiles[GridUtils.gridConverter(Park.buildings.get(i).getX())]
-                        [GridUtils.gridConverter(Park.buildings.get(i).getY())] = true;
+                tiles[Park.buildings.get(i).getX() - 1]
+                        [Park.buildings.get(i).getY() - 1] = true;
             }
         }
 

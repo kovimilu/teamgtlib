@@ -116,7 +116,8 @@ public class PlayAreaPanel extends JPanel {
         //draw buildings
         for (Building building : Park.buildings) {
             if(building.getState() == BuildingState.BUILT) {
-                new ImageIcon(building.getClassImagePath()).paintIcon(this, g, building.getX(), building.getY());
+                new ImageIcon(building.getClassImagePath()).paintIcon(this, g, GridUtils.gridToPX(building.getX()),
+                        GridUtils.gridToPX(building.getY()));
             }
             else if(building.getState() == BuildingState.UNBUILT) {
                 resizeImage(new ImageIcon(building.getBuildImagePath()),building.getWidth()*50, building.getHeight()*50).paintIcon(this, g, building.getX(), building.getY());

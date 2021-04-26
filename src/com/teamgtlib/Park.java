@@ -42,7 +42,7 @@ public class Park implements Drawable {
                 initVisitors();
                 GameFrame.bg.repaint();
             }
-        }, 5000, 5000);
+        }, 5000, 10000);
     }
 
     /**
@@ -120,7 +120,7 @@ public class Park implements Drawable {
     private void initBuildHelper(int x, int y, Buildable type) {
         Building building = null;
         try {
-            building = build(GridUtils.gridToPX(x), GridUtils.gridToPX(y), type, false);
+            building = build(x, y, type, false);
         } catch (GameException exception) {
             exception.printStackTrace();
         }

@@ -31,16 +31,7 @@ public class Maintenance extends Worker {
         //getRides();
         //timer();
     }
-    /*
-    private void getRides() {
-        for (Building building : Park.buildings) {
-            String[] buildingString = building.getClassImagePath().split(" ",0);
-            if(buildingString.equals("Ride")) {
-                rides.add((Ride)building);
-            }
-        }
-    }
-    */
+
     @Override
     public void whatToDo() {
         this.path = pathfinding(this.x,this.y,12,11);
