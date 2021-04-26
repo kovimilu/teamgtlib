@@ -138,8 +138,8 @@ public class UIPanel extends JPanel {
         priceSlider.setPaintTicks(true);
         priceSlider.setPaintLabels(true);
         add(priceSlider);
-        priceSliderValue = priceSlider.getValue();
-        System.out.println("PRICESLIDERVALUE:" + priceSliderValue);
+        // priceSliderValue = priceSlider.getValue();
+        System.out.println("PRICE SLIDER VALUE:" + priceSliderValue);
         priceSlider.addChangeListener(e -> priceSliderValue = priceSlider.getValue());
 
         for (JButton button : buttons) {
@@ -242,7 +242,13 @@ public class UIPanel extends JPanel {
         //System.out.println(Park.buildings.toString());
     }
 
-    public static int getPriceSliderValue() { return priceSliderValue; }
+    public static int getPriceSliderValue() {
+        if(priceSliderValue == 0) {
+            return 5; // TODO maybe set later
+        } else {
+            return priceSliderValue;
+        }
+    }
 
     @Override
     public void paintComponent(Graphics g)

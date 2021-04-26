@@ -3,7 +3,6 @@ import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Ride;
 import com.teamgtlib.gui.GameFrame;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -71,7 +70,7 @@ public class Visitor extends NPC {
 
         String Choice = random.get(rand.nextInt(10));
 
-        System.out.printf(Choice + "\n");
+        System.out.print(Choice + "\n");
 
 
         //LEAVE PARK
@@ -96,7 +95,7 @@ public class Visitor extends NPC {
         if(Choice.equals("RIDE") && !currentlyMoving) {
             //this.currentlyMoving = true;
             this.path = pathfinding(this.x,this.y,10,7);
-            Ride r = (Ride) Park.buildings.get(13);;
+            Ride r = (Ride) Park.buildings.get(13);
             this.mood -= 5;
             //timer();
             //ha van szemét
@@ -122,7 +121,8 @@ public class Visitor extends NPC {
         mood += changeBy;
     }
 
-    public void buyFood() {
+    public void buyFood(int price) {
+        super.changeParkBudgetBy(price);
         updateMood(10);
         hasGarbage = true;
     }

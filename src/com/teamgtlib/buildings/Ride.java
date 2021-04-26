@@ -32,8 +32,8 @@ public class Ride extends Building {
         super(x, y);
         this.type = type;
         usageCost = UIPanel.getPriceSliderValue();
-        if (usageCost == 0) usageCost = 5; // TODO maybe set later
-        System.out.println("USAGECOST:" + usageCost);
+        // if (usageCost == 0) usageCost = 5;
+        System.out.println("RIDE USAGE COST:" + usageCost);
 
         switch (type) {
             case CAROUSEL -> {
