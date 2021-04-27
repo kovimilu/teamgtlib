@@ -11,3 +11,11 @@ build_program:
         paths:
             - out/artifacts/teamgtlib_jar
         expire_in: '1'
+test_program:
+    stage: test
+    script:
+        - ant -S test
+    artifacts:
+        paths:
+            - report
+        expire_in: '1'
