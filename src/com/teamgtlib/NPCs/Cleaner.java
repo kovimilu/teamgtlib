@@ -30,9 +30,9 @@ public class Cleaner extends Worker {
                 move(path);
                 wait(1000);
                 Park.garbage.remove(p);
-                this.path = pathfinding(this.x,this.y,12,11);
-                move(path);
             }
+            this.path = pathfinding(this.x,this.y,12,11);
+            move(path);
         }
     }
 
