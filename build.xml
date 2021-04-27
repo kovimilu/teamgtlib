@@ -53,7 +53,7 @@
 
             <batchtest fork="yes" todir="report">
                 <fileset dir="test">
-                    <include name="**/*Test.java" />
+                    <include name="**/*.java" />
                 </fileset>
             </batchtest>
         </junit>
