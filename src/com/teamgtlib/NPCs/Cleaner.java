@@ -18,19 +18,19 @@ public class Cleaner extends Worker {
 
     @Override
     public void whatToDo() {
-        if(!currentlyMoving) {
             Random rand = new Random();
-            int r = rand.nextInt(Park.garbage.size() - 1);
-            Point adjRoads = Park.garbage.get(r);
-            Park.player.changeBudgetBy(-wage);
-            if (adjRoads != null) {
-                Point p = new Point(adjRoads);
-                this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
-                currentlyMoving = true;
-                move(path);
-                wait(1000);
-                Park.garbage.remove(p);
-            }
+            if(!Park.garbage.isEmpty()) {
+                int r = rand.nextInt(Park.garbage.size() - 1);
+                Point adjRoads = Park.garbage.get(r);
+                Park.player.changeBudgetBy(-wage);
+                if (adjRoads != null) {
+                    Point p = new Point(adjRoads);
+                    this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
+                    currentlyMoving = true;
+                    move(path);
+                    wait(1000);
+                    Park.garbage.remove(p);
+                }
             this.path = pathfinding(this.x,this.y,12,11);
             move(path);
         }
