@@ -3,19 +3,21 @@ before_script:
     - apt update -qq
     - apt install -qqy --no-upgrade --no-install-recommends openjdk-15-jdk ant junit
     - export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
-build_program:
-    stage: build
-    script:
-        - ant -S jar
-    artifacts:
-        paths:
-            - out/artifacts/teamgtlib_jar
-        expire_in: '1'
 test_program:
     stage: test
     script:
         - ant -S test
+    dependencies:
     artifacts:
         paths:
             - report
-        expire_in: '1'
+        expire_in: 3 days
+build_program:
+    stage: build
+    script:
+        - ant -S jar
+    dependencies:
+    artifacts:
+        paths:
+            - out/artifacts/teamgtlib_jar
+        expire_in: 3 days
