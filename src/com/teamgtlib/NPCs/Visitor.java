@@ -4,14 +4,16 @@ import com.teamgtlib.buildings.Bin;
 import com.teamgtlib.buildings.Ride;
 import com.teamgtlib.buildings.Shop;
 import com.teamgtlib.gui.GameFrame;
+import com.teamgtlib.pathfinding.Point_;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Visitor extends NPC {
-    private boolean hasGarbage;
 
+    private boolean hasGarbage;
     Random rand = new Random();
 
     public Visitor() {
@@ -75,7 +77,30 @@ public class Visitor extends NPC {
 
         System.out.print(Choice + "\n");
 
+        if(hasGarbage && !currentlyMoving) {
+            setHasGarbage(false);
+            ArrayList<Bin> bins = getBins();
+            if(!bins.isEmpty()) {
+                int min = bins.get(0).pathLength(this);
+                int minIndex = 0;
+                for (int i = 1; i < bins.size(); ++i) {
+                    if (bins.get(i).pathLength(this) < min) {
+                        min = bins.get(i).pathLength(this);
+                        minIndex = i;
+                    }
+                }
+                if(bins.get(minIndex).pathLength(this) >= 3 ) {
+                    System.out.printf("\n\n\n  ez" + hasGarbage +" \n\n\n");
 
+                    Point adjRoads = getAdjacentRoads(bins.get(minIndex));
+                    this.path = pathfinding(this.x,this.y, adjRoads.x, adjRoads.y);
+                    move(path);
+                }
+                else setHasGarbage(true);
+            }
+            else setHasGarbage(true);
+
+        }
         //LEAVE PARK
         if(Choice.equals("LEAVE") && !currentlyMoving) {
             //this.currentlyMoving = true;
@@ -106,7 +131,7 @@ public class Visitor extends NPC {
                 move(path);
 
                 ArrayList<Bin> bins = getBins();
-                System.out.println(bins.get(0).pathLength(this));
+                //System.out.println(bins.get(0).pathLength(this));
 
                 wait(100);
                 r.addToQueue(this);
@@ -124,44 +149,59 @@ public class Visitor extends NPC {
                 currentlyMoving = true;
                 move(path);
 
-                //ArrayList<Bin> bins = getBins();
-                //System.out.println("distance: " + bins.get(0).distance(this));
 
 
-                wait(100);
-                Point q = new Point((int)p.getX(), (int)p.getY());
-                if(!Park.garbage.contains(q)) Park.garbage.add(q);
-                System.out.printf(String.valueOf(Park.garbage));
                 //TODO garbage
+                wait(100);
+                r.sellFood(this);
+                //System.out.printf(String.valueOf(Park.garbage));
             }
         }
+    }
+    private void throwGarbage() {
+        Random rand = new Random();
+        int chance = rand.nextInt(3);
+        if(hasGarbage && chance == 1) {
+            Point q = new Point(this.x, this.y);
+            if(!Park.garbage.contains(q)) Park.garbage.add(q);
+            this.hasGarbage = false;
+        }
+    }
 
+    @Override
+    public void move(List<Point_> path) {
+
+        ArrayList<Bin> bins = getBins();
+        for (int i = 0; i < bins.size(); ++i) {
+            if(bins.get(i).distance(this) < 3) {
+                updateMood(-10);
+            }
+            System.out.printf("MOODE CHANGED BY BIN PROX");
+        }
+
+        int n = path.size();
+        for (Point_ point_ : path) {
+            throwGarbage();
+            GameFrame.bg.repaint();
+            wait(500);
+            setX(point_.getX() + 1);
+            setY(point_.getY() + 1);
+        }
+        currentlyMoving = false;
     }
 
     public void updateMood(int changeBy) {
         mood += changeBy;
     }
 
-    public void buyFood(int price) {
-        super.changeParkBudgetBy(price);
-        updateMood(10);
-        hasGarbage = true;
+    public void setHasGarbage(boolean hasGarbage) {
+        this.hasGarbage = hasGarbage;
     }
 
     public void buyTicket(int price) {
         super.changeParkBudgetBy(price);
     }
 
-    public void throwsGarbage() {
-        //TODO közeli kukához megy
-        if(hasGarbage){
-            //TODO throws
-        }
-    }
-
-    public void getsOnTheRide() {
-
-    }
 
     @Override
     public String getClassString() {

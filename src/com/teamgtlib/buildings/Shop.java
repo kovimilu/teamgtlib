@@ -1,6 +1,8 @@
 package com.teamgtlib.buildings;
 
 import com.teamgtlib.NPCs.Visitor;
+import com.teamgtlib.Park;
+import com.teamgtlib.gui.GameFrame;
 import com.teamgtlib.gui.UIPanel;
 
 public class Shop extends Building {
@@ -18,7 +20,10 @@ public class Shop extends Building {
     }
 
     public void sellFood(Visitor obj){
-        //TODO Requires Visitors Class
+        obj.updateMood(10);
+        Park.player.changeBudgetBy(usageCost);
+        obj.setHasGarbage(true);
+        GameFrame.GameFrameStatusPanel.repaint();
     }
 
     @Override

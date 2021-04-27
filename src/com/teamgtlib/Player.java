@@ -4,7 +4,7 @@ import com.teamgtlib.NPCs.Cleaner;
 import com.teamgtlib.NPCs.Maintenance;
 
 public class Player {
-    private int budget;
+    private volatile int budget;
     private int visitorCount;
     private int workerCount;
 
