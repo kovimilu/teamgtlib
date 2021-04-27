@@ -43,11 +43,11 @@ public class Maintenance extends Worker {
                 this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
                 currentlyMoving = true;
                 move(path);
-                unbuiltRides = false;
+                //unbuiltRides = false;
                 wait(5000);
-                this.path = pathfinding(this.x,this.y,12,11);
-                move(path);
             }
+            this.path = pathfinding(this.x,this.y,12,11);
+            move(path);
         }
     }
 

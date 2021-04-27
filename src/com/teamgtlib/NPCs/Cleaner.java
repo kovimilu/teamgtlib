@@ -18,9 +18,9 @@ public class Cleaner extends Worker {
 
     @Override
     public void whatToDo() {
-        if(!currentlyMoving && Park.garbage.size() > 0) {
+        if(!currentlyMoving) {
             Random rand = new Random();
-            int r = rand.nextInt(Park.garbage.size());
+            int r = rand.nextInt(Park.garbage.size() - 1);
             Point adjRoads = Park.garbage.get(r);
             Park.player.changeBudgetBy(-wage);
             if (adjRoads != null) {
