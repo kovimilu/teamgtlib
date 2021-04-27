@@ -3,6 +3,7 @@ package com.teamgtlib.NPCs;
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Building;
 import com.teamgtlib.buildings.Ride;
+import com.teamgtlib.buildings.Shop;
 import com.teamgtlib.gui.GameFrame;
 import com.teamgtlib.gui.PlayAreaPanel;
 import com.teamgtlib.pathfinding.Grid;
@@ -43,7 +44,20 @@ public abstract class NPC {
         return rides;
     }
 
-    public Point getAdjacentRoadsToRideCoords(Ride obj) {
+    private ArrayList<Shop> getShops() {
+        ArrayList<Shop> shops = new ArrayList<>();
+        for (Building building : Park.buildings) {
+            String[] buildingString = building.toString().split("\\ ",0);
+            //System.out.printf(String.valueOf(buildingString));
+            if(buildingString[0].equals("Shop")) {
+                shops.add((Shop)building);
+            }
+        }
+        //System.out.print(rides);
+        return shops;
+    }
+
+    public Point getAdjacentRoads(Building obj) {
         Point North_P = new Point(obj.getX(),obj.getY() - 1);
         Point East_P = new Point(obj.getX() + 1,obj.getY());
         Point South_P = new Point(obj.getX(),obj.getY() + 1);
@@ -90,6 +104,14 @@ public abstract class NPC {
         int r = rand.nextInt(getRides().size());
 
         return rides.get(r);
+    }
+
+    public Shop rollRandomShop() {
+        ArrayList<Shop> shops = getShops();
+        Random rand = new Random();
+        int r = rand.nextInt(getShops().size());
+
+        return shops.get(r);
     }
 
 

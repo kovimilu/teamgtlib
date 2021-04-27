@@ -17,6 +17,7 @@ public class Maintenance extends Worker {
     //public ArrayList<Point> testpath;
 
     Random rand = new Random();
+    boolean unbuiltRides = true;
 
     public Maintenance() {
         super(10,13);
@@ -27,17 +28,27 @@ public class Maintenance extends Worker {
         wage = 1670;
         //rides = new ArrayList<>();
         Park.npcs.add(this);
-        Park.player.changeBudgetBy(-wage);
         //getRides();
         //timer();
     }
 
     @Override
     public void whatToDo() {
-        this.path = pathfinding(this.x,this.y,12,11);
-        //timer();
-        //wage();
-        move(path);
+        if(unbuiltRides && !currentlyMoving) {
+            Ride r = rollRandomRide();
+            Point adjRoads = getAdjacentRoads(r);
+            Park.player.changeBudgetBy(-wage);
+            if (adjRoads != null) {
+                Point p = new Point(adjRoads);
+                this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
+                currentlyMoving = true;
+                move(path);
+                unbuiltRides = false;
+                wait(5000);
+                this.path = pathfinding(this.x,this.y,12,11);
+                move(path);
+            }
+        }
     }
 
     private void wage() {

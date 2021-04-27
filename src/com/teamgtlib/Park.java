@@ -19,6 +19,7 @@ public class Park implements Drawable {
     public static Player player = null;
     public static ArrayList<NPC> npcs;
     public static int MAXVISITORS = 5; // just to see it works
+    public static ArrayList<Point> garbage = new ArrayList<>();
 
     /**
      * Create the park with one new player and building container.
