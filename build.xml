@@ -40,4 +40,25 @@
         </javadoc>
     </target>
 
+    <target name="test" depends="compile">
+        <mkdir dir="report"/>
+        <junit printsummary="yes" haltonfailure="no">
+            <classpath location="lib/junit-4.13.2.jar" />
+            <classpath location="lib/hamcrest-core-1.3.jar" />
+
+            <classpath location="out/production/${ant.project.name}" />
+            <classpath location="out/debug/${ant.project.name}" />
+
+            <formatter type="xml" />
+            <formatter type="plain" />
+
+            <batchtest fork="yes" todir="report">
+                <fileset dir="test">
+                    <include name="**/*Test.java" />
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+
 </project>
