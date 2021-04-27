@@ -111,14 +111,15 @@ public class Park implements Drawable {
 
         initBuildHelper(9, 9, BuildingType.ROAD);
         initBuildHelper(8, 9, BuildingType.ROAD);
-        initBuildHelper(8, 8, BuildingType.BIN);
+        initBuildHelper(6, 9, BuildingType.ROAD);
+        initBuildHelper(5, 9, BuildingType.BIN);
 
         initBuildHelper(11, 8, BuildingType.ROAD);
         initBuildHelper(11, 9, DecorType.BUSH);
 
         initBuildHelper(9, 5, BuildingType.ROAD);
         initBuildHelper(8, 5, BuildingType.ROAD);
-        initBuildHelper(9, 8, DecorType.BUSH);
+        initBuildHelper(8, 8, DecorType.BENCH);
 
         initBuildHelper(7, 9, BuildingType.ROAD);
         initBuildHelper(7, 8, BuildingType.ROAD);
