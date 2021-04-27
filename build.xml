@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="teamgtlib" default="jar" basedir=".">
-
-    <target name="clean">
+<project name="teamgtlib" default="dist" basedir=".">
+    <target name="clean" unless="norebuild">
         <delete dir="out"/>
     </target>
 
-    <target name="compile">
+    <target name="compile" depends="clean" unless="norebuild">
         <mkdir dir="out/production/${ant.project.name}"/>
         <javac srcdir="src" destdir="out/production/${ant.project.name}"/>
     </target>
 
-    <target name="compile-test" depends="compile">
+    <target name="compile-test" depends="compile" unless="norebuild">
         <mkdir dir="out/test/${ant.project.name}"/>
         <javac srcdir="test" destdir="out/test/${ant.project.name}">
             <classpath location="lib/junit-4.13.2.jar" />
@@ -20,7 +19,7 @@
         </javac>
     </target>
 
-    <target name="jar" depends="compile">
+    <target name="dist" depends="compile">
         <mkdir dir="out/artifacts/${ant.project.name}_jar"/>
         <copy todir="out/artifacts/${ant.project.name}_jar/res">
             <fileset dir="res"/>
@@ -32,11 +31,12 @@
         </jar>
     </target>
 
-    <target name="run" depends="jar">
+    <target name="run" depends="dist">
         <java jar="out/artifacts/${ant.project.name}_jar/${ant.project.name}.jar" fork="true"/>
     </target>
 
-    <target name="doc" depends="compile">
+    <target name="doc">
+        <delete dir="doc"/>
         <tstamp>
             <format property="timestamp" pattern="d.M.yyyy"
                     locale="en"/>
@@ -51,6 +51,7 @@
     </target>
 
     <target name="test" depends="compile-test">
+        <delete dir="report"/>
         <mkdir dir="report"/>
         <junit printsummary="yes" haltonfailure="no">
             <classpath location="lib/junit-4.13.2.jar" />
@@ -69,6 +70,4 @@
             </batchtest>
         </junit>
     </target>
-
-
 </project>
