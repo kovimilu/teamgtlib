@@ -1,6 +1,7 @@
 package com.teamgtlib.NPCs;
 
 import com.teamgtlib.Park;
+import com.teamgtlib.buildings.Bin;
 import com.teamgtlib.buildings.Building;
 import com.teamgtlib.buildings.Ride;
 import com.teamgtlib.buildings.Shop;
@@ -43,6 +44,18 @@ public abstract class NPC {
         //System.out.print(rides);
         return rides;
     }
+
+    public ArrayList<Bin> getBins() {
+        ArrayList<Bin> bins = new ArrayList<>();
+        for (Building building : Park.buildings) {
+            String[] buildingString = building.toString().split("\\ ",0);
+            if(buildingString[0].equals("Bin")) {
+                bins.add((Bin)building);
+            }
+        }
+        return bins;
+    }
+
 
     private ArrayList<Shop> getShops() {
         ArrayList<Shop> shops = new ArrayList<>();

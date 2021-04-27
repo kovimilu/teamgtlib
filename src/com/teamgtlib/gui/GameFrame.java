@@ -11,11 +11,8 @@ public class GameFrame extends JFrame {
     static public String GameFrameCurrentButtonItemImageName = "";
     static public String GameFrameStatusPanelString = "";
     static public StatusPanel GameFrameStatusPanel = null;
-
     static public PlayAreaPanel bg;
     static public StartPanel start;
-    static public UIPanel gamepanel;
-   // JLayeredPane layeredPane;
 
     public GameFrame() throws IOException {
         setTitle("Beadandó");
@@ -25,14 +22,9 @@ public class GameFrame extends JFrame {
         ImageIcon logoImage = new ImageIcon("res/_logo.png");
         this.setIconImage(logoImage.getImage());
 
-        //layeredPane = new JLayeredPane();
-        //layeredPane.setBounds(0,0,500,500);
-
         start = new StartPanel();
         this.getContentPane().add(start);
         start.setLayout(null);
-
-
 
         setResizable(false);
         pack();
@@ -50,8 +42,6 @@ public class GameFrame extends JFrame {
                 if (confirmed == JOptionPane.YES_OPTION) System.exit(0);
             }
         });
-
-
     }
 
     MouseListener startListener = new MouseListener() {

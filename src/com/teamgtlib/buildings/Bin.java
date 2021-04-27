@@ -1,6 +1,12 @@
 package com.teamgtlib.buildings;
 
+import com.teamgtlib.NPCs.Cleaner;
+import com.teamgtlib.NPCs.NPC;
 import com.teamgtlib.Park;
+import com.teamgtlib.pathfinding.Point_;
+
+import java.awt.*;
+import java.util.List;
 
 public class Bin extends Building {
     private static final int MAXBINS = 5;
@@ -18,6 +24,17 @@ public class Bin extends Building {
             currentBin++;
             this.moodValue = -25;
         }
+    }
+
+    public int distance(NPC v){
+        int distance = (int) Math.sqrt(Math.pow((v.getX() - x),2) + Math.pow((v.getY() - y),2));
+        return distance;
+    }
+
+    public int pathLength(NPC v){
+        Point p = v.getAdjacentRoads(this);
+        List<Point_> path = v.pathfinding(v.getX(), v.getY(), p.x, p.y);
+        return path.size();
     }
 
     @Override

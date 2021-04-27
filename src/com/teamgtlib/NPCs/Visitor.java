@@ -1,5 +1,6 @@
 package com.teamgtlib.NPCs;
 import com.teamgtlib.Park;
+import com.teamgtlib.buildings.Bin;
 import com.teamgtlib.buildings.Ride;
 import com.teamgtlib.buildings.Shop;
 import com.teamgtlib.gui.GameFrame;
@@ -103,6 +104,10 @@ public class Visitor extends NPC {
                 this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
                 currentlyMoving = true;
                 move(path);
+
+                ArrayList<Bin> bins = getBins();
+                System.out.println(bins.get(0).pathLength(this));
+
                 wait(100);
                 r.addToQueue(this);
                 r.start();
@@ -118,6 +123,11 @@ public class Visitor extends NPC {
                 this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
                 currentlyMoving = true;
                 move(path);
+
+                //ArrayList<Bin> bins = getBins();
+                //System.out.println("distance: " + bins.get(0).distance(this));
+
+
                 wait(100);
                 Point q = new Point((int)p.getX(), (int)p.getY());
                 if(!Park.garbage.contains(q)) Park.garbage.add(q);
