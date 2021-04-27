@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PlayAreaPanel extends JPanel {
 
@@ -129,6 +130,23 @@ public class PlayAreaPanel extends JPanel {
             g.setColor(Color.black);
             g.fillOval(GridUtils.gridToPX((int)garbage.getX()) + 12,
                     GridUtils.gridToPX((int)garbage.getY()) + 12,10,10);
+        }
+
+        //TODO Temporary
+        ArrayList<Ride> rides = new ArrayList<>();
+        for (Building building : Park.buildings) {
+            String[] buildingString = building.toString().split("\\ ",0);
+            //System.out.printf(String.valueOf(buildingString));
+            if(buildingString[0].equals("Ride")) {
+                rides.add((Ride)building);
+            }
+        }
+        for (Ride ride : rides ) {
+            if(ride.getDurability() < 50) {
+                g.setColor(Color.red);
+                g.fillOval(GridUtils.gridToPX((int)ride.getX()) + 12,
+                        GridUtils.gridToPX((int)ride.getY()) + 12,15,15);
+            }
         }
 
 

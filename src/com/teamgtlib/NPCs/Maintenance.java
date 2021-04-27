@@ -34,17 +34,20 @@ public class Maintenance extends Worker {
 
     @Override
     public void whatToDo() {
+        Ride r = rollRandomRide();
         if(unbuiltRides && !currentlyMoving) {
-            Ride r = rollRandomRide();
             Point adjRoads = getAdjacentRoads(r);
             Park.player.changeBudgetBy(-wage);
             if (adjRoads != null) {
                 Point p = new Point(adjRoads);
                 this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
                 currentlyMoving = true;
-                move(path);
-                //unbuiltRides = false;
-                wait(5000);
+                if(r.getDurability() < 50) {
+                    move(path);
+                    wait(3000);
+                    repair(r);
+                    GameFrame.bg.repaint();
+                }
             }
             this.path = pathfinding(this.x,this.y,12,11);
             move(path);
@@ -55,8 +58,8 @@ public class Maintenance extends Worker {
         Park.player.changeBudgetBy(-wage);
     }
 
-    public void repair(Building obj) {
-        //pathfinding
+    public void repair(Ride obj) {
+        obj.repairedDurability(50);
 
     }
 

@@ -30,6 +30,7 @@ public class Ride extends Building {
         super(x, y);
         this.type = type;
         usageCost = UIPanel.getPriceSliderValue();
+        durability = 100;
         // if (usageCost == 0) usageCost = 5;
         System.out.println("RIDE USAGE COST:" + usageCost);
 
@@ -118,7 +119,7 @@ public class Ride extends Building {
                            rideEnded();
                            timer.cancel();
                        }
-                   },10000 // TODO edit to actual value
+                   },5000 // TODO edit to actual value
         );
     }
 
@@ -131,7 +132,8 @@ public class Ride extends Building {
             currentPassengers.remove(passenger);
             passenger.updateMood(moodValue);
         }
-        durability -= 0; // TODO fill with value (maybe add to constants per ride type)
+        this.durability -= 30; // TODO fill with value (maybe add to constants per ride type)
+        GameFrame.bg.repaint();
         start();
     }
 
@@ -164,6 +166,10 @@ public class Ride extends Building {
 
     public int getDurability() {
         return durability;
+    }
+
+    public void repairedDurability(int repairedBy) {
+        this.durability += repairedBy;
     }
 
     public synchronized void addToQueue(Visitor visitor) { queue.add(visitor); }

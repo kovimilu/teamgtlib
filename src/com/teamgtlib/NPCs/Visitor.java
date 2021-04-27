@@ -71,10 +71,7 @@ public class Visitor extends NPC {
             random.add(RIDE);
         }
         random.add(RIDE);
-
-
         String Choice = random.get(rand.nextInt(10));
-
         System.out.print(Choice + "\n");
 
         if(hasGarbage && !currentlyMoving) {
@@ -89,58 +86,49 @@ public class Visitor extends NPC {
                         minIndex = i;
                     }
                 }
-                if(bins.get(minIndex).pathLength(this) >= 3 ) {
+                if(bins.get(minIndex).pathLength(this) <= 3 ) {
                     System.out.printf("\n\n\n  ez" + hasGarbage +" \n\n\n");
 
                     Point adjRoads = getAdjacentRoads(bins.get(minIndex));
                     this.path = pathfinding(this.x,this.y, adjRoads.x, adjRoads.y);
                     move(path);
+                    wait(300);
                 }
                 else setHasGarbage(true);
             }
             else setHasGarbage(true);
 
         }
-        //LEAVE PARK
         if(Choice.equals("LEAVE") && !currentlyMoving) {
-            //this.currentlyMoving = true;
             this.path = pathfinding(this.x,this.y,10,14);
-            //timer();
             currentlyMoving = true;
             move(path);
             leave();
             Park.player.setVisitorCount(Park.player.getVisitorCount() - 1);
             GameFrame.bg.refreshLabelText();
-            //GameFrame.bg.repaint();
         }
         if(Choice.equals("IDLE") && !currentlyMoving) {
-            //this.currentlyMoving = true;
             this.path = pathfinding(this.x,this.y,this.x,this.y);
             currentlyMoving = true;
             wait(1000);
             move(path);
         }
         if(Choice.equals("RIDE") && !currentlyMoving) {
-            //this.currentlyMoving = true;
             Ride r = rollRandomRide();
             Point adjRoads = getAdjacentRoads(r);
             if (adjRoads != null) {
                 Point p = new Point(adjRoads);
                 this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
                 currentlyMoving = true;
-                move(path);
-
-                ArrayList<Bin> bins = getBins();
-                //System.out.println(bins.get(0).pathLength(this));
-
-                wait(100);
-                r.addToQueue(this);
-                r.start();
+                if(r.getDurability() > 50) {
+                    move(path);
+                    wait(100);
+                    r.addToQueue(this);
+                    r.start();
+                }
             }
         }
         if(Choice.equals("EAT") && !currentlyMoving) {
-            //TODO random shop + shop metódusok hívása
-
             Shop r = rollRandomShop();
             Point adjRoads = getAdjacentRoads(r);
             if (adjRoads != null) {
@@ -148,13 +136,8 @@ public class Visitor extends NPC {
                 this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
                 currentlyMoving = true;
                 move(path);
-
-
-
-                //TODO garbage
                 wait(100);
                 r.sellFood(this);
-                //System.out.printf(String.valueOf(Park.garbage));
             }
         }
     }
