@@ -1,7 +1,7 @@
 image: ubuntu:groovy
 before_script:
     - apt update -qq
-    - apt install -qqy --no-upgrade --no-install-recommends openjdk-15-jdk ant junit
+    - apt install -qqy --no-upgrade openjdk-15-jdk ant junit
     - export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 test_program:
     stage: test
