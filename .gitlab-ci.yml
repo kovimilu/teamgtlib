@@ -1,8 +1,15 @@
 image: ubuntu:groovy
+
+stages:
+    - build
+    - test
+    - production
+
 before_script:
     - apt update -qq
     - apt install -qqy --no-upgrade openjdk-15-jdk ant junit
     - export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
+
 build:
     stage: build
     script:
@@ -13,6 +20,7 @@ build:
         paths:
             - out
         expire_in: 1 hour
+
 test:
     stage: test
     script:
@@ -23,6 +31,7 @@ test:
         paths:
             - report
         expire_in: 1 week
+
 production:
     stage: production
     script:
