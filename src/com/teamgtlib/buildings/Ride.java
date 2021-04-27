@@ -6,9 +6,7 @@ import com.teamgtlib.gui.GameFrame;
 import com.teamgtlib.gui.PlayAreaPanel;
 import com.teamgtlib.gui.UIPanel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Timer;
+import java.util.*;
 
 import static java.lang.Math.min;
 
@@ -16,7 +14,7 @@ public class Ride extends Building {
     private BuildingState state = BuildingState.UNBUILT;
     private int durability;
     private int MAXCAP;
-    private ArrayList<Visitor> currentPassengers = new ArrayList<>();
+    private List<Visitor> currentPassengers = Collections.synchronizedList(new ArrayList<>());
     private final RideType type;
     private ArrayList<Visitor> queue = new ArrayList<>(); // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
     private int usageCost;
@@ -88,7 +86,7 @@ public class Ride extends Building {
         );
     }
 
-    public void start() {
+    public synchronized void start() {
         // queue-ból szed ki legfeljebb MAXCAP-nyi Visitor-t, majd meghívja a startRide()-ot
         if (!queue.isEmpty()) {
             int n = min(MAXCAP, queue.size());
@@ -107,7 +105,7 @@ public class Ride extends Building {
         }
     }
 
-    private void startRide() {
+    private synchronized void startRide() {
         /*
         ha timer letelt, vagy teli a Ride kapacitás,
          akkor start timer
@@ -124,7 +122,7 @@ public class Ride extends Building {
         );
     }
 
-    private void rideEnded() {
+    private synchronized void rideEnded() {
         /*
         cap-ból kiveszi az embereket
         számértékek hozzáadása
@@ -168,15 +166,15 @@ public class Ride extends Building {
         return durability;
     }
 
-    public void addToQueue(Visitor visitor) { queue.add(visitor); }
+    public synchronized void addToQueue(Visitor visitor) { queue.add(visitor); }
 
-    public void addToQueue(Visitor[] visitors) { queue.addAll(Arrays.asList(visitors)); }
+    public synchronized void addToQueue(Visitor[] visitors) { queue.addAll(Arrays.asList(visitors)); }
 
     public void setState(BuildingState state) { this.state = state; }
 
     public BuildingState getState() { return state; }
 
-    public ArrayList<Visitor> getCurrentPassengers() { return currentPassengers; }
+    public ArrayList<Visitor> getCurrentPassengers() { return (ArrayList<Visitor>) currentPassengers; }
 
     public ArrayList<Visitor> getQueue() { return queue; }
 }

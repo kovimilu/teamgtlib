@@ -90,7 +90,7 @@ public class UIPanel extends JPanel {
         buttonHC.setMargin(new Insets(0, 0, 0, 0));
         buttonHC.setText("<html>" + "Hire:" + "<br>"
                 + str + "<br>"
-                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+                + "costs:" + "<br>" + "$"+ "435/hour" + "</html>");
         add(buttonHC);
 
         JButton buttonRC = new JButton();
@@ -98,7 +98,8 @@ public class UIPanel extends JPanel {
         buttonRC.setMargin(new Insets(0, 0, 0, 0));
         buttonRC.setText("<html>" + "Relocate:" + "<br>"
                 + str + "<br>"
-                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+                //+ "costs:" + "<br>" + "$"+ "435" + "</html>"
+                );
         add(buttonRC);
 
         JButton buttonFC = new JButton();
@@ -106,7 +107,8 @@ public class UIPanel extends JPanel {
         buttonFC.setMargin(new Insets(0, 0, 0, 0));
         buttonFC.setText("<html>" + "Fire:" + "<br>"
                 + str + "<br>"
-                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+                //+ "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>"
+                );
         add(buttonFC);
         //##
 
@@ -116,7 +118,7 @@ public class UIPanel extends JPanel {
         buttonHM.setMargin(new Insets(0, 0, 0, 0));
         buttonHM.setText("<html>" + "Hire:" + "<br>"
                 + str1 + "<br>"
-                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+                + "costs:" + "<br>" + "$"+ "1670/hour" + "</html>");
         add(buttonHM);
 
         JButton buttonFM = new JButton();
@@ -124,7 +126,8 @@ public class UIPanel extends JPanel {
         buttonFM.setMargin(new Insets(0, 0, 0, 0));
         buttonFM.setText("<html>" + "Fire:" + "<br>"
                 + str1 + "<br>"
-                + "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>");
+                //+ "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>"
+                );
         add(buttonFM);
 
         JButton buttonDemolish = new JButton();

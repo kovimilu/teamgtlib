@@ -1,6 +1,7 @@
 package com.teamgtlib.NPCs;
 import com.teamgtlib.Park;
 import com.teamgtlib.buildings.Ride;
+import com.teamgtlib.buildings.Shop;
 import com.teamgtlib.gui.GameFrame;
 
 import java.awt.*;
@@ -96,26 +97,35 @@ public class Visitor extends NPC {
         if(Choice.equals("RIDE") && !currentlyMoving) {
             //this.currentlyMoving = true;
             Ride r = rollRandomRide();
-            Point adjRoads = getAdjacentRoadsToRideCoords(r);
+            Point adjRoads = getAdjacentRoads(r);
             if (adjRoads != null) {
                 Point p = new Point(adjRoads);
                 this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
                 currentlyMoving = true;
                 move(path);
+                wait(100);
                 r.addToQueue(this);
                 r.start();
             }
         }
         if(Choice.equals("EAT") && !currentlyMoving) {
             //TODO random shop + shop metódusok hívása
-            this.path = pathfinding(this.x,this.y,8,9);
-            currentlyMoving = true;
-            move(path);
-            wait(100);
 
+            Shop r = rollRandomShop();
+            Point adjRoads = getAdjacentRoads(r);
+            if (adjRoads != null) {
+                Point p = new Point(adjRoads);
+                this.path = pathfinding(this.x, this.y, (int) p.getX(), (int) p.getY());
+                currentlyMoving = true;
+                move(path);
+                wait(100);
+                Point q = new Point((int)p.getX(), (int)p.getY());
+                if(!Park.garbage.contains(q)) Park.garbage.add(q);
+                System.out.printf(String.valueOf(Park.garbage));
+                //TODO garbage
+            }
         }
 
-        //random cuccuk pathfindig rando mridehoz vagy bolthoz vagy haza megy
     }
 
     public void updateMood(int changeBy) {

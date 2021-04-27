@@ -124,10 +124,14 @@ public class PlayAreaPanel extends JPanel {
                         building.getHeight()*50).paintIcon(this, g, GridUtils.gridToPX(building.getX()),
                         GridUtils.gridToPX(building.getY()));
             }
-
-
-
         }
+        for (Point garbage : Park.garbage) {
+            g.setColor(Color.black);
+            g.fillOval(GridUtils.gridToPX((int)garbage.getX()) + 12,
+                    GridUtils.gridToPX((int)garbage.getY()) + 12,10,10);
+        }
+
+
         //draw npcs
         for (NPC npc : Park.npcs) {
             if(npc.getClassString().equals("Visitor")) {

@@ -32,7 +32,6 @@ public class Player {
             if(Park.npcs.get(i).getClassString().equals("Maintenance")) {
                 Park.npcs.get(i).leave();
                 Park.npcs.remove(Park.npcs.get(i));
-                System.out.printf("asd");
                 break;
             }
         }
@@ -40,9 +39,15 @@ public class Player {
 
     public void fireCleaner(){
         int n = Park.npcs.size();
-        for (int i = 0; i < n; ++i){
-            if(Park.npcs.get(i).getClassString().equals("Cleaner"))Park.npcs.remove(Park.npcs.get(i));
-            break;
+        System.out.printf("npc arraylist:" + String.valueOf(n));
+        for (int i = 0; i < n; ++i)
+        {
+            //System.out.printf(Park.npcs.get(i).getClassString());
+            if(Park.npcs.get(i).getClassString().equals("Cleaner")) {
+                Park.npcs.get(i).leave();
+                Park.npcs.remove(Park.npcs.get(i));
+                break;
+            }
         }
     }
 
