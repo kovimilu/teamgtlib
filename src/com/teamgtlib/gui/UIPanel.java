@@ -130,6 +130,14 @@ public class UIPanel extends JPanel {
                 );
         add(buttonFM);
 
+        JButton buttonVacate = new JButton();
+        buttonVacate.setPreferredSize(new Dimension(squareButtonsSize, squareButtonsSize));
+        buttonVacate.setMargin(new Insets(0, 0, 0, 0));
+        buttonVacate.setText("<html>" + "Vacate Park:" + "<br>"
+                //+ "costs:" + "<br>" + "$"+ "P_HOLDER" + "</html>"
+        );
+        add(buttonVacate);
+
         JButton buttonDemolish = new JButton();
         buttonDemolish.setPreferredSize(new Dimension(squareButtonsSize * 3,squareButtonsSize));
         buttonDemolish.setText("Select Building To Demolish");
@@ -153,6 +161,8 @@ public class UIPanel extends JPanel {
         buttonHC.addActionListener(HireCleaner);
         buttonFC.addActionListener(FireCleaner);
 
+        buttonVacate.addActionListener(Vacate);
+
         buttonDemolish.addMouseListener(isReleased);
     }
 
@@ -173,6 +183,17 @@ public class UIPanel extends JPanel {
             }
             GameFrame.SelectionState = SelectionType.BUILD;
             System.out.println("GAMEFRAME BUTTON PRESSED");
+            PlayAreaPanel.refreshLabelText();
+        }
+    };
+
+    private final ActionListener Vacate = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Park.npcs.clear();
+            Park.player.setVisitorCount(0);
+            Park.player.setWorkerCount(0);
+            GameFrame.bg.repaint();
             PlayAreaPanel.refreshLabelText();
         }
     };

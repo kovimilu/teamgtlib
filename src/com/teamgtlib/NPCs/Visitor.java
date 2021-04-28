@@ -16,6 +16,8 @@ public class Visitor extends NPC {
     private boolean hasGarbage;
     Random rand = new Random();
 
+    boolean stuck = false;
+
     public Visitor() {
         super(10,13); // y = 14 amugy csak kilog
         x = 10;
@@ -74,6 +76,8 @@ public class Visitor extends NPC {
         String Choice = random.get(rand.nextInt(10));
         System.out.print(Choice + "\n");
 
+        if(stuck) leave();
+
         if(hasGarbage && !currentlyMoving) {
             setHasGarbage(false);
             ArrayList<Bin> bins = getBins();
@@ -104,6 +108,7 @@ public class Visitor extends NPC {
             currentlyMoving = true;
             move(path);
             leave();
+            stuck = true;
             Park.player.setVisitorCount(Park.player.getVisitorCount() - 1);
             GameFrame.bg.refreshLabelText();
         }
