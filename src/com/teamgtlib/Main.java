@@ -7,7 +7,7 @@ import java.util.ConcurrentModificationException;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Current grade: " + (5.0f + 5.0f) / 2);
+        System.out.println("Current grade: " + (5.0f + 5.0f + 5.0f) / 3);
 
         java.awt.EventQueue.invokeLater(() -> {
             try {
