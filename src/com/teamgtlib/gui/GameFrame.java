@@ -2,7 +2,10 @@ package com.teamgtlib.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 public class GameFrame extends JFrame {
@@ -29,7 +32,6 @@ public class GameFrame extends JFrame {
         setResizable(false);
         pack();
         setLocationRelativeTo(null);
-        this.setVisible(true);
 
         start.playLabel.addMouseListener(startListener);
         start.notPlayLabel.addMouseListener(exitListener);
