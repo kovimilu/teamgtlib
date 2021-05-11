@@ -57,7 +57,7 @@ public abstract class NPC {
     }
 
 
-    private ArrayList<Shop> getShops() {
+    public ArrayList<Shop> getShops() {
         ArrayList<Shop> shops = new ArrayList<>();
         for (Building building : Park.buildings) {
             String[] buildingString = building.toString().split("\\ ",0);
