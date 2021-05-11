@@ -8,7 +8,7 @@ public class Player {
     private int visitorCount;
     private int workerCount;
 
-    Player(){
+    public Player(){
         budget = 1000000;
     }
 

@@ -32,7 +32,7 @@ public abstract class NPC {
         updateTimer();
     }
 
-    private ArrayList<Ride> getRides() {
+    public ArrayList<Ride> getRides() {
         ArrayList<Ride> rides = new ArrayList<>();
         for (Building building : Park.buildings) {
             String[] buildingString = building.toString().split("\\ ",0);
@@ -241,6 +241,8 @@ public abstract class NPC {
     public int getY() {
         return y;
     }
+
+    public int getMood(){return mood;}
 
      public abstract String getClassString();
 
