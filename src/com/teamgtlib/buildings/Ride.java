@@ -16,7 +16,7 @@ public class Ride extends Building {
     private int MAXCAP;
     private volatile List<Visitor> currentPassengers = Collections.synchronizedList(new ArrayList<>());
     private final RideType type;
-    private ArrayList<Visitor> queue = new ArrayList<>(); // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
+    static public ArrayList<Visitor> queue = new ArrayList<>(); // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
     private int usageCost;
 
     /**

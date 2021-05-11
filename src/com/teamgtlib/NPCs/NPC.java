@@ -241,6 +241,10 @@ public abstract class NPC {
     public int getY() {
         return y;
     }
+    
+    public Point getPoint() {
+        return new Point(x,y);
+    }
 
     public int getMood(){return mood;}
 

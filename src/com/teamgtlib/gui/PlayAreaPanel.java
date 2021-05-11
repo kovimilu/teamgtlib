@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Queue;
 
 public class PlayAreaPanel extends JPanel {
 
@@ -161,8 +162,28 @@ public class PlayAreaPanel extends JPanel {
             if(npc.getClassString().equals("Cleaner")) {
                 g.setColor(Color.magenta);
             }
-            //g.fillOval(0 + 12,0 + 12,20,20);
             g.fillOval(GridUtils.gridToPX(npc.getX()) + 12, GridUtils.gridToPX(npc.getY()) + 12,20,20);
+
+            //queue
+            for (Ride ride : rides ) {
+                if(npc.getAdjacentRoads(ride).equals(npc.getPoint()))
+                {
+                    g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+                    g.setColor(Color.black);
+                    String Q = String.valueOf(ride.getQueueSize());
+                    g.drawString(Q,GridUtils.gridToPX(npc.getX()) + 15, GridUtils.gridToPX(npc.getY()) + 25);
+                    g.setColor(Color.cyan);
+                }
+                /*for (NPC inQueue : Ride.queue) {
+                    g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+                    g.setColor(Color.black);
+                    //String Q = String.valueOf(ride.getQueueSize());
+                    String Q = "6";
+                    g.drawString(Q,GridUtils.gridToPX(inQueue.getX()) + 15, GridUtils.gridToPX(inQueue.getY()) + 25);
+                    g.setColor(Color.cyan);
+
+                 */
+            }
         }
 
     }
