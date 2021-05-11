@@ -84,7 +84,7 @@ public class PlayAreaPanel extends JPanel {
 
 
     @Override
-    public void paintComponent(Graphics g)
+    public synchronized void paintComponent(Graphics g)
     {
         super.paintComponent(g);
         if(backGroundDrawn) {
@@ -144,8 +144,8 @@ public class PlayAreaPanel extends JPanel {
         for (Ride ride : rides ) {
             if(ride.getDurability() < 50) {
                 g.setColor(Color.red);
-                g.fillOval(GridUtils.gridToPX((int)ride.getX()) + 12,
-                        GridUtils.gridToPX((int)ride.getY()) + 12,15,15);
+                g.fillOval(GridUtils.gridToPX(ride.getX()) + 12,
+                        GridUtils.gridToPX(ride.getY()) + 12,15,15);
             }
         }
 

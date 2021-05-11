@@ -14,7 +14,7 @@ public class Ride extends Building {
     private BuildingState state = BuildingState.UNBUILT;
     private int durability;
     private int MAXCAP;
-    private List<Visitor> currentPassengers = Collections.synchronizedList(new ArrayList<>());
+    private volatile List<Visitor> currentPassengers = Collections.synchronizedList(new ArrayList<>());
     private final RideType type;
     private ArrayList<Visitor> queue = new ArrayList<>(); // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
     private int usageCost;
@@ -172,9 +172,12 @@ public class Ride extends Building {
         this.durability += repairedBy;
     }
 
-    public synchronized void addToQueue(Visitor visitor) { queue.add(visitor); }
+    public synchronized void addToQueue(Visitor visitor) {
+        System.out.println("\nQUEUESIZE " + queue.size()); queue.add(visitor); }
 
     public synchronized void addToQueue(Visitor[] visitors) { queue.addAll(Arrays.asList(visitors)); }
+
+    public int getQueueSize() { return queue.size(); }
 
     public void setState(BuildingState state) { this.state = state; }
 
