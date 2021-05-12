@@ -129,13 +129,12 @@ public class Ride extends Building {
         számértékek hozzáadása
          */
         isOn = false;
+        this.durability -= 20;
+        if(durability < 0) durability = 0;
         for (Visitor passenger : currentPassengers) {
             currentPassengers.remove(passenger);
             passenger.updateMood(moodValue);
         }
-        this.durability -= 30; // TODO fill with value (maybe add to constants per ride type)
-        System.out.println("\n\n\n\n\n\n\ndurability" + this.getDurability() + "\n" +
-                durability + "\n\n\n\n\n\n\n");
         GameFrame.bg.repaint();
         start();
     }
