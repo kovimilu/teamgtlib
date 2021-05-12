@@ -167,8 +167,6 @@ public abstract class NPC {
 
         for(int i = 0; i < Park.buildings.size(); ++i) {
             if(Park.buildings.get(i).toString().equals("Road")) {
-                //System.out.printf("\nRoad(" + i + ") : x: " + (GridUtils.gridConverter(Park.buildings.get(i).getX()) + 1)
-                //+ ", y: " + (GridUtils.gridConverter(Park.buildings.get(i).getY())+ 1));
                 tiles[Park.buildings.get(i).getX() - 1]
                         [Park.buildings.get(i).getY() - 1] = true;
             }

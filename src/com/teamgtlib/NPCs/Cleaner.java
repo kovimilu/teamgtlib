@@ -38,10 +38,6 @@ public class Cleaner extends Worker {
         }
     }
 
-    public void clean() {
-
-    }
-
     @Override
     public String getClassString() {
         return "Cleaner";

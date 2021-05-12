@@ -71,7 +71,6 @@ public class GridUtils {
      */
     static public boolean isOnGridMap(Point p) {
         for (Point point: gridMap) {
-            //System.out.println(p + "" + point);
             if(p.equals(point)) return true;
         }
         Building PREBUILT = Park.preBuild(PlayAreaPanel.theUgliestSolutionICouldFind());
@@ -88,7 +87,6 @@ public class GridUtils {
 
     static public boolean addGridMap(Point p, BuildingType type) {
         for (Point point: gridMap) {
-            //System.out.println(p + "" + point);
             if(p.equals(point)) return true;
         }
         Building PREBUILT = Park.preBuild(type);
@@ -107,7 +105,6 @@ public class GridUtils {
         int WIDTH = building.getWidth();
         int HEIGHT = building.getHeight();
         Point p = new Point(building.getX(), building.getY());
-        System.out.println("REMOVING: " + p);
         for (int i = 0; i < WIDTH; ++i) {
             for (int j = 0; j < HEIGHT; ++j) {
                 Point gridPos = new Point((int)p.getX() + i, (int)p.getY() + j);

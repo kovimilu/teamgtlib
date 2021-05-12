@@ -16,7 +16,7 @@ public class Ride extends Building {
     private int MAXCAP;
     private List<Visitor> currentPassengers = new ArrayList<>();
     private final RideType type;
-    public ArrayList<Visitor> queue = new ArrayList<>(); // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
+    public ArrayList<Visitor> queue = new ArrayList<>();
     private int usageCost;
     private volatile boolean isOn;
 
@@ -72,7 +72,6 @@ public class Ride extends Building {
                 height = RideConstants.WATERSLIDE_HEIGHT;
             }
         }
-        //Quick Fix and / or for debugging.
         MAXCAP = 1;
         timer();
     }
@@ -95,13 +94,9 @@ public class Ride extends Building {
         if (!queue.isEmpty() && !isOn) {
             int n = min(MAXCAP, queue.size());
             for (int i = 0; i < n; i++) {
-                //System.out.printf(String.valueOf(queue));
                 queue.get(i).buyTicket(usageCost);
                 PlayAreaPanel.refreshLabelText();
                 Visitor boardingPassenger = queue.remove(i);
-                //System.out.printf(String.valueOf(boardingPassenger));
-
-                //boardingPassenger.buyTicket(usageCost);
                 System.out.print(Park.player.getBudget());
                 currentPassengers.add(boardingPassenger);
             }

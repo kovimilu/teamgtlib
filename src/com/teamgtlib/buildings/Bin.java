@@ -18,7 +18,7 @@ public class Bin extends Building {
         width = 1;
         height = 1;
         price = COST_PRICE;
-        if(currentBin > MAXBINS); //TODO throw exception
+        if(currentBin > MAXBINS);
         else
         {
             currentBin++;

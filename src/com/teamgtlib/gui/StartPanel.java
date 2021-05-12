@@ -27,10 +27,8 @@ public class StartPanel extends JPanel {
 
         playLabel.setBounds(550, 520,170,50);
         Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-        //playLabel.setBorder(border);
 
         notPlayLabel.setBounds(510, 585,250,45);
-        //notPlayLabel.setBorder(border);
 
         this.add(playLabel);
         this.add(notPlayLabel);

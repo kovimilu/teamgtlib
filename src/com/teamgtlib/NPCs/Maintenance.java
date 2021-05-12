@@ -23,13 +23,8 @@ public class Maintenance extends Worker {
         super(10,13);
         x = 10;
         y = 13;
-
-        //pathFinding(Park.playAreaPanel[6][10],Park.playAreaPanel,testpath,(x-1),(y-1));
         wage = 1670;
-        //rides = new ArrayList<>();
         Park.npcs.add(this);
-        //getRides();
-        //timer();
     }
 
     @Override

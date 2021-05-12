@@ -9,7 +9,6 @@ public class DecorConstants {
             DCA[2][0] = TREE_PRICE;
     }
 
-    // TODO: fill with values
     public static final int BENCH_PRICE     = 5000;
     public static final int BENCH_MOODVALUE = 10;
     public static final int BENCH_WIDTH     = 2;

@@ -12,7 +12,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Queue;
 
 public class PlayAreaPanel extends JPanel {
 
@@ -52,7 +51,6 @@ public class PlayAreaPanel extends JPanel {
 
     private void doAllThingForNow(int x, int y) throws GameException {
         park.build(x, y, theUgliestSolutionICouldFind(), true);
-        //System.out.println(park.buildingsToString()); // for debugging
     }
 
     static public void refreshLabelText()
@@ -93,16 +91,6 @@ public class PlayAreaPanel extends JPanel {
         }
         if(GameFrame.SelectionState == SelectionType.BUILD) {
             Point newPoint = new Point(GridUtils.gridConverter(prevPt));
-            //TODO
-            /*
-            //Building Area Market
-            g.setColor(Color.green);
-            Point newCurrentMousePt = new Point(GridUtils.gridToPX(GridUtils.gridConverter(CurrentMousePt)));
-            g.drawRect((int)newCurrentMousePt.getX(), (int)newCurrentMousePt.getY(),
-                    park.preBuild(theUgliestSolutionICouldFind()).getWidth() * 50,
-                    park.preBuild(theUgliestSolutionICouldFind()).getHeight() * 50);
-            //Building Area Market #END
-            */
             if(!GridUtils.isOnGridMap(GridUtils.gridConverter(prevPt))) {
                 GameFrame.SelectionState = SelectionType.NONE;
                 try {
@@ -209,14 +197,11 @@ public class PlayAreaPanel extends JPanel {
     private class MoveListener implements MouseMotionListener {
         @Override
         public void mouseDragged(MouseEvent e) {
-
         }
 
         @Override
         public void mouseMoved(MouseEvent e) {
             CurrentMousePt = e.getPoint();
-            //GameFrame.bg.repaint();
-                //System.out.println(" x: " + e.getX() + ", y: " + e.getY());
         }
     }
 }

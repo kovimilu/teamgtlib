@@ -2,15 +2,10 @@ package com.teamgtlib.buildings;
 
 import com.teamgtlib.Drawable;
 import com.teamgtlib.Park;
-import com.teamgtlib.gui.GameFrame;
-import com.teamgtlib.gui.GridUtils;
-import com.teamgtlib.gui.PlayAreaPanel;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Timer;
 
 public abstract class Building implements Drawable {
     final int x;
