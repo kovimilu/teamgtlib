@@ -127,11 +127,6 @@ public class PlayAreaPanel extends JPanel {
                         GridUtils.gridToPX(building.getY()));
             }
         }
-        for (Point garbage : Park.garbage) {
-            g.setColor(Color.black);
-            g.fillOval(GridUtils.gridToPX((int)garbage.getX()) + 12,
-                    GridUtils.gridToPX((int)garbage.getY()) + 12,10,10);
-        }
 
         //TODO Temporary
         ArrayList<Ride> rides = new ArrayList<>();
@@ -142,14 +137,6 @@ public class PlayAreaPanel extends JPanel {
                 rides.add((Ride)building);
             }
         }
-        for (Ride ride : rides ) {
-            if(ride.getDurability() < 50) {
-                g.setColor(Color.red);
-                g.fillOval(GridUtils.gridToPX(ride.getX()) + 12,
-                        GridUtils.gridToPX(ride.getY()) + 12,15,15);
-            }
-        }
-
 
         //draw npcs
         for (NPC npc : Park.npcs) {
@@ -166,26 +153,38 @@ public class PlayAreaPanel extends JPanel {
 
             //queue
             for (Ride ride : rides ) {
-                if(npc.getAdjacentRoads(ride).equals(npc.getPoint()))
-                {
-                    g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
-                    g.setColor(Color.black);
-                    String Q = String.valueOf(ride.getQueueSize());
-                    g.drawString(Q,GridUtils.gridToPX(npc.getX()) + 15, GridUtils.gridToPX(npc.getY()) + 25);
+                if(ride.getDurability() < 50) {
+                    System.out.println("\n\n\n\n\n\n\ndurability" + ride.getDurability() + "\n\n\n\n\n\n\n\n");
+                    g.setColor(Color.red);
+                    g.fillRect(GridUtils.gridToPX(ride.getX()) + 45, GridUtils.gridToPX(ride.getY()) + 20,10,35);
+                    g.fillOval(GridUtils.gridToPX(ride.getX()) + 45, GridUtils.gridToPX(ride.getY()) + 65,10,10);
                     g.setColor(Color.cyan);
                 }
-                /*for (NPC inQueue : Ride.queue) {
-                    g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
-                    g.setColor(Color.black);
-                    //String Q = String.valueOf(ride.getQueueSize());
-                    String Q = "6";
-                    g.drawString(Q,GridUtils.gridToPX(inQueue.getX()) + 15, GridUtils.gridToPX(inQueue.getY()) + 25);
-                    g.setColor(Color.cyan);
 
-                 */
+                if(ride.getCurrentPassengers().size() > 0) {
+                    g.setColor(Color.cyan);
+                    g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+                    g.drawString("Used",GridUtils.gridToPX(ride.getX()) + 15, GridUtils.gridToPX(ride.getY()) + 40);
+                    g.setColor(Color.cyan);
+                }
+                if(npc.getAdjacentRoads(ride).equals(npc.getPoint())) {
+                    int q = ride.getQueueSize();
+                    if(q > 0){
+                        String Q = String.valueOf(q);
+                        g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+                        g.setColor(Color.black);
+                        g.drawString(Q,GridUtils.gridToPX(npc.getX()) + 15, GridUtils.gridToPX(npc.getY()) + 25);
+                        g.setColor(Color.cyan);
+                    }
+                }
             }
         }
 
+        for (Point garbage : Park.garbage) {
+            g.setColor(Color.black);
+            g.fillOval(GridUtils.gridToPX((int)garbage.getX()) + 12,
+                    GridUtils.gridToPX((int)garbage.getY()) + 12,10,10);
+        }
     }
 
     private ImageIcon resizeImage(ImageIcon imageIcon, int w, int h){

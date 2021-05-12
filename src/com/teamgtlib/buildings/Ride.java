@@ -12,12 +12,13 @@ import static java.lang.Math.min;
 
 public class Ride extends Building {
     private BuildingState state = BuildingState.UNBUILT;
-    private int durability;
+    private volatile int durability;
     private int MAXCAP;
-    private volatile List<Visitor> currentPassengers = Collections.synchronizedList(new ArrayList<>());
+    private List<Visitor> currentPassengers = new ArrayList<>();
     private final RideType type;
-    static public ArrayList<Visitor> queue = new ArrayList<>(); // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
+    public ArrayList<Visitor> queue = new ArrayList<>(); // bármennyien lehetnek benne, de csak x másodpercenként (next) 1 ember ülhet fel
     private int usageCost;
+    private volatile boolean isOn;
 
     /**
      *
@@ -71,6 +72,8 @@ public class Ride extends Building {
                 height = RideConstants.WATERSLIDE_HEIGHT;
             }
         }
+        //Quick Fix and / or for debugging.
+        MAXCAP = 1;
         timer();
     }
 
@@ -89,7 +92,7 @@ public class Ride extends Building {
 
     public synchronized void start() {
         // queue-ból szed ki legfeljebb MAXCAP-nyi Visitor-t, majd meghívja a startRide()-ot
-        if (!queue.isEmpty()) {
+        if (!queue.isEmpty() && !isOn) {
             int n = min(MAXCAP, queue.size());
             for (int i = 0; i < n; i++) {
                 //System.out.printf(String.valueOf(queue));
@@ -112,10 +115,12 @@ public class Ride extends Building {
          akkor start timer
          ha elég az ember, ezt hívja meg a next
          */
+        isOn = true;
         Timer timer = new java.util.Timer();
         timer.schedule(new java.util.TimerTask() {
                        @Override
                        public void run() {
+
                            rideEnded();
                            timer.cancel();
                        }
@@ -128,11 +133,14 @@ public class Ride extends Building {
         cap-ból kiveszi az embereket
         számértékek hozzáadása
          */
+        isOn = false;
         for (Visitor passenger : currentPassengers) {
             currentPassengers.remove(passenger);
             passenger.updateMood(moodValue);
         }
         this.durability -= 30; // TODO fill with value (maybe add to constants per ride type)
+        System.out.println("\n\n\n\n\n\n\ndurability" + this.getDurability() + "\n" +
+                durability + "\n\n\n\n\n\n\n");
         GameFrame.bg.repaint();
         start();
     }
@@ -173,11 +181,16 @@ public class Ride extends Building {
     }
 
     public synchronized void addToQueue(Visitor visitor) {
-        System.out.println("\nQUEUESIZE " + queue.size()); queue.add(visitor); }
+        System.out.println("\nQUEUESIZE " + queue.size()); queue.add(visitor);
+    }
 
-    public synchronized void addToQueue(Visitor[] visitors) { queue.addAll(Arrays.asList(visitors)); }
+    public synchronized void addToQueue(Visitor[] visitors) {
+        queue.addAll(Arrays.asList(visitors));
+    }
 
-    public int getQueueSize() { return queue.size(); }
+    public int getQueueSize() {
+        return queue.size();
+    }
 
     public void setState(BuildingState state) { this.state = state; }
 

@@ -4,6 +4,7 @@ import com.teamgtlib.buildings.Bin;
 import com.teamgtlib.buildings.Ride;
 import com.teamgtlib.buildings.Shop;
 import com.teamgtlib.gui.GameFrame;
+import com.teamgtlib.gui.PlayAreaPanel;
 import com.teamgtlib.pathfinding.Point_;
 
 import java.awt.*;
@@ -14,9 +15,11 @@ import java.util.Random;
 public class Visitor extends NPC {
 
     private boolean hasGarbage;
-    Random rand = new Random();
-
     boolean stuck = false;
+
+    Ride r;
+    private int prevX;
+    private int prevY;
 
     public Visitor() {
         super(10,13); // y = 14 amugy csak kilog
@@ -77,6 +80,10 @@ public class Visitor extends NPC {
         System.out.print(Choice + "\n");
 
         if(stuck) leave();
+        if(r != null && r.getQueue().contains(this)) {
+            r.start();
+            return;
+        }
 
         if(hasGarbage && !currentlyMoving) {
             setHasGarbage(false);
@@ -119,7 +126,7 @@ public class Visitor extends NPC {
             move(path);
         }
         if(Choice.equals("RIDE") && !currentlyMoving) {
-            Ride r = rollRandomRide();
+            r = rollRandomRide();
             Point adjRoads = getAdjacentRoads(r);
             if (adjRoads != null) {
                 Point p = new Point(adjRoads);
@@ -129,7 +136,12 @@ public class Visitor extends NPC {
                     move(path);
                     wait(100);
                     r.addToQueue(this);
+                    prevX = x;
+                    prevY = y;
+                    x = y = 0;
                     r.start();
+                    x = prevX;
+                    y = prevY;
                 }
             }
         }
