@@ -158,7 +158,7 @@ public class Visitor extends NPC {
             }
         }
     }
-    private void throwGarbage() {
+    public void throwGarbage() {
         Random rand = new Random();
         int chance = rand.nextInt(3);
         if(hasGarbage && chance == 1) {

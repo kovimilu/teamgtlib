@@ -71,14 +71,6 @@ public class NpcTest {
         assertEquals(path.size(),3);
     }
 
-    /*@Test
-    public void leaveTest() throws IOException {
-        start();
-        Visitor v = new Visitor();
-        v.leave();
-        assertEquals(Park.npcs.size(), 1);
-    }*/
-
     //Workers
     @Test
     public void maintenancePay() throws IOException {
@@ -88,13 +80,6 @@ public class NpcTest {
         assertEquals(Park.player.getBudget(), 999900);
     }
 
-    @Test
-    public void maintenanceWhatToDo() throws IOException {
-        start();
-        Maintenance m = new Maintenance();
-        m.whatToDo();
-        assertEquals(Park.player.getBudget(), 998330);
-    }
 
     @Test
     public void maintenanceRepair() throws IOException {
@@ -106,14 +91,6 @@ public class NpcTest {
         assertEquals(r.getDurability(), 100);
     }
 
-    @Test
-    public void cleanerWhatToDo() throws IOException {
-        start();
-        Cleaner c = new Cleaner();
-        Park.garbage.add(new Point(5,5));
-        c.whatToDo();
-        assertEquals(Park.garbage.size(), 0);
-    }
 
     //Visitor
     @Test
@@ -122,12 +99,15 @@ public class NpcTest {
         Visitor v = new Visitor();
         v.updateMood(-40);
         v.whatToDo();
-        //assertEquals(Park.player.getVisitorCount(), 1);
+        assertEquals(v.getMood(), 10);
     }
 
-
-
-
-
+    @Test
+    public void visitorThrowGarbage() throws IOException {
+        start();
+        Visitor v = new Visitor();
+        v.throwGarbage();
+        assertEquals(Park.garbage.size(), 0);
+    }
 
 }
